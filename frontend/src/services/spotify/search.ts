@@ -40,17 +40,32 @@ export function calculateSpotifySearchLimit(
   return SPOTIFY_SEARCH_MAX_LIMIT;
 }
 
-const SPOTIFY_MOOD_SEARCH_TERMS: Record<TrackSearchCriteria["mood"], string> = {
-  motivation: "running workout",
-  happy: "upbeat running",
-  relax: "easy run",
+const SPOTIFY_SEARCH_QUERIES: Record<
+  TrackSearchCriteria["genre"],
+  Record<TrackSearchCriteria["mood"], string>
+> = {
+  global: {
+    motivation: "running workout hits",
+    happy: "upbeat running hits",
+    relax: "easy running playlist",
+  },
+  jpop: {
+    motivation: "j-pop hits",
+    happy: "j-pop upbeat",
+    relax: "j-pop chill",
+  },
+  kpop: {
+    motivation: "k-pop hits",
+    happy: "k-pop upbeat",
+    relax: "k-pop chill",
+  },
 };
 
 export function buildSpotifySearchQuery({
   genre,
   mood,
 }: Pick<TrackSearchCriteria, "genre" | "mood">): string {
-  return `${genre} ${SPOTIFY_MOOD_SEARCH_TERMS[mood]}`;
+  return SPOTIFY_SEARCH_QUERIES[genre][mood];
 }
 
 type SpotifySearchResponse = {
@@ -103,6 +118,27 @@ export function mapSpotifySearchResponseToCandidateTracks(
     }));
 }
 
+export function dedupeCandidateTracks(
+  tracks: CandidateTrack[],
+): CandidateTrack[] {
+  const seenIds = new Set<string>();
+  const seenUris = new Set<string>();
+
+  return tracks.filter((track) => {
+    if (
+      (track.id && seenIds.has(track.id)) ||
+      (track.uri && seenUris.has(track.uri))
+    ) {
+      return false;
+    }
+
+    if (track.id) seenIds.add(track.id);
+    if (track.uri) seenUris.add(track.uri);
+
+    return true;
+  });
+}
+
 export async function searchTracks({
   distanceKm,
   genre,
@@ -146,9 +182,11 @@ export async function searchTracks({
     if (data.tracks.items.length < pageLimit) break;
   }
 
-  return mapSpotifySearchResponseToCandidateTracks({
-    tracks: { items: tracks },
-  });
+  return dedupeCandidateTracks(
+    mapSpotifySearchResponseToCandidateTracks({
+      tracks: { items: tracks },
+    }),
+  );
 }
 
 export function isSpotifyUnauthorizedError(error: unknown) {

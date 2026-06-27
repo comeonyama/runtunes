@@ -1,5 +1,5 @@
 export const GENRE_OPTIONS = [
-  { label: "Rock", value: "rock" },
-  { label: "Pop", value: "pop" },
-  { label: "EDM", value: "edm" },
+  { label: "Global", value: "global" },
+  { label: "J-Pop", value: "jpop" },
+  { label: "K-Pop", value: "kpop" },
 ] as const;

@@ -2,12 +2,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PlaylistForm from "../components/forms/PlaylistForm";
-import TrackSearchResults from "../components/spotify/TrackSearchResults";
 import {
   spotifyProfileQueryKey,
   useSpotifyProfile,
 } from "../hooks/useSpotifyProfile";
-import { useSpotifyTrackSearch } from "../hooks/useSpotifyTrackSearch";
+import { useOpenAIConnectionTest } from "../hooks/useOpenAIConnectionTest";
 import {
   isAuthenticated,
   loginWithSpotify,
@@ -32,7 +31,7 @@ function HomePage() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
   const spotifyProfile = useSpotifyProfile(isSpotifyConnected);
-  const trackSearch = useSpotifyTrackSearch();
+  const openAIConnection = useOpenAIConnectionTest();
 
   const connectedName =
     spotifyProfile.data?.display_name?.trim() || "Spotify user";
@@ -57,7 +56,6 @@ function HomePage() {
   function handleDisconnect() {
     logout();
     queryClient.removeQueries({ queryKey: spotifyProfileQueryKey });
-    trackSearch.reset();
     setIsSpotifyConnected(false);
     setConnectionError(null);
   }
@@ -121,7 +119,7 @@ function HomePage() {
                   Connect your Spotify account
                 </p>
                 <p className="text-xs text-neutral-500">
-                  Required before generating a playlist
+                  Optional for this OpenAI connection test
                 </p>
               </div>
               <button
@@ -142,24 +140,27 @@ function HomePage() {
         </section>
 
         <PlaylistForm
-          isLoading={trackSearch.isPending}
-          isSpotifyConnected={isSpotifyConnected}
-          onSubmit={(formData) => {
-            if (isSpotifyConnected) {
-              trackSearch.mutate({
-                distanceKm: formData.distanceKm,
-                genre: formData.genre,
-                mood: formData.mood,
-              });
-            }
-          }}
+          isLoading={openAIConnection.isPending}
+          onSubmit={() => openAIConnection.mutate()}
         />
 
-        <TrackSearchResults
-          error={trackSearch.error}
-          status={trackSearch.status}
-          tracks={trackSearch.data}
-        />
+        {openAIConnection.isSuccess && (
+          <section
+            className="mt-5 w-full rounded-2xl border border-run-green/25 bg-run-green/10 p-5 text-sm leading-6 text-neutral-100"
+            aria-live="polite"
+          >
+            {openAIConnection.data.text}
+          </section>
+        )}
+
+        {openAIConnection.isError && (
+          <p
+            className="mt-5 w-full rounded-2xl border border-red-400/25 bg-red-400/10 p-5 text-sm text-red-300"
+            role="alert"
+          >
+            {openAIConnection.error.message}
+          </p>
+        )}
       </div>
     </main>
   );
