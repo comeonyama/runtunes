@@ -1,4 +1,5 @@
 import { Music2 } from "lucide-react";
+import { useRef, useState } from "react";
 import { isSpotifyUnauthorizedError } from "../../services/spotify/search";
 import type { CandidateTrack } from "../../types/candidateTrack";
 
@@ -13,6 +14,27 @@ function TrackSearchResults({
   status,
   tracks,
 }: TrackSearchResultsProps) {
+  const [selectedTrack, setSelectedTrack] = useState<CandidateTrack | null>(
+    () => tracks?.[0] ?? null,
+  );
+  const [previousTracks, setPreviousTracks] = useState(tracks);
+  const playerRef = useRef<HTMLDivElement>(null);
+
+  if (tracks !== previousTracks) {
+    setPreviousTracks(tracks);
+    setSelectedTrack(tracks?.[0] ?? null);
+  }
+
+  const handleSelectTrack = (track: CandidateTrack) => {
+    setSelectedTrack(track);
+    requestAnimationFrame(() => {
+      playerRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
+
   if (status === "idle") {
     return null;
   }
@@ -75,52 +97,66 @@ function TrackSearchResults({
         <span className="text-xs text-neutral-500">{tracks.length} tracks</span>
       </div>
 
+      {selectedTrack && (
+        <div className="mb-4" ref={playerRef}>
+          <iframe
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            className="block border-0"
+            height="80"
+            loading="lazy"
+            src={selectedTrack.embedUrl}
+            style={{ borderRadius: "12px" }}
+            title={`${selectedTrack.name} by ${selectedTrack.artists.join(", ")} on Spotify`}
+            width="100%"
+          />
+        </div>
+      )}
+
       <ul className="grid gap-3 sm:grid-cols-2">
         {tracks.map((track) => {
+          const isSelected = track.id === selectedTrack?.id;
+
           return (
-            <li
-              className="min-w-0 rounded-2xl border border-white/8 bg-run-surface p-3 transition-colors duration-200 hover:border-white/15 hover:bg-run-elevated"
-              key={track.id}
-            >
-              <div className="flex min-w-0 gap-3">
-                {track.imageUrl ? (
-                  <img
-                    alt={`${track.album} album cover`}
-                    className="size-16 shrink-0 rounded-lg object-cover"
-                    height="64"
-                    loading="lazy"
-                    src={track.imageUrl}
-                    width="64"
-                  />
-                ) : (
-                  <span className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neutral-500">
-                    <Music2 aria-hidden="true" className="size-5" />
+            <li className="min-w-0" key={track.id}>
+              <button
+                aria-pressed={isSelected}
+                className={`w-full rounded-2xl border p-3 text-left transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green ${
+                  isSelected
+                    ? "border-run-green/50 bg-run-elevated"
+                    : "border-white/8 bg-run-surface hover:border-white/15 hover:bg-run-elevated"
+                }`}
+                onClick={() => handleSelectTrack(track)}
+                type="button"
+              >
+                <span className="flex min-w-0 gap-3">
+                  {track.imageUrl ? (
+                    <img
+                      alt={`${track.album} album cover`}
+                      className="size-16 shrink-0 rounded-lg object-cover"
+                      height="64"
+                      loading="lazy"
+                      src={track.imageUrl}
+                      width="64"
+                    />
+                  ) : (
+                    <span className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neutral-500">
+                      <Music2 aria-hidden="true" className="size-5" />
+                    </span>
+                  )}
+
+                  <span className="min-w-0 flex-1 py-0.5">
+                    <span className="block truncate text-sm font-bold text-white">
+                      {track.name}
+                    </span>
+                    <span className="mt-1 block truncate text-xs text-neutral-400">
+                      {track.artists.join(", ")}
+                    </span>
+                    <span className="mt-0.5 block truncate text-xs text-neutral-600">
+                      {track.album}
+                    </span>
                   </span>
-                )}
-
-                <div className="min-w-0 flex-1 py-0.5">
-                  <p className="truncate text-sm font-bold text-white">
-                    {track.name}
-                  </p>
-                  <p className="mt-1 truncate text-xs text-neutral-400">
-                    {track.artists.join(", ")}
-                  </p>
-                  <p className="mt-0.5 truncate text-xs text-neutral-600">
-                    {track.album}
-                  </p>
-                </div>
-              </div>
-
-              <iframe
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                className="mt-3 block border-0"
-                height="80"
-                loading="lazy"
-                src={track.embedUrl}
-                style={{ borderRadius: "12px" }}
-                title={`${track.name} by ${track.artists.join(", ")} on Spotify`}
-                width="100%"
-              />
+                </span>
+              </button>
             </li>
           );
         })}
