@@ -5,6 +5,7 @@ import PlaylistForm from "../components/forms/PlaylistForm";
 import AISelectionResults from "../components/spotify/AISelectionResults";
 import TrackSearchResults from "../components/spotify/TrackSearchResults";
 import { useAITrackSelection } from "../hooks/useAITrackSelection";
+import { useCreateSpotifyPlaylist } from "../hooks/useCreateSpotifyPlaylist";
 import {
   spotifyProfileQueryKey,
   useSpotifyProfile,
@@ -37,6 +38,7 @@ function HomePage() {
   const spotifyProfile = useSpotifyProfile(isSpotifyConnected);
   const trackSearch = useSpotifyTrackSearch();
   const aiSelection = useAITrackSelection();
+  const playlistCreation = useCreateSpotifyPlaylist();
 
   const connectedName =
     spotifyProfile.data?.display_name?.trim() || "Spotify user";
@@ -63,6 +65,7 @@ function HomePage() {
     queryClient.removeQueries({ queryKey: spotifyProfileQueryKey });
     trackSearch.reset();
     aiSelection.reset();
+    playlistCreation.reset();
     setIsSpotifyConnected(false);
     setConnectionError(null);
   }
@@ -151,6 +154,7 @@ function HomePage() {
           isSpotifyConnected={isSpotifyConnected}
           onSubmit={(criteria) => {
             aiSelection.reset();
+            playlistCreation.reset();
             trackSearch.mutate(
               {
                 distanceKm: criteria.distanceKm,
@@ -175,6 +179,17 @@ function HomePage() {
         />
 
         <AISelectionResults
+          onSave={() => {
+            if (!aiSelection.data?.selectedTrackIds.length) return;
+
+            playlistCreation.mutate({
+              selectedTrackIds: aiSelection.data.selectedTrackIds,
+              playlistTitle: aiSelection.data.playlistTitle,
+              playlistDescription: aiSelection.data.playlistDescription,
+            });
+          }}
+          playlist={playlistCreation.data}
+          playlistStatus={playlistCreation.status}
           selection={aiSelection.data}
           status={aiSelection.status}
           tracks={resolveSelectedTracks(aiSelection.data, trackSearch.data)}

@@ -8,6 +8,8 @@ export type OpenAIConnectionResponse = {
 export type AITrackSelectionResponse = {
   selectedTrackIds: string[];
   summary: string;
+  playlistTitle: string;
+  playlistDescription: string;
 };
 
 export type AITrackSelectionRequest = {
@@ -53,7 +55,13 @@ function isAITrackSelectionResponse(
     Array.isArray(value.selectedTrackIds) &&
     value.selectedTrackIds.every((id) => typeof id === "string") &&
     "summary" in value &&
-    typeof value.summary === "string"
+    typeof value.summary === "string" &&
+    "playlistTitle" in value &&
+    typeof value.playlistTitle === "string" &&
+    value.playlistTitle.trim().length > 0 &&
+    "playlistDescription" in value &&
+    typeof value.playlistDescription === "string" &&
+    value.playlistDescription.trim().length > 0
   );
 }
 

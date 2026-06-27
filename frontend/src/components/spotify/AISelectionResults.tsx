@@ -1,14 +1,23 @@
 import { Music2, Sparkles } from "lucide-react";
 import type { AITrackSelectionResponse } from "../../services/openaiService";
+import type {
+  CreateSpotifyPlaylistResponse,
+} from "../../services/spotify/playlist";
 import type { CandidateTrack } from "../../types/candidateTrack";
 
 type AISelectionResultsProps = {
   selection?: AITrackSelectionResponse;
+  onSave: () => void;
+  playlist?: CreateSpotifyPlaylistResponse;
+  playlistStatus: "idle" | "pending" | "error" | "success";
   status: "idle" | "pending" | "error" | "success";
   tracks: CandidateTrack[];
 };
 
 function AISelectionResults({
+  onSave,
+  playlist,
+  playlistStatus,
   selection,
   status,
   tracks,
@@ -43,19 +52,59 @@ function AISelectionResults({
 
   return (
     <section className="mt-5 w-full" aria-labelledby="ai-selection-title">
-      <div className="mb-4 px-1">
-        <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.18em] text-run-green uppercase">
-          <Sparkles aria-hidden="true" className="size-3.5" />
-          OpenAI
-        </p>
-        <h2 className="mt-1 text-xl font-bold text-white" id="ai-selection-title">
-          AI Selection
-        </h2>
-        {selection?.summary && (
-          <p className="mt-2 text-sm leading-6 text-neutral-400">
-            {selection.summary}
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-3 px-1">
+        <div>
+          <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.18em] text-run-green uppercase">
+            <Sparkles aria-hidden="true" className="size-3.5" />
+            OpenAI
           </p>
+          <h2
+            className="mt-1 text-xl font-bold text-white"
+            id="ai-selection-title"
+          >
+            AI Selection
+          </h2>
+        </div>
+
+        {playlistStatus === "success" && playlist ? (
+          <a
+            className="rounded-full bg-run-green px-4 py-2 text-xs font-bold text-black transition hover:bg-run-green-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green focus-visible:ring-offset-2 focus-visible:ring-offset-run-bg"
+            href={playlist.playlistUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Open Playlist
+          </a>
+        ) : (
+          <button
+            className="rounded-full bg-run-green px-4 py-2 text-xs font-bold text-black transition hover:bg-run-green-hover disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green focus-visible:ring-offset-2 focus-visible:ring-offset-run-bg"
+            disabled={playlistStatus === "pending" || !tracks.length}
+            onClick={onSave}
+            type="button"
+          >
+            {playlistStatus === "pending"
+              ? "Creating playlist..."
+              : "Save to Spotify"}
+          </button>
         )}
+
+        <div className="basis-full">
+          {selection?.summary && (
+            <p className="mt-2 text-sm leading-6 text-neutral-400">
+              {selection.summary}
+            </p>
+          )}
+          {playlistStatus === "success" && (
+            <p className="mt-2 text-sm text-run-green" role="status">
+              Playlist created successfully.
+            </p>
+          )}
+          {playlistStatus === "error" && (
+            <p className="mt-2 text-sm text-red-300" role="alert">
+              Spotify playlist creation failed.
+            </p>
+          )}
+        </div>
       </div>
 
       {tracks.length ? (
