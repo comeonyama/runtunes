@@ -2,11 +2,15 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PlaylistForm from "../components/forms/PlaylistForm";
+import AISelectionResults from "../components/spotify/AISelectionResults";
+import TrackSearchResults from "../components/spotify/TrackSearchResults";
+import { useAITrackSelection } from "../hooks/useAITrackSelection";
 import {
   spotifyProfileQueryKey,
   useSpotifyProfile,
 } from "../hooks/useSpotifyProfile";
-import { useOpenAIConnectionTest } from "../hooks/useOpenAIConnectionTest";
+import { useSpotifyTrackSearch } from "../hooks/useSpotifyTrackSearch";
+import { resolveSelectedTracks } from "../services/openaiService";
 import {
   isAuthenticated,
   loginWithSpotify,
@@ -31,7 +35,8 @@ function HomePage() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
   const spotifyProfile = useSpotifyProfile(isSpotifyConnected);
-  const openAIConnection = useOpenAIConnectionTest();
+  const trackSearch = useSpotifyTrackSearch();
+  const aiSelection = useAITrackSelection();
 
   const connectedName =
     spotifyProfile.data?.display_name?.trim() || "Spotify user";
@@ -56,6 +61,8 @@ function HomePage() {
   function handleDisconnect() {
     logout();
     queryClient.removeQueries({ queryKey: spotifyProfileQueryKey });
+    trackSearch.reset();
+    aiSelection.reset();
     setIsSpotifyConnected(false);
     setConnectionError(null);
   }
@@ -119,7 +126,7 @@ function HomePage() {
                   Connect your Spotify account
                 </p>
                 <p className="text-xs text-neutral-500">
-                  Optional for this OpenAI connection test
+                  Required before generating a playlist
                 </p>
               </div>
               <button
@@ -140,27 +147,38 @@ function HomePage() {
         </section>
 
         <PlaylistForm
-          isLoading={openAIConnection.isPending}
-          onSubmit={() => openAIConnection.mutate()}
+          isLoading={trackSearch.isPending || aiSelection.isPending}
+          isSpotifyConnected={isSpotifyConnected}
+          onSubmit={(criteria) => {
+            aiSelection.reset();
+            trackSearch.mutate(
+              {
+                distanceKm: criteria.distanceKm,
+                genre: criteria.genre,
+                mood: criteria.mood,
+              },
+              {
+                onSuccess: (tracks) => {
+                  if (tracks.length) {
+                    aiSelection.mutate({ criteria, tracks });
+                  }
+                },
+              },
+            );
+          }}
         />
 
-        {openAIConnection.isSuccess && (
-          <section
-            className="mt-5 w-full rounded-2xl border border-run-green/25 bg-run-green/10 p-5 text-sm leading-6 text-neutral-100"
-            aria-live="polite"
-          >
-            {openAIConnection.data.text}
-          </section>
-        )}
+        <TrackSearchResults
+          error={trackSearch.error}
+          status={trackSearch.status}
+          tracks={trackSearch.data}
+        />
 
-        {openAIConnection.isError && (
-          <p
-            className="mt-5 w-full rounded-2xl border border-red-400/25 bg-red-400/10 p-5 text-sm text-red-300"
-            role="alert"
-          >
-            {openAIConnection.error.message}
-          </p>
-        )}
+        <AISelectionResults
+          selection={aiSelection.data}
+          status={aiSelection.status}
+          tracks={resolveSelectedTracks(aiSelection.data, trackSearch.data)}
+        />
       </div>
     </main>
   );
