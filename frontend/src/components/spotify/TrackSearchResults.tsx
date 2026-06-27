@@ -1,4 +1,4 @@
-import { ExternalLink, Music2 } from "lucide-react";
+import { Music2 } from "lucide-react";
 import { isSpotifyUnauthorizedError } from "../../services/spotify/search";
 import type { CandidateTrack } from "../../types/candidateTrack";
 
@@ -79,46 +79,48 @@ function TrackSearchResults({
         {tracks.map((track) => {
           return (
             <li
-              className="flex min-w-0 gap-3 rounded-2xl border border-white/8 bg-run-surface p-3 transition-colors duration-200 hover:border-white/15 hover:bg-run-elevated"
+              className="min-w-0 rounded-2xl border border-white/8 bg-run-surface p-3 transition-colors duration-200 hover:border-white/15 hover:bg-run-elevated"
               key={track.id}
             >
-              {track.imageUrl ? (
-                <img
-                  alt={`${track.album} album cover`}
-                  className="size-16 shrink-0 rounded-lg object-cover"
-                  height="64"
-                  loading="lazy"
-                  src={track.imageUrl}
-                  width="64"
-                />
-              ) : (
-                <span className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neutral-500">
-                  <Music2 aria-hidden="true" className="size-5" />
-                </span>
-              )}
-
-              <div className="min-w-0 flex-1 py-0.5">
-                <p className="truncate text-sm font-bold text-white">
-                  {track.name}
-                </p>
-                <p className="mt-1 truncate text-xs text-neutral-400">
-                  {track.artists.join(", ")}
-                </p>
-                <p className="mt-0.5 truncate text-xs text-neutral-600">
-                  {track.album}
-                </p>
-                {track.externalUrl && (
-                  <a
-                    className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-run-green transition-colors hover:text-run-green-hover focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green"
-                    href={track.externalUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Open in Spotify
-                    <ExternalLink aria-hidden="true" className="size-3" />
-                  </a>
+              <div className="flex min-w-0 gap-3">
+                {track.imageUrl ? (
+                  <img
+                    alt={`${track.album} album cover`}
+                    className="size-16 shrink-0 rounded-lg object-cover"
+                    height="64"
+                    loading="lazy"
+                    src={track.imageUrl}
+                    width="64"
+                  />
+                ) : (
+                  <span className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neutral-500">
+                    <Music2 aria-hidden="true" className="size-5" />
+                  </span>
                 )}
+
+                <div className="min-w-0 flex-1 py-0.5">
+                  <p className="truncate text-sm font-bold text-white">
+                    {track.name}
+                  </p>
+                  <p className="mt-1 truncate text-xs text-neutral-400">
+                    {track.artists.join(", ")}
+                  </p>
+                  <p className="mt-0.5 truncate text-xs text-neutral-600">
+                    {track.album}
+                  </p>
+                </div>
               </div>
+
+              <iframe
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                className="mt-3 block border-0"
+                height="80"
+                loading="lazy"
+                src={track.embedUrl}
+                style={{ borderRadius: "12px" }}
+                title={`${track.name} by ${track.artists.join(", ")} on Spotify`}
+                width="100%"
+              />
             </li>
           );
         })}

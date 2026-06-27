@@ -6,16 +6,41 @@ import { spotifyClient } from "./client";
 
 export type TrackSearchCriteria = Pick<PlaylistFormData, "genre" | "mood">;
 
+const SPOTIFY_MOOD_SEARCH_TERMS: Record<TrackSearchCriteria["mood"], string> = {
+  motivation: "running workout",
+  happy: "upbeat running",
+  relax: "easy run",
+};
+
+export function buildSpotifySearchQuery({
+  genre,
+  mood,
+}: TrackSearchCriteria): string {
+  return `${genre} ${SPOTIFY_MOOD_SEARCH_TERMS[mood]}`;
+}
+
 type SpotifySearchResponse = {
   tracks: {
     items: SpotifyTrack[];
   };
 };
 
+type SpotifyLinkedTrack = {
+  external_urls: {
+    spotify: string;
+  };
+  href: string;
+  id: string;
+  type: "track";
+  uri: string;
+};
+
 type SpotifyTrack = {
   id: string;
   uri: string;
   name: string;
+  is_playable?: boolean;
+  linked_from?: SpotifyLinkedTrack;
   artists: Array<{ name: string }>;
   album: {
     name: string;
@@ -29,15 +54,19 @@ type SpotifyTrack = {
 export function mapSpotifySearchResponseToCandidateTracks(
   response: SpotifySearchResponse,
 ): CandidateTrack[] {
-  return response.tracks.items.map((track) => ({
-    id: track.id,
-    uri: track.uri,
-    name: track.name,
-    artists: track.artists.map((artist) => artist.name),
-    album: track.album.name,
-    imageUrl: track.album.images[0]?.url ?? null,
-    externalUrl: track.external_urls?.spotify ?? null,
-  }));
+  return response.tracks.items
+    .filter((track) => track.is_playable !== false)
+    .map((track) => ({
+      id: track.id,
+      uri: track.uri,
+      name: track.name,
+      artists: track.artists.map((artist) => artist.name),
+      album: track.album.name,
+      imageUrl: track.album.images[0]?.url ?? null,
+      embedUrl: `https://open.spotify.com/embed/track/${encodeURIComponent(track.id)}`,
+      externalUrl: track.external_urls?.spotify ?? null,
+      isPlayable: track.is_playable ?? true,
+    }));
 }
 
 export async function searchTracks({
@@ -53,7 +82,7 @@ export async function searchTracks({
   const { data } = await spotifyClient.get<SpotifySearchResponse>("/search", {
     headers: { Authorization: `Bearer ${accessToken}` },
     params: {
-      q: `genre:${genre} ${mood}`,
+      q: buildSpotifySearchQuery({ genre, mood }),
       type: "track",
       limit: 10,
       market: "JP",

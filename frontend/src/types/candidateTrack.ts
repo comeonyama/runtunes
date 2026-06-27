@@ -5,5 +5,7 @@ export type CandidateTrack = {
   artists: string[];
   album: string;
   imageUrl: string | null;
+  embedUrl: string;
   externalUrl: string | null;
+  isPlayable: boolean;
 };
