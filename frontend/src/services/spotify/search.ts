@@ -9,6 +9,7 @@ export type TrackSearchCriteria = Pick<PlaylistFormData, "genre">;
 const SPOTIFY_SEARCH_TARGET_LIMIT = 50;
 const SPOTIFY_SEARCH_PAGE_MAX_LIMIT = 10;
 const SPOTIFY_SEARCH_MAX_RESULTS_PER_QUERY = 50;
+const JPOP_SEARCH_LIMIT_PER_ARTIST = 5;
 
 const SPOTIFY_SEARCH_QUERIES: Record<
   TrackSearchCriteria["genre"],
@@ -23,13 +24,7 @@ const SPOTIFY_SEARCH_QUERIES: Record<
     "electronic",
     "global hits",
   ],
-  jpop: [
-    "j-pop",
-    "jpop",
-    "japanese pop",
-    "j-pop hits",
-    "japanese hits",
-  ],
+  jpop: ["j-pop"],
   kpop: ["k-pop", "kpop", "korean pop", "k-pop hits", "korean hits"],
 };
 
@@ -58,6 +53,50 @@ type SpotifySearchResponse = {
     items: SpotifyTrack[];
   };
 };
+
+type JpopSeedResponse = {
+  artists: Array<{
+    name: string;
+    weight: number;
+  }>;
+};
+
+function isJpopSeedResponse(value: unknown): value is JpopSeedResponse {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "artists" in value &&
+    Array.isArray(value.artists) &&
+    value.artists.every(
+      (artist) =>
+        typeof artist === "object" &&
+        artist !== null &&
+        "name" in artist &&
+        typeof artist.name === "string" &&
+        artist.name.trim().length > 0 &&
+        "weight" in artist &&
+        typeof artist.weight === "number",
+    )
+  );
+}
+
+async function loadJpopArtistQueries(): Promise<string[]> {
+  const response = await fetch("/api/spotify/jpop-seed");
+
+  if (!response.ok) {
+    throw new Error("Could not load J-Pop seed artists.");
+  }
+
+  const data: unknown = await response.json();
+
+  if (!isJpopSeedResponse(data)) {
+    throw new Error("J-Pop seed artists have an unexpected format.");
+  }
+
+  return data.artists.map(
+    ({ name }) => `artist:"${name.replaceAll('"', '\\"')}"`,
+  );
+}
 
 type SpotifyLinkedTrack = {
   external_urls: {
@@ -144,8 +183,36 @@ export async function searchTracks({
     throw new Error("Spotify access token is not available.");
   }
 
-  const queries = buildSpotifySearchQueries({ genre });
+  const queries =
+    genre === "jpop"
+      ? await loadJpopArtistQueries()
+      : buildSpotifySearchQueries({ genre });
   const tracks: SpotifyTrack[] = [];
+
+  if (genre === "jpop") {
+    const responses = await Promise.all(
+      queries.map((query) => {
+        const params = new URLSearchParams({
+          q: query,
+          type: "track",
+          limit: String(JPOP_SEARCH_LIMIT_PER_ARTIST),
+          market: "JP",
+        });
+
+        return spotifyClient.get<SpotifySearchResponse>("/search", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+          params,
+        });
+      }),
+    );
+
+    return dedupeCandidateTracks(
+      mapSpotifySearchResponseToCandidateTracks({
+        tracks: { items: responses.flatMap(({ data }) => data.tracks.items) },
+      }),
+    ).slice(0, SPOTIFY_SEARCH_TARGET_LIMIT);
+  }
+
   const offsets = new Map(queries.map((query) => [query, 0]));
   const exhaustedQueries = new Set<string>();
 

@@ -11,6 +11,10 @@ import {
   SpotifyApiError,
   type CreateSpotifyPlaylistResult,
 } from "./services/spotifyService.js";
+import {
+  loadJpopSeedArtists,
+  type JpopSeedArtist,
+} from "./services/jpopSeedService.js";
 
 type OpenAIConnectionResponse = {
   text: string;
@@ -21,6 +25,20 @@ type ErrorResponse = {
 };
 
 const server = Fastify({ logger: true });
+
+server.get<{ Reply: { artists: JpopSeedArtist[] } | ErrorResponse }>(
+  "/api/spotify/jpop-seed",
+  async (request, reply) => {
+    try {
+      return reply.send({ artists: await loadJpopSeedArtists() });
+    } catch {
+      request.log.error("Could not load J-Pop seed artists");
+      return reply
+        .code(500)
+        .send({ message: "Could not load J-Pop seed artists." });
+    }
+  },
+);
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
@@ -44,7 +62,9 @@ function isTrackSelectionCandidate(
   );
 }
 
-function isTrackSelectionRequest(value: unknown): value is TrackSelectionRequest {
+function isTrackSelectionRequest(
+  value: unknown,
+): value is TrackSelectionRequest {
   if (typeof value !== "object" || value === null) return false;
 
   return (
@@ -109,9 +129,7 @@ server.post<{ Reply: OpenAIConnectionResponse | ErrorResponse }>(
       return reply.send({ text });
     } catch {
       request.log.error("OpenAI connection test failed");
-      return reply
-        .code(502)
-        .send({ message: "Could not connect to OpenAI." });
+      return reply.code(502).send({ message: "Could not connect to OpenAI." });
     }
   },
 );
@@ -121,7 +139,9 @@ server.post<{
   Reply: TrackSelectionResult | ErrorResponse;
 }>("/api/openai/select-tracks", async (request, reply) => {
   if (!isTrackSelectionRequest(request.body)) {
-    return reply.code(400).send({ message: "Invalid track selection request." });
+    return reply
+      .code(400)
+      .send({ message: "Invalid track selection request." });
   }
 
   try {
@@ -129,7 +149,9 @@ server.post<{
     return reply.send(selection);
   } catch {
     request.log.error("OpenAI track selection failed");
-    return reply.code(502).send({ message: "Could not select tracks with AI." });
+    return reply
+      .code(502)
+      .send({ message: "Could not select tracks with AI." });
   }
 });
 
@@ -140,7 +162,9 @@ server.post<{
   const accessToken = getBearerToken(request.headers.authorization);
 
   if (!accessToken) {
-    return reply.code(401).send({ message: "Spotify authorization is required." });
+    return reply
+      .code(401)
+      .send({ message: "Spotify authorization is required." });
   }
 
   if (!isSpotifyPlaylistRequestBody(request.body)) {
@@ -163,11 +187,15 @@ server.post<{
         return reply.code(401).send({ message: "Spotify session expired." });
       }
       if (error.status === 429) {
-        return reply.code(429).send({ message: "Spotify rate limit exceeded." });
+        return reply
+          .code(429)
+          .send({ message: "Spotify rate limit exceeded." });
       }
     }
 
-    return reply.code(502).send({ message: "Spotify playlist creation failed." });
+    return reply
+      .code(502)
+      .send({ message: "Spotify playlist creation failed." });
   }
 });
 
