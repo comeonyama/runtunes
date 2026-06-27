@@ -9,16 +9,28 @@ export type TrackSearchCriteria = Pick<
   "distanceKm" | "genre" | "mood"
 >;
 
-const SPOTIFY_SEARCH_MIN_LIMIT = 10;
+const SPOTIFY_SEARCH_DEFAULT_LIMIT = 10;
 const SPOTIFY_SEARCH_MAX_LIMIT = 50;
+const SPOTIFY_SEARCH_PAGE_MAX_LIMIT = 10;
 
-export function calculateSpotifySearchLimit(distanceKm?: number): number {
+export function normalizeSpotifySearchLimit(limit?: number | null): number {
+  const integerLimit =
+    typeof limit === "number" && Number.isFinite(limit)
+      ? Math.floor(limit)
+      : SPOTIFY_SEARCH_DEFAULT_LIMIT;
+
+  return Math.min(Math.max(integerLimit, 1), SPOTIFY_SEARCH_MAX_LIMIT);
+}
+
+export function calculateSpotifySearchLimit(
+  distanceKm?: number | null,
+): number {
   if (
     typeof distanceKm !== "number" ||
     !Number.isFinite(distanceKm) ||
     distanceKm <= 5
   ) {
-    return SPOTIFY_SEARCH_MIN_LIMIT;
+    return SPOTIFY_SEARCH_DEFAULT_LIMIT;
   }
 
   if (distanceKm <= 10) return 15;
@@ -102,17 +114,41 @@ export async function searchTracks({
     throw new Error("Spotify access token is not available.");
   }
 
-  const { data } = await spotifyClient.get<SpotifySearchResponse>("/search", {
-    headers: { Authorization: `Bearer ${accessToken}` },
-    params: {
-      q: buildSpotifySearchQuery({ genre, mood }),
-      type: "track",
-      limit: calculateSpotifySearchLimit(distanceKm),
-      market: "JP",
-    },
-  });
+  const targetLimit = normalizeSpotifySearchLimit(
+    calculateSpotifySearchLimit(distanceKm),
+  );
+  const query = buildSpotifySearchQuery({ genre, mood });
+  const tracks: SpotifyTrack[] = [];
 
-  return mapSpotifySearchResponseToCandidateTracks(data);
+  for (
+    let offset = 0;
+    offset < targetLimit;
+    offset += SPOTIFY_SEARCH_PAGE_MAX_LIMIT
+  ) {
+    const pageLimit = Math.min(
+      SPOTIFY_SEARCH_PAGE_MAX_LIMIT,
+      targetLimit - offset,
+    );
+    const params = new URLSearchParams({
+      q: query,
+      type: "track",
+      limit: String(pageLimit),
+      offset: String(offset),
+      market: "JP",
+    });
+    const { data } = await spotifyClient.get<SpotifySearchResponse>("/search", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+      params,
+    });
+
+    tracks.push(...data.tracks.items);
+
+    if (data.tracks.items.length < pageLimit) break;
+  }
+
+  return mapSpotifySearchResponseToCandidateTracks({
+    tracks: { items: tracks },
+  });
 }
 
 export function isSpotifyUnauthorizedError(error: unknown) {
