@@ -64,6 +64,7 @@ const choiceGridClassName = {
 export type PlaylistFormProps = {
   isLoading?: boolean;
   isSpotifyConnected?: boolean;
+  onSubmit: (formData: PlaylistFormData) => void;
 };
 
 type RangeControlProps = {
@@ -250,6 +251,7 @@ function LoadingSpinner() {
 function PlaylistForm({
   isLoading = false,
   isSpotifyConnected = false,
+  onSubmit,
 }: PlaylistFormProps) {
   const [formData, setFormData] = useState<PlaylistFormData>({
     distanceKm: DISTANCE_RANGE.defaultValue,
@@ -262,6 +264,13 @@ function PlaylistForm({
     <form
       aria-busy={isLoading}
       className="w-full rounded-2xl border border-white/10 bg-run-surface p-4 shadow-2xl shadow-black/40 sm:rounded-3xl sm:p-6 md:p-8"
+      onSubmit={(event) => {
+        event.preventDefault();
+
+        if (isSpotifyConnected && !isLoading) {
+          onSubmit(formData);
+        }
+      }}
     >
       <div className="mb-7 px-1 sm:mb-8">
         <p className="text-xs font-bold tracking-[0.2em] text-run-green uppercase">

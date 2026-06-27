@@ -1,16 +1,42 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PlaylistForm from "../components/forms/PlaylistForm";
+import TrackSearchResults from "../components/spotify/TrackSearchResults";
+import {
+  spotifyProfileQueryKey,
+  useSpotifyProfile,
+} from "../hooks/useSpotifyProfile";
+import { useSpotifyTrackSearch } from "../hooks/useSpotifyTrackSearch";
 import {
   isAuthenticated,
   loginWithSpotify,
   logout,
 } from "../services/spotify/auth";
 
+function getProductLabel(product?: string) {
+  switch (product?.toLowerCase()) {
+    case "premium":
+      return "Premium";
+    case "free":
+    case "open":
+      return "Free";
+    default:
+      return null;
+  }
+}
+
 function HomePage() {
+  const queryClient = useQueryClient();
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(isAuthenticated);
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
+  const spotifyProfile = useSpotifyProfile(isSpotifyConnected);
+  const trackSearch = useSpotifyTrackSearch();
+
+  const connectedName =
+    spotifyProfile.data?.display_name?.trim() || "Spotify user";
+  const productLabel = getProductLabel(spotifyProfile.data?.product);
 
   async function handleConnect() {
     setConnectionError(null);
@@ -30,6 +56,8 @@ function HomePage() {
 
   function handleDisconnect() {
     logout();
+    queryClient.removeQueries({ queryKey: spotifyProfileQueryKey });
+    trackSearch.reset();
     setIsSpotifyConnected(false);
     setConnectionError(null);
   }
@@ -63,12 +91,23 @@ function HomePage() {
                   />
                   Spotify Connected
                 </span>
-                <p className="text-xs text-neutral-500">
-                  Ready to generate your running mix
-                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-xs text-neutral-400">
+                    {spotifyProfile.isLoading
+                      ? "Loading profile..."
+                      : spotifyProfile.isError
+                        ? "Connected, but failed to load profile"
+                        : `Connected as ${connectedName}`}
+                  </p>
+                  {productLabel && !spotifyProfile.isLoading && (
+                    <span className="rounded-full bg-white/8 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-300 uppercase ring-1 ring-white/10">
+                      {productLabel}
+                    </span>
+                  )}
+                </div>
               </div>
               <button
-                className="self-start rounded-full px-3 py-2 text-xs font-semibold text-neutral-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green sm:self-auto"
+                className="self-start rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold text-neutral-200 shadow-sm transition duration-200 hover:border-white/25 hover:bg-white/10 hover:text-white active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green focus-visible:ring-offset-2 focus-visible:ring-offset-run-surface sm:self-auto"
                 onClick={handleDisconnect}
                 type="button"
               >
@@ -102,7 +141,24 @@ function HomePage() {
           )}
         </section>
 
-        <PlaylistForm isSpotifyConnected={isSpotifyConnected} />
+        <PlaylistForm
+          isLoading={trackSearch.isPending}
+          isSpotifyConnected={isSpotifyConnected}
+          onSubmit={(formData) => {
+            if (isSpotifyConnected) {
+              trackSearch.mutate({
+                genre: formData.genre,
+                mood: formData.mood,
+              });
+            }
+          }}
+        />
+
+        <TrackSearchResults
+          error={trackSearch.error}
+          status={trackSearch.status}
+          tracks={trackSearch.data?.tracks.items}
+        />
       </div>
     </main>
   );
