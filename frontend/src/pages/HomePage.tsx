@@ -157,7 +157,7 @@ function HomePage() {
         <TrackSearchResults
           error={trackSearch.error}
           status={trackSearch.status}
-          tracks={trackSearch.data?.tracks.items}
+          tracks={trackSearch.data}
         />
       </div>
     </main>

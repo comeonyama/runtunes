@@ -1,4 +1,4 @@
-import type { SpotifyUserProfile } from "../../types/spotify";
+import type { SpotifyUserProfile } from "./types";
 import { getStoredAccessToken } from "./auth";
 import { spotifyClient } from "./client";
 

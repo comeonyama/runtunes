@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { SpotifyTokenResponse } from "../../types/spotify";
+import type { SpotifyTokenResponse } from "./types";
 
 const AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";

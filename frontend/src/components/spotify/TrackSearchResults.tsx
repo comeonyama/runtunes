@@ -1,11 +1,11 @@
 import { ExternalLink, Music2 } from "lucide-react";
 import { isSpotifyUnauthorizedError } from "../../services/spotify/search";
-import type { Track } from "../../types/spotify";
+import type { CandidateTrack } from "../../types/candidateTrack";
 
 type TrackSearchResultsProps = {
   error: unknown;
   status: "idle" | "pending" | "error" | "success";
-  tracks?: Track[];
+  tracks?: CandidateTrack[];
 };
 
 function TrackSearchResults({
@@ -77,21 +77,18 @@ function TrackSearchResults({
 
       <ul className="grid gap-3 sm:grid-cols-2">
         {tracks.map((track) => {
-          const imageUrl = track.album.images[0]?.url;
-          const spotifyUrl = track.external_urls?.spotify;
-
           return (
             <li
               className="flex min-w-0 gap-3 rounded-2xl border border-white/8 bg-run-surface p-3 transition-colors duration-200 hover:border-white/15 hover:bg-run-elevated"
               key={track.id}
             >
-              {imageUrl ? (
+              {track.imageUrl ? (
                 <img
-                  alt={`${track.album.name} album cover`}
+                  alt={`${track.album} album cover`}
                   className="size-16 shrink-0 rounded-lg object-cover"
                   height="64"
                   loading="lazy"
-                  src={imageUrl}
+                  src={track.imageUrl}
                   width="64"
                 />
               ) : (
@@ -105,15 +102,15 @@ function TrackSearchResults({
                   {track.name}
                 </p>
                 <p className="mt-1 truncate text-xs text-neutral-400">
-                  {track.artists.map((artist) => artist.name).join(", ")}
+                  {track.artists.join(", ")}
                 </p>
                 <p className="mt-0.5 truncate text-xs text-neutral-600">
-                  {track.album.name}
+                  {track.album}
                 </p>
-                {spotifyUrl && (
+                {track.externalUrl && (
                   <a
                     className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-run-green transition-colors hover:text-run-green-hover focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green"
-                    href={spotifyUrl}
+                    href={track.externalUrl}
                     rel="noreferrer"
                     target="_blank"
                   >
