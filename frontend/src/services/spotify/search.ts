@@ -9,7 +9,7 @@ export type TrackSearchCriteria = Pick<PlaylistFormData, "genre">;
 const SPOTIFY_SEARCH_TARGET_LIMIT = 50;
 const SPOTIFY_SEARCH_PAGE_MAX_LIMIT = 10;
 const SPOTIFY_SEARCH_MAX_RESULTS_PER_QUERY = 50;
-const JPOP_SEARCH_LIMIT_PER_ARTIST = 5;
+const J_GROOVE_SEARCH_LIMIT_PER_ARTIST = 5;
 
 const SPOTIFY_SEARCH_QUERIES: Record<
   TrackSearchCriteria["genre"],
@@ -24,7 +24,7 @@ const SPOTIFY_SEARCH_QUERIES: Record<
     "electronic",
     "global hits",
   ],
-  jpop: ["j-pop"],
+  J_GROOVE: ["j-groove"],
   kpop: ["k-pop", "kpop", "korean pop", "k-pop hits", "korean hits"],
 };
 
@@ -54,14 +54,14 @@ type SpotifySearchResponse = {
   };
 };
 
-type JpopSeedResponse = {
+type JGrooveSeedResponse = {
   artists: Array<{
     name: string;
     weight: number;
   }>;
 };
 
-function isJpopSeedResponse(value: unknown): value is JpopSeedResponse {
+function isJGrooveSeedResponse(value: unknown): value is JGrooveSeedResponse {
   return (
     typeof value === "object" &&
     value !== null &&
@@ -80,17 +80,17 @@ function isJpopSeedResponse(value: unknown): value is JpopSeedResponse {
   );
 }
 
-async function loadJpopArtistQueries(): Promise<string[]> {
-  const response = await fetch("/api/spotify/jpop-seed");
+async function loadJGrooveArtistQueries(): Promise<string[]> {
+  const response = await fetch("/api/spotify/jgroove-seed");
 
   if (!response.ok) {
-    throw new Error("Could not load J-Pop seed artists.");
+    throw new Error("Could not load J-Groove seed artists.");
   }
 
   const data: unknown = await response.json();
 
-  if (!isJpopSeedResponse(data)) {
-    throw new Error("J-Pop seed artists have an unexpected format.");
+  if (!isJGrooveSeedResponse(data)) {
+    throw new Error("J-Groove seed artists have an unexpected format.");
   }
 
   return data.artists.map(
@@ -184,18 +184,18 @@ export async function searchTracks({
   }
 
   const queries =
-    genre === "jpop"
-      ? await loadJpopArtistQueries()
+    genre === "J_GROOVE"
+      ? await loadJGrooveArtistQueries()
       : buildSpotifySearchQueries({ genre });
   const tracks: SpotifyTrack[] = [];
 
-  if (genre === "jpop") {
+  if (genre === "J_GROOVE") {
     const responses = await Promise.all(
       queries.map((query) => {
         const params = new URLSearchParams({
           q: query,
           type: "track",
-          limit: String(JPOP_SEARCH_LIMIT_PER_ARTIST),
+          limit: String(J_GROOVE_SEARCH_LIMIT_PER_ARTIST),
           market: "JP",
         });
 

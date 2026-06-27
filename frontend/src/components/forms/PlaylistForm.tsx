@@ -37,7 +37,7 @@ type ChoiceOption<T extends string> = {
 
 const genreIcons: Record<Genre, LucideIcon> = {
   global: Globe2,
-  jpop: Music2,
+  J_GROOVE: Music2,
   kpop: MicVocal,
 };
 

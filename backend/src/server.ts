@@ -12,9 +12,9 @@ import {
   type CreateSpotifyPlaylistResult,
 } from "./services/spotifyService.js";
 import {
-  loadJpopSeedArtists,
-  type JpopSeedArtist,
-} from "./services/jpopSeedService.js";
+  loadJGrooveSeedArtists,
+  type JGrooveSeedArtist,
+} from "./services/jGrooveSeedService.js";
 
 type OpenAIConnectionResponse = {
   text: string;
@@ -26,16 +26,16 @@ type ErrorResponse = {
 
 const server = Fastify({ logger: true });
 
-server.get<{ Reply: { artists: JpopSeedArtist[] } | ErrorResponse }>(
-  "/api/spotify/jpop-seed",
+server.get<{ Reply: { artists: JGrooveSeedArtist[] } | ErrorResponse }>(
+  "/api/spotify/jgroove-seed",
   async (request, reply) => {
     try {
-      return reply.send({ artists: await loadJpopSeedArtists() });
+      return reply.send({ artists: await loadJGrooveSeedArtists() });
     } catch {
-      request.log.error("Could not load J-Pop seed artists");
+      request.log.error("Could not load J-Groove seed artists");
       return reply
         .code(500)
-        .send({ message: "Could not load J-Pop seed artists." });
+        .send({ message: "Could not load J-Groove seed artists." });
     }
   },
 );
@@ -77,7 +77,7 @@ function isTrackSelectionRequest(
     Number.isFinite(value.pace) &&
     value.pace > 0 &&
     "genre" in value &&
-    ["global", "jpop", "kpop"].includes(String(value.genre)) &&
+    ["global", "J_GROOVE", "kpop"].includes(String(value.genre)) &&
     "mood" in value &&
     ["motivation", "happy", "relax"].includes(String(value.mood)) &&
     "tracks" in value &&

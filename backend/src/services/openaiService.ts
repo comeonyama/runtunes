@@ -6,20 +6,21 @@ const MODEL = "gpt-5.5";
 const CONNECTION_TEST_PROMPT =
   "Reply with one short sentence confirming that RunTunes connected to OpenAI successfully.";
 
-const GENRES = ["global", "jpop", "kpop"] as const;
+const GENRES = ["global", "J_GROOVE", "kpop"] as const;
 const MOODS = ["motivation", "happy", "relax"] as const;
 
 const COMMON_SELECTION_RULES = `
 You are a running playlist curator.
 - Select only from the supplied track candidates. Never invent a track or ID.
 - Every selectedTrackIds entry must be an exact ID from the supplied candidates.
-- If suitable candidates are limited, return fewer tracks instead of selecting off-genre or unsuitable tracks.
-- Reflect the requested mood in the final selection. Interpret "motivation" as Driven and "relax" as Easy.
+- Never select the same track more than once.
+- If suitable candidates are limited, return fewer tracks instead of selecting off-genre or unsuitable tracks, except where the active genre rules explicitly permit a fallback.
+- Consider distance, pace, and mood together when designing the entire playlist. Interpret "motivation" as Driven and "relax" as Easy.
 - For longer distances, favor a varied sequence that remains comfortable to hear over time.
 - For faster paces, prioritize clear rhythm, forward momentum, and energetic tempo feel.
 - Exclude workout remixes, running compilations, generic fitness recordings, and tracks unsuitable for maintaining a running rhythm.
 - Avoid over-representing one artist or one very similar musical style.
-- Order selectedTrackIds in the intended playlist sequence, with a coherent energy flow from start to finish.
+- Order selectedTrackIds in the intended playlist sequence, balancing energy across the opening, middle, and finish to create a coherent flow from start to finish.
 - Select approximately targetTrackCount tracks, using fewer when the candidates do not meet the criteria.
 - Write summary in natural, concise Japanese.
 - Write playlistTitle and playlistDescription naturally in either Japanese or English, but use the same language for both.
@@ -27,27 +28,25 @@ You are a running playlist curator.
 `.trim();
 
 const GENRE_SELECTION_RULES: Record<(typeof GENRES)[number], string> = {
-  jpop: `
-J-Pop rules:
-- Running suitability is the highest priority.
-- Avoid ballads, slow-tempo songs, quiet songs, and emotionally heavy songs that reduce forward momentum.
-- Prefer rock, dance, hip-hop, and electronic-leaning J-Pop with a steady, runnable pulse.
-- Select anime, drama, or movie tie-in songs only when they have a tempo and energy suitable for running.
-- Prioritize whether the rhythm supports consistent movement over lyrical themes or storytelling.
-- Even for Easy mood, avoid songs that are too slow, subdued, or likely to make the run feel heavy.
+  J_GROOVE: `
+J-Groove rules:
+- J-Groove is a RunTunes-original category centered on Japanese R&B, Hip-Hop, Neo Soul, Funk, Groove, and Dance Pop.
+- Give J-Groove seed artists the highest priority.
+- Do not prioritize conventional J-Pop or kayokyoku.
+- Emphasize groove, rhythm, and suitability for running.
 `.trim(),
   kpop: `
 K-Pop rules:
-- Prefer dance, idol, and electropop-leaning tracks with a clear rhythmic pulse.
-- For longer runs, choose tracks that sustain energy without becoming exhausting to hear.
-- For Driven mood, prioritize energy and propulsion.
-- For Easy mood, avoid excessively aggressive tracks while maintaining a clear tempo feel.
+- Select tracks by Korean artists only.
+- Do not select J-Groove or Global tracks.
+- Prioritize bright, energetic tracks that are suitable for running.
 `.trim(),
   global: `
 Global rules:
-- Focus on Pop, Hip-Hop, Dance, and Electronic tracks with rhythms that are easy to follow while running.
-- Avoid workout remixes and running compilation tracks.
-- Maintain variety across artists and musical styles without losing a coherent running flow.
+- Global is an international running playlist.
+- Apply this priority order: (1) tracks widely listened to internationally, especially in English-speaking countries and Europe; (2) EDM; (3) Dance Pop; (4) Hip-Hop; (5) Pop.
+- As a rule, do not select Japanese-language tracks, Japanese artists, J-Groove seed artists, or K-Pop.
+- Make exceptions to those exclusions only when there are not enough eligible candidates.
 `.trim(),
 };
 
