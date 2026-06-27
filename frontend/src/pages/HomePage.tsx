@@ -18,6 +18,8 @@ import {
   logout,
 } from "../services/spotify/auth";
 
+const SHOW_DEBUG = false;
+
 function getProductLabel(product?: string) {
   switch (product?.toLowerCase()) {
     case "premium":
@@ -172,11 +174,15 @@ function HomePage() {
           }}
         />
 
-        <TrackSearchResults
-          error={trackSearch.error}
-          status={trackSearch.status}
-          tracks={trackSearch.data}
-        />
+        {(import.meta.env.DEV && SHOW_DEBUG) ||
+        trackSearch.isError ||
+        (trackSearch.isSuccess && !trackSearch.data.length) ? (
+          <TrackSearchResults
+            error={trackSearch.error}
+            status={trackSearch.status}
+            tracks={trackSearch.data}
+          />
+        ) : null}
 
         <AISelectionResults
           onSave={() => {
