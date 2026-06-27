@@ -147,6 +147,7 @@ function HomePage() {
           onSubmit={(formData) => {
             if (isSpotifyConnected) {
               trackSearch.mutate({
+                distanceKm: formData.distanceKm,
                 genre: formData.genre,
                 mood: formData.mood,
               });

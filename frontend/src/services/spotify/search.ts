@@ -4,7 +4,29 @@ import type { PlaylistFormData } from "../../types/form";
 import { getStoredAccessToken } from "./auth";
 import { spotifyClient } from "./client";
 
-export type TrackSearchCriteria = Pick<PlaylistFormData, "genre" | "mood">;
+export type TrackSearchCriteria = Pick<
+  PlaylistFormData,
+  "distanceKm" | "genre" | "mood"
+>;
+
+const SPOTIFY_SEARCH_MIN_LIMIT = 10;
+const SPOTIFY_SEARCH_MAX_LIMIT = 50;
+
+export function calculateSpotifySearchLimit(distanceKm?: number): number {
+  if (
+    typeof distanceKm !== "number" ||
+    !Number.isFinite(distanceKm) ||
+    distanceKm <= 5
+  ) {
+    return SPOTIFY_SEARCH_MIN_LIMIT;
+  }
+
+  if (distanceKm <= 10) return 15;
+  if (distanceKm <= 20) return 25;
+  if (distanceKm <= 30) return 35;
+
+  return SPOTIFY_SEARCH_MAX_LIMIT;
+}
 
 const SPOTIFY_MOOD_SEARCH_TERMS: Record<TrackSearchCriteria["mood"], string> = {
   motivation: "running workout",
@@ -15,7 +37,7 @@ const SPOTIFY_MOOD_SEARCH_TERMS: Record<TrackSearchCriteria["mood"], string> = {
 export function buildSpotifySearchQuery({
   genre,
   mood,
-}: TrackSearchCriteria): string {
+}: Pick<TrackSearchCriteria, "genre" | "mood">): string {
   return `${genre} ${SPOTIFY_MOOD_SEARCH_TERMS[mood]}`;
 }
 
@@ -70,6 +92,7 @@ export function mapSpotifySearchResponseToCandidateTracks(
 }
 
 export async function searchTracks({
+  distanceKm,
   genre,
   mood,
 }: TrackSearchCriteria): Promise<CandidateTrack[]> {
@@ -84,7 +107,7 @@ export async function searchTracks({
     params: {
       q: buildSpotifySearchQuery({ genre, mood }),
       type: "track",
-      limit: 10,
+      limit: calculateSpotifySearchLimit(distanceKm),
       market: "JP",
     },
   });
