@@ -63,6 +63,7 @@ const choiceGridClassName = {
 
 export type PlaylistFormProps = {
   isLoading?: boolean;
+  isSpotifyConnected?: boolean;
 };
 
 type RangeControlProps = {
@@ -246,7 +247,10 @@ function LoadingSpinner() {
   );
 }
 
-function PlaylistForm({ isLoading = false }: PlaylistFormProps) {
+function PlaylistForm({
+  isLoading = false,
+  isSpotifyConnected = false,
+}: PlaylistFormProps) {
   const [formData, setFormData] = useState<PlaylistFormData>({
     distanceKm: DISTANCE_RANGE.defaultValue,
     paceSeconds: PACE_RANGE.defaultValue,
@@ -334,7 +338,8 @@ function PlaylistForm({ isLoading = false }: PlaylistFormProps) {
 
       <button
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-run-green px-6 py-4 text-sm font-bold text-black transition duration-200 enabled:hover:scale-[1.01] enabled:hover:bg-run-green-hover enabled:hover:shadow-lg enabled:hover:shadow-run-green/10 enabled:active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green focus-visible:ring-offset-2 focus-visible:ring-offset-run-surface disabled:cursor-not-allowed disabled:bg-neutral-600 disabled:text-neutral-300 sm:mt-8"
-        disabled={isLoading}
+        disabled={isLoading || !isSpotifyConnected}
+        title={isSpotifyConnected ? undefined : "Connect Spotify to continue"}
         type="submit"
       >
         {isLoading && <LoadingSpinner />}
