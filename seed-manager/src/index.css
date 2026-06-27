@@ -331,11 +331,13 @@ input:hover {
   margin-top: 15px;
   padding-right: 5px;
   overflow-y: auto;
+  overflow-anchor: none;
   scrollbar-color: #535353 transparent;
   scrollbar-width: thin;
 }
 
 .artist-option {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -360,9 +362,13 @@ input:hover {
 
 .artist-option input {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  top: 50%;
+  left: 7px;
+  width: 17px;
+  height: 17px;
+  margin: 0;
   opacity: 0;
+  transform: translateY(-50%);
 }
 
 .custom-checkbox {
@@ -389,8 +395,12 @@ input:hover {
   outline-offset: 3px;
 }
 
+.output-panel {
+  overflow-anchor: none;
+}
+
 pre {
-  max-height: 330px;
+  height: clamp(180px, 38vh, 330px);
   margin: 0;
   padding: 19px 20px;
   overflow: auto;
