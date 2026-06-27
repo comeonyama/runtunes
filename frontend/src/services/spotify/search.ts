@@ -4,68 +4,53 @@ import type { PlaylistFormData } from "../../types/form";
 import { getStoredAccessToken } from "./auth";
 import { spotifyClient } from "./client";
 
-export type TrackSearchCriteria = Pick<
-  PlaylistFormData,
-  "distanceKm" | "genre" | "mood"
->;
+export type TrackSearchCriteria = Pick<PlaylistFormData, "genre">;
 
-const SPOTIFY_SEARCH_DEFAULT_LIMIT = 10;
-const SPOTIFY_SEARCH_MAX_LIMIT = 50;
+const SPOTIFY_SEARCH_TARGET_LIMIT = 50;
 const SPOTIFY_SEARCH_PAGE_MAX_LIMIT = 10;
-
-export function normalizeSpotifySearchLimit(limit?: number | null): number {
-  const integerLimit =
-    typeof limit === "number" && Number.isFinite(limit)
-      ? Math.floor(limit)
-      : SPOTIFY_SEARCH_DEFAULT_LIMIT;
-
-  return Math.min(Math.max(integerLimit, 1), SPOTIFY_SEARCH_MAX_LIMIT);
-}
-
-export function calculateSpotifySearchLimit(
-  distanceKm?: number | null,
-): number {
-  if (
-    typeof distanceKm !== "number" ||
-    !Number.isFinite(distanceKm) ||
-    distanceKm <= 5
-  ) {
-    return SPOTIFY_SEARCH_DEFAULT_LIMIT;
-  }
-
-  if (distanceKm <= 10) return 15;
-  if (distanceKm <= 20) return 25;
-  if (distanceKm <= 30) return 35;
-
-  return SPOTIFY_SEARCH_MAX_LIMIT;
-}
+const SPOTIFY_SEARCH_MAX_RESULTS_PER_QUERY = 50;
 
 const SPOTIFY_SEARCH_QUERIES: Record<
   TrackSearchCriteria["genre"],
-  Record<TrackSearchCriteria["mood"], string>
+  readonly [string, ...string[]]
 > = {
-  global: {
-    motivation: "running workout hits",
-    happy: "upbeat running hits",
-    relax: "easy running playlist",
-  },
-  jpop: {
-    motivation: "j-pop hits",
-    happy: "j-pop upbeat",
-    relax: "j-pop chill",
-  },
-  kpop: {
-    motivation: "k-pop hits",
-    happy: "k-pop upbeat",
-    relax: "k-pop chill",
-  },
+  global: [
+    "pop",
+    "rock",
+    "hip hop",
+    "edm",
+    "dance",
+    "electronic",
+    "global hits",
+  ],
+  jpop: [
+    "j-pop",
+    "jpop",
+    "japanese pop",
+    "j-pop hits",
+    "japanese hits",
+  ],
+  kpop: ["k-pop", "kpop", "korean pop", "k-pop hits", "korean hits"],
 };
+
+const EXCLUDED_COMPILATION_TERMS = [
+  "playlist",
+  "workout",
+  "fitness",
+  "gym",
+  "compilation",
+] as const;
+
+export function buildSpotifySearchQueries({
+  genre,
+}: TrackSearchCriteria): readonly [string, ...string[]] {
+  return SPOTIFY_SEARCH_QUERIES[genre];
+}
 
 export function buildSpotifySearchQuery({
   genre,
-  mood,
-}: Pick<TrackSearchCriteria, "genre" | "mood">): string {
-  return SPOTIFY_SEARCH_QUERIES[genre][mood];
+}: TrackSearchCriteria): string {
+  return buildSpotifySearchQueries({ genre })[0];
 }
 
 type SpotifySearchResponse = {
@@ -100,11 +85,22 @@ type SpotifyTrack = {
   };
 };
 
+export function isPlaylistOrWorkoutCompilation(track: SpotifyTrack): boolean {
+  const searchableText = `${track.name} ${track.album.name}`.toLowerCase();
+
+  return EXCLUDED_COMPILATION_TERMS.some((term) =>
+    searchableText.includes(term),
+  );
+}
+
 export function mapSpotifySearchResponseToCandidateTracks(
   response: SpotifySearchResponse,
 ): CandidateTrack[] {
   return response.tracks.items
-    .filter((track) => track.is_playable !== false)
+    .filter(
+      (track) =>
+        track.is_playable !== false && !isPlaylistOrWorkoutCompilation(track),
+    )
     .map((track) => ({
       id: track.id,
       uri: track.uri,
@@ -140,9 +136,7 @@ export function dedupeCandidateTracks(
 }
 
 export async function searchTracks({
-  distanceKm,
   genre,
-  mood,
 }: TrackSearchCriteria): Promise<CandidateTrack[]> {
   const accessToken = getStoredAccessToken();
 
@@ -150,43 +144,67 @@ export async function searchTracks({
     throw new Error("Spotify access token is not available.");
   }
 
-  const targetLimit = normalizeSpotifySearchLimit(
-    calculateSpotifySearchLimit(distanceKm),
-  );
-  const query = buildSpotifySearchQuery({ genre, mood });
+  const queries = buildSpotifySearchQueries({ genre });
   const tracks: SpotifyTrack[] = [];
+  const offsets = new Map(queries.map((query) => [query, 0]));
+  const exhaustedQueries = new Set<string>();
 
-  for (
-    let offset = 0;
-    offset < targetLimit;
-    offset += SPOTIFY_SEARCH_PAGE_MAX_LIMIT
-  ) {
-    const pageLimit = Math.min(
-      SPOTIFY_SEARCH_PAGE_MAX_LIMIT,
-      targetLimit - offset,
-    );
-    const params = new URLSearchParams({
-      q: query,
-      type: "track",
-      limit: String(pageLimit),
-      offset: String(offset),
-      market: "JP",
-    });
-    const { data } = await spotifyClient.get<SpotifySearchResponse>("/search", {
-      headers: { Authorization: `Bearer ${accessToken}` },
-      params,
-    });
+  while (exhaustedQueries.size < queries.length) {
+    for (const query of queries) {
+      if (exhaustedQueries.has(query)) continue;
 
-    tracks.push(...data.tracks.items);
+      const offset = offsets.get(query) ?? 0;
+      const pageLimit = Math.min(
+        SPOTIFY_SEARCH_PAGE_MAX_LIMIT,
+        SPOTIFY_SEARCH_MAX_RESULTS_PER_QUERY - offset,
+      );
 
-    if (data.tracks.items.length < pageLimit) break;
+      if (pageLimit <= 0) {
+        exhaustedQueries.add(query);
+        continue;
+      }
+
+      const params = new URLSearchParams({
+        q: query,
+        type: "track",
+        limit: String(pageLimit),
+        offset: String(offset),
+        market: "JP",
+      });
+      const { data } = await spotifyClient.get<SpotifySearchResponse>(
+        "/search",
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+          params,
+        },
+      );
+
+      tracks.push(...data.tracks.items);
+      const nextOffset = offset + pageLimit;
+      offsets.set(query, nextOffset);
+
+      if (
+        data.tracks.items.length < pageLimit ||
+        nextOffset >= SPOTIFY_SEARCH_MAX_RESULTS_PER_QUERY
+      ) {
+        exhaustedQueries.add(query);
+      }
+    }
+
+    const candidateCount = dedupeCandidateTracks(
+      mapSpotifySearchResponseToCandidateTracks({
+        tracks: { items: tracks },
+      }),
+    ).length;
+
+    if (candidateCount >= SPOTIFY_SEARCH_TARGET_LIMIT) break;
   }
 
   return dedupeCandidateTracks(
     mapSpotifySearchResponseToCandidateTracks({
       tracks: { items: tracks },
     }),
-  );
+  ).slice(0, SPOTIFY_SEARCH_TARGET_LIMIT);
 }
 
 export function isSpotifyUnauthorizedError(error: unknown) {

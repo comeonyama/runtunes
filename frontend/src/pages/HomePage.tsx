@@ -159,9 +159,7 @@ function HomePage() {
             playlistCreation.reset();
             trackSearch.mutate(
               {
-                distanceKm: criteria.distanceKm,
                 genre: criteria.genre,
-                mood: criteria.mood,
               },
               {
                 onSuccess: (tracks) => {
