@@ -3,7 +3,6 @@
 **AI-assisted Spotify playlist generator for runners**
 **AIがランニングシーンに合わせたSpotifyプレイリストを提案・生成するWebアプリケーション**
 
-
 ## 概要 / Overview
 
 ### 🇯🇵 日本語
@@ -22,6 +21,20 @@ Users can select a running scene, music genre, decade, popularity, and playlist 
 
 This project is being developed as a full-stack portfolio using React, TypeScript, Fastify, Prisma, OpenAI API, and Spotify Web API.
 
+## このプロジェクトについて
+
+RunTunes は、単なるSpotify API連携アプリではありません。
+
+本プロジェクトでは、以下の技術テーマに取り組んでいます。
+
+- AIを活用したプレイリスト生成
+- React + FastifyによるSPA構成
+- Spotify OAuth認証
+- Prismaによる型安全なデータアクセス
+- APIキャッシュによるパフォーマンス最適化
+- WordPressとの共存アーキテクチャ
+- 設計書主導の開発プロセス
+  
 ---
 
 ## 主な機能 / Features
