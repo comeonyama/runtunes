@@ -37,7 +37,7 @@ export type BatchRunResult =
   | { status: "waiting"; nextAllowedAt: string };
 
 const ARTIST_QUERY_LIMIT = 5;
-const KEYWORD_QUERY_LIMIT = 20;
+const KEYWORD_QUERY_LIMIT = 10;
 const EXCLUDED_COMPILATION_TERMS = [
   "playlist",
   "workout",

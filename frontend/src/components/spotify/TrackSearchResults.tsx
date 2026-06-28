@@ -1,5 +1,6 @@
 import { Music2 } from "lucide-react";
 import { useRef, useState } from "react";
+import useSpotifyEmbedController from "../../hooks/useSpotifyEmbedController";
 import { getSpotifySearchErrorMessage } from "../../services/spotify/search";
 import type { CandidateTrack } from "../../types/candidateTrack";
 
@@ -19,6 +20,9 @@ function TrackSearchResults({
   );
   const [previousTracks, setPreviousTracks] = useState(tracks);
   const playerRef = useRef<HTMLDivElement>(null);
+  const { embedContainerRef, playTrack } = useSpotifyEmbedController(
+    status === "success" ? tracks : undefined,
+  );
 
   if (tracks !== previousTracks) {
     setPreviousTracks(tracks);
@@ -27,6 +31,7 @@ function TrackSearchResults({
 
   const handleSelectTrack = (track: CandidateTrack) => {
     setSelectedTrack(track);
+    playTrack(track.uri);
     requestAnimationFrame(() => {
       playerRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -95,15 +100,11 @@ function TrackSearchResults({
 
       {selectedTrack && (
         <div className="mb-4" ref={playerRef}>
-          <iframe
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          <div
             className="block border-0"
-            height="80"
-            loading="lazy"
-            src={selectedTrack.embedUrl}
+            ref={embedContainerRef}
             style={{ borderRadius: "12px" }}
             title={`${selectedTrack.name} by ${selectedTrack.artists.join(", ")} on Spotify`}
-            width="100%"
           />
         </div>
       )}

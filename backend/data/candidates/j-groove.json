@@ -1,4 +1,2814 @@
 {
-  "updatedAt": null,
-  "tracks": []
+  "updatedAt": "2026-06-28T04:43:08.943Z",
+  "tracks": [
+    {
+      "spotifyTrackId": "7gMxXLjM6RvQuNeMxTFf8H",
+      "uri": "spotify:track:7gMxXLjM6RvQuNeMxTFf8H",
+      "name": "Moonlight",
+      "artists": [
+        "Yo-Sea"
+      ],
+      "album": "Sea of Love",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aa2e48c9633cdc10d271fe5b",
+      "embedUrl": "https://open.spotify.com/embed/track/7gMxXLjM6RvQuNeMxTFf8H",
+      "externalUrl": "https://open.spotify.com/track/7gMxXLjM6RvQuNeMxTFf8H",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1L4Q0CO4Fdda77RC8FQVOS",
+      "uri": "spotify:track:1L4Q0CO4Fdda77RC8FQVOS",
+      "name": "Flower",
+      "artists": [
+        "Yo-Sea"
+      ],
+      "album": "Sea of Love",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aa2e48c9633cdc10d271fe5b",
+      "embedUrl": "https://open.spotify.com/embed/track/1L4Q0CO4Fdda77RC8FQVOS",
+      "externalUrl": "https://open.spotify.com/track/1L4Q0CO4Fdda77RC8FQVOS",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6FtSuG6TbvD3u5wydy7I2d",
+      "uri": "spotify:track:6FtSuG6TbvD3u5wydy7I2d",
+      "name": "Feel Missing",
+      "artists": [
+        "Kaneee",
+        "STUTS",
+        "Yo-Sea"
+      ],
+      "album": "Remember Me?",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ddcc7ead88e8107cd6a1412b",
+      "embedUrl": "https://open.spotify.com/embed/track/6FtSuG6TbvD3u5wydy7I2d",
+      "externalUrl": "https://open.spotify.com/track/6FtSuG6TbvD3u5wydy7I2d",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3DMz5XiVasCKSHXgYrSc9i",
+      "uri": "spotify:track:3DMz5XiVasCKSHXgYrSc9i",
+      "name": "Wonderland",
+      "artists": [
+        "iri"
+      ],
+      "album": "Shade",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273637f66657f614deebad784ef",
+      "embedUrl": "https://open.spotify.com/embed/track/3DMz5XiVasCKSHXgYrSc9i",
+      "externalUrl": "https://open.spotify.com/track/3DMz5XiVasCKSHXgYrSc9i",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3xxumPbg30v1wa4f1L1l17",
+      "uri": "spotify:track:3xxumPbg30v1wa4f1L1l17",
+      "name": "じゃむ (feat. iri)",
+      "artists": [
+        "Mamiko Suzuki",
+        "iri"
+      ],
+      "album": "ms",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fdb9bb3a6d3140ea489ae213",
+      "embedUrl": "https://open.spotify.com/embed/track/3xxumPbg30v1wa4f1L1l17",
+      "externalUrl": "https://open.spotify.com/track/3xxumPbg30v1wa4f1L1l17",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4rcAJoljlgzkYsisGJ1NsT",
+      "uri": "spotify:track:4rcAJoljlgzkYsisGJ1NsT",
+      "name": "Season",
+      "artists": [
+        "iri"
+      ],
+      "album": "PRIVATE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273604dc83e90adc2fc0f015701",
+      "embedUrl": "https://open.spotify.com/embed/track/4rcAJoljlgzkYsisGJ1NsT",
+      "externalUrl": "https://open.spotify.com/track/4rcAJoljlgzkYsisGJ1NsT",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "06JDsptZimkm2d09duPZsX",
+      "uri": "spotify:track:06JDsptZimkm2d09duPZsX",
+      "name": "水星 (feat. オノマトペ大臣)",
+      "artists": [
+        "tofubeats",
+        "オノマトペ大臣"
+      ],
+      "album": "lost decade",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27343b747a9435fee60a9c7ddc2",
+      "embedUrl": "https://open.spotify.com/embed/track/06JDsptZimkm2d09duPZsX",
+      "externalUrl": "https://open.spotify.com/track/06JDsptZimkm2d09duPZsX",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6BvL3d4Js18JDokhGqziX3",
+      "uri": "spotify:track:6BvL3d4Js18JDokhGqziX3",
+      "name": "One (feat. tofubeats)",
+      "artists": [
+        "STUTS",
+        "tofubeats"
+      ],
+      "album": "Orbit",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273575717313deff8bed095a9ad",
+      "embedUrl": "https://open.spotify.com/embed/track/6BvL3d4Js18JDokhGqziX3",
+      "externalUrl": "https://open.spotify.com/track/6BvL3d4Js18JDokhGqziX3",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "40It4gOs70ssV0IFMRuul1",
+      "uri": "spotify:track:40It4gOs70ssV0IFMRuul1",
+      "name": "LONELY NIGHTS",
+      "artists": [
+        "tofubeats"
+      ],
+      "album": "FANTASY CLUB",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273afd7777fc1e8d5ca6d5ff61c",
+      "embedUrl": "https://open.spotify.com/embed/track/40It4gOs70ssV0IFMRuul1",
+      "externalUrl": "https://open.spotify.com/track/40It4gOs70ssV0IFMRuul1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "55KHoVQ7BKsC3quIlZ5rMO",
+      "uri": "spotify:track:55KHoVQ7BKsC3quIlZ5rMO",
+      "name": "DISTANCE - m-flo remix",
+      "artists": [
+        "Hikaru Utada",
+        "m-flo"
+      ],
+      "album": "FINAL DISTANCE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737e579b55514262d43510ed36",
+      "embedUrl": "https://open.spotify.com/embed/track/55KHoVQ7BKsC3quIlZ5rMO",
+      "externalUrl": "https://open.spotify.com/track/55KHoVQ7BKsC3quIlZ5rMO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "260m9QWbSbcsDfV8kNJe5T",
+      "uri": "spotify:track:260m9QWbSbcsDfV8kNJe5T",
+      "name": "miss you",
+      "artists": [
+        "m-flo",
+        "melody.",
+        "Ryohei Yamamoto"
+      ],
+      "album": "ASTROMANTIC",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2733836d8a2a603f28043e7901a",
+      "embedUrl": "https://open.spotify.com/embed/track/260m9QWbSbcsDfV8kNJe5T",
+      "externalUrl": "https://open.spotify.com/track/260m9QWbSbcsDfV8kNJe5T",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "477CB93mH986mrIheQD0RR",
+      "uri": "spotify:track:477CB93mH986mrIheQD0RR",
+      "name": "come again",
+      "artists": [
+        "m-flo"
+      ],
+      "album": "EXPO EXPO",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27340b9da3f4fc33ebdcae34c84",
+      "embedUrl": "https://open.spotify.com/embed/track/477CB93mH986mrIheQD0RR",
+      "externalUrl": "https://open.spotify.com/track/477CB93mH986mrIheQD0RR",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3lhSoYrMfyX9Mg24Fdp0eo",
+      "uri": "spotify:track:3lhSoYrMfyX9Mg24Fdp0eo",
+      "name": "あなたといたい",
+      "artists": [
+        "Ayumu Imazu"
+      ],
+      "album": "あなたといたい",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273789294112e9c49db47e9a8f7",
+      "embedUrl": "https://open.spotify.com/embed/track/3lhSoYrMfyX9Mg24Fdp0eo",
+      "externalUrl": "https://open.spotify.com/track/3lhSoYrMfyX9Mg24Fdp0eo",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2QYnONicU24TXbkhtaemOM",
+      "uri": "spotify:track:2QYnONicU24TXbkhtaemOM",
+      "name": "Obsessed",
+      "artists": [
+        "Ayumu Imazu"
+      ],
+      "album": "Obsessed",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734261445d32ae6f24d2b6b9a4",
+      "embedUrl": "https://open.spotify.com/embed/track/2QYnONicU24TXbkhtaemOM",
+      "externalUrl": "https://open.spotify.com/track/2QYnONicU24TXbkhtaemOM",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3awBg1GqxcmYzrjv4GYdzG",
+      "uri": "spotify:track:3awBg1GqxcmYzrjv4GYdzG",
+      "name": "Superstar",
+      "artists": [
+        "Ayumu Imazu"
+      ],
+      "album": "Superstar",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736a5b118615bba5e46db6bb28",
+      "embedUrl": "https://open.spotify.com/embed/track/3awBg1GqxcmYzrjv4GYdzG",
+      "externalUrl": "https://open.spotify.com/track/3awBg1GqxcmYzrjv4GYdzG",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "538xioa4IZbdI8s2l7VnJv",
+      "uri": "spotify:track:538xioa4IZbdI8s2l7VnJv",
+      "name": "KIDS",
+      "artists": [
+        "Lucky Kilimanjaro"
+      ],
+      "album": "DAILY BOP",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27375e59dfccf24afacd8555d3f",
+      "embedUrl": "https://open.spotify.com/embed/track/538xioa4IZbdI8s2l7VnJv",
+      "externalUrl": "https://open.spotify.com/track/538xioa4IZbdI8s2l7VnJv",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4Pi0YHQv4XSzI0IHOWgS8X",
+      "uri": "spotify:track:4Pi0YHQv4XSzI0IHOWgS8X",
+      "name": "雨が降るなら踊ればいいじゃない",
+      "artists": [
+        "Lucky Kilimanjaro"
+      ],
+      "album": "DAILY BOP",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27375e59dfccf24afacd8555d3f",
+      "embedUrl": "https://open.spotify.com/embed/track/4Pi0YHQv4XSzI0IHOWgS8X",
+      "externalUrl": "https://open.spotify.com/track/4Pi0YHQv4XSzI0IHOWgS8X",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6mMpeDOLZGhF6p82pRFgOZ",
+      "uri": "spotify:track:6mMpeDOLZGhF6p82pRFgOZ",
+      "name": "350ml Galaxy",
+      "artists": [
+        "Lucky Kilimanjaro"
+      ],
+      "album": "!magination",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c1186f4dc0e7ccd433d9659a",
+      "embedUrl": "https://open.spotify.com/embed/track/6mMpeDOLZGhF6p82pRFgOZ",
+      "externalUrl": "https://open.spotify.com/track/6mMpeDOLZGhF6p82pRFgOZ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1NlkoYEA1ndLQIKzXTPh9V",
+      "uri": "spotify:track:1NlkoYEA1ndLQIKzXTPh9V",
+      "name": "Burning Friday Night",
+      "artists": [
+        "Lucky Kilimanjaro"
+      ],
+      "album": "FULLCOLOR",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731bbf5ce1cd405433ec8d09a9",
+      "embedUrl": "https://open.spotify.com/embed/track/1NlkoYEA1ndLQIKzXTPh9V",
+      "externalUrl": "https://open.spotify.com/track/1NlkoYEA1ndLQIKzXTPh9V",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2o2yCUIo6XUIIselWfjKw3",
+      "uri": "spotify:track:2o2yCUIo6XUIIselWfjKw3",
+      "name": "エモめの夏",
+      "artists": [
+        "Lucky Kilimanjaro"
+      ],
+      "album": "DAILY BOP",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27375e59dfccf24afacd8555d3f",
+      "embedUrl": "https://open.spotify.com/embed/track/2o2yCUIo6XUIIselWfjKw3",
+      "externalUrl": "https://open.spotify.com/track/2o2yCUIo6XUIIselWfjKw3",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5txOothISqBpLOEQ0K1wFv",
+      "uri": "spotify:track:5txOothISqBpLOEQ0K1wFv",
+      "name": "夢の続き",
+      "artists": [
+        "EVISBEATS",
+        "Dengaryu"
+      ],
+      "album": "ムスヒ",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27340832cd5092db570588feb91",
+      "embedUrl": "https://open.spotify.com/embed/track/5txOothISqBpLOEQ0K1wFv",
+      "externalUrl": "https://open.spotify.com/track/5txOothISqBpLOEQ0K1wFv",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1uciW6xDRJx2d0fMwhSUS2",
+      "uri": "spotify:track:1uciW6xDRJx2d0fMwhSUS2",
+      "name": "今日は休みだ",
+      "artists": [
+        "EVISBEATS",
+        "Dengaryu"
+      ],
+      "album": "HOLIDAY",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732ff1abb7753664b2a470fe09",
+      "embedUrl": "https://open.spotify.com/embed/track/1uciW6xDRJx2d0fMwhSUS2",
+      "externalUrl": "https://open.spotify.com/track/1uciW6xDRJx2d0fMwhSUS2",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5KqIUmgtUmFGlylW0cRiwc",
+      "uri": "spotify:track:5KqIUmgtUmFGlylW0cRiwc",
+      "name": "ゆれる",
+      "artists": [
+        "EVISBEATS",
+        "Dengaryu"
+      ],
+      "album": "ひとつになるとき",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739bfe0e495bea091f8ce9c3dc",
+      "embedUrl": "https://open.spotify.com/embed/track/5KqIUmgtUmFGlylW0cRiwc",
+      "externalUrl": "https://open.spotify.com/track/5KqIUmgtUmFGlylW0cRiwc",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3lqUSr3F8gmD7ruydRlky4",
+      "uri": "spotify:track:3lqUSr3F8gmD7ruydRlky4",
+      "name": "いい時間",
+      "artists": [
+        "EVISBEATS"
+      ],
+      "album": "ひとつになるとき",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739bfe0e495bea091f8ce9c3dc",
+      "embedUrl": "https://open.spotify.com/embed/track/3lqUSr3F8gmD7ruydRlky4",
+      "externalUrl": "https://open.spotify.com/track/3lqUSr3F8gmD7ruydRlky4",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3qAT9iw2AiiJ0CxTcqxQn1",
+      "uri": "spotify:track:3qAT9iw2AiiJ0CxTcqxQn1",
+      "name": "HIT NUMBER - EVISBEATSとPUNCH REMIX",
+      "artists": [
+        "Emi Okamoto",
+        "EVISBEATS"
+      ],
+      "album": "ストライク！",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27315f4e740d07a59680b1f9d55",
+      "embedUrl": "https://open.spotify.com/embed/track/3qAT9iw2AiiJ0CxTcqxQn1",
+      "externalUrl": "https://open.spotify.com/track/3qAT9iw2AiiJ0CxTcqxQn1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3ANBn4Yimw0vCqvGcIrNKN",
+      "uri": "spotify:track:3ANBn4Yimw0vCqvGcIrNKN",
+      "name": "SHAMPOO",
+      "artists": [
+        "PUNPEE",
+        "BIM",
+        "Elle Teresa"
+      ],
+      "album": "Iced Out",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e0b2e31343acac4c9413ba2b",
+      "embedUrl": "https://open.spotify.com/embed/track/3ANBn4Yimw0vCqvGcIrNKN",
+      "externalUrl": "https://open.spotify.com/track/3ANBn4Yimw0vCqvGcIrNKN",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5UxtXZBNTO1EDBVZH4I9Mf",
+      "uri": "spotify:track:5UxtXZBNTO1EDBVZH4I9Mf",
+      "name": "夜を使いはたして feat. PUNPEE",
+      "artists": [
+        "STUTS",
+        "PUNPEE"
+      ],
+      "album": "Pushin'",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27364789d87930392251b400689",
+      "embedUrl": "https://open.spotify.com/embed/track/5UxtXZBNTO1EDBVZH4I9Mf",
+      "externalUrl": "https://open.spotify.com/track/5UxtXZBNTO1EDBVZH4I9Mf",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0LXJ38MncJmqqVdeUhDIZv",
+      "uri": "spotify:track:0LXJ38MncJmqqVdeUhDIZv",
+      "name": "さらしもの (feat. PUNPEE)",
+      "artists": [
+        "Gen Hoshino",
+        "PUNPEE"
+      ],
+      "album": "Same Thing",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737f69db87f6b303f835e67253",
+      "embedUrl": "https://open.spotify.com/embed/track/0LXJ38MncJmqqVdeUhDIZv",
+      "externalUrl": "https://open.spotify.com/track/0LXJ38MncJmqqVdeUhDIZv",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7hDX39mc6Uf6zp8RXYUQ6d",
+      "uri": "spotify:track:7hDX39mc6Uf6zp8RXYUQ6d",
+      "name": "napori",
+      "artists": [
+        "Vaundy"
+      ],
+      "album": "strobo",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273292ec8115884b7533905dd1a",
+      "embedUrl": "https://open.spotify.com/embed/track/7hDX39mc6Uf6zp8RXYUQ6d",
+      "externalUrl": "https://open.spotify.com/track/7hDX39mc6Uf6zp8RXYUQ6d",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "04e72JtsOIIlHUQ7CvWwvX",
+      "uri": "spotify:track:04e72JtsOIIlHUQ7CvWwvX",
+      "name": "東京フラッシュ",
+      "artists": [
+        "Vaundy"
+      ],
+      "album": "strobo",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273292ec8115884b7533905dd1a",
+      "embedUrl": "https://open.spotify.com/embed/track/04e72JtsOIIlHUQ7CvWwvX",
+      "externalUrl": "https://open.spotify.com/track/04e72JtsOIIlHUQ7CvWwvX",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6AncLCxf4U7ivJEaqih9zA",
+      "uri": "spotify:track:6AncLCxf4U7ivJEaqih9zA",
+      "name": "不可幸力",
+      "artists": [
+        "Vaundy"
+      ],
+      "album": "strobo",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273292ec8115884b7533905dd1a",
+      "embedUrl": "https://open.spotify.com/embed/track/6AncLCxf4U7ivJEaqih9zA",
+      "externalUrl": "https://open.spotify.com/track/6AncLCxf4U7ivJEaqih9zA",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7rGtDLI0FPGKv07A0fHGTu",
+      "uri": "spotify:track:7rGtDLI0FPGKv07A0fHGTu",
+      "name": "SWIM",
+      "artists": [
+        "SIRUP"
+      ],
+      "album": "FEEL GOOD",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f12684170c159c7725ae6ef0",
+      "embedUrl": "https://open.spotify.com/embed/track/7rGtDLI0FPGKv07A0fHGTu",
+      "externalUrl": "https://open.spotify.com/track/7rGtDLI0FPGKv07A0fHGTu",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5ZHZZ3pLEJWVYpKikkZfG9",
+      "uri": "spotify:track:5ZHZZ3pLEJWVYpKikkZfG9",
+      "name": "Need You Bad",
+      "artists": [
+        "SIRUP"
+      ],
+      "album": "CIY",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736db673d13aabb68ccf96886c",
+      "embedUrl": "https://open.spotify.com/embed/track/5ZHZZ3pLEJWVYpKikkZfG9",
+      "externalUrl": "https://open.spotify.com/track/5ZHZZ3pLEJWVYpKikkZfG9",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "40TPC9leP3bl1YJsjtTgqs",
+      "uri": "spotify:track:40TPC9leP3bl1YJsjtTgqs",
+      "name": "LOOP",
+      "artists": [
+        "SIRUP"
+      ],
+      "album": "SIRUP EP2",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fe884f5e27c5151d790e3683",
+      "embedUrl": "https://open.spotify.com/embed/track/40TPC9leP3bl1YJsjtTgqs",
+      "externalUrl": "https://open.spotify.com/track/40TPC9leP3bl1YJsjtTgqs",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "16yajBS7lk0QAa5CZnTHo9",
+      "uri": "spotify:track:16yajBS7lk0QAa5CZnTHo9",
+      "name": "本当はね、",
+      "artists": [
+        "yangskinny"
+      ],
+      "album": "歌にしてしまえば、どんなことでも許されると思っていた",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27333d127d38a5cd9de2c2079c1",
+      "embedUrl": "https://open.spotify.com/embed/track/16yajBS7lk0QAa5CZnTHo9",
+      "externalUrl": "https://open.spotify.com/track/16yajBS7lk0QAa5CZnTHo9",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1kp7VMAu6KmwAVlC4MVi34",
+      "uri": "spotify:track:1kp7VMAu6KmwAVlC4MVi34",
+      "name": "ベランダ feat. 戦慄かなの",
+      "artists": [
+        "yangskinny",
+        "戦慄かなの"
+      ],
+      "album": "BOY & GIRLS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736a84c3ac30781bf6ec06a0c7",
+      "embedUrl": "https://open.spotify.com/embed/track/1kp7VMAu6KmwAVlC4MVi34",
+      "externalUrl": "https://open.spotify.com/track/1kp7VMAu6KmwAVlC4MVi34",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6jR9HOKraeOqG9QK0oNTbH",
+      "uri": "spotify:track:6jR9HOKraeOqG9QK0oNTbH",
+      "name": "雪月花",
+      "artists": [
+        "yangskinny"
+      ],
+      "album": "不器用な私だから",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736aca782e23b08bfa54572d9a",
+      "embedUrl": "https://open.spotify.com/embed/track/6jR9HOKraeOqG9QK0oNTbH",
+      "externalUrl": "https://open.spotify.com/track/6jR9HOKraeOqG9QK0oNTbH",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "21UVLrJ0yuJ6CGeElXMG0C",
+      "uri": "spotify:track:21UVLrJ0yuJ6CGeElXMG0C",
+      "name": "雪月花",
+      "artists": [
+        "yangskinny"
+      ],
+      "album": "BOY & GIRLS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736a84c3ac30781bf6ec06a0c7",
+      "embedUrl": "https://open.spotify.com/embed/track/21UVLrJ0yuJ6CGeElXMG0C",
+      "externalUrl": "https://open.spotify.com/track/21UVLrJ0yuJ6CGeElXMG0C",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2VU59VkXEBNX4ZZf7SmGAy",
+      "uri": "spotify:track:2VU59VkXEBNX4ZZf7SmGAy",
+      "name": "ゴミ人間、俺",
+      "artists": [
+        "yangskinny"
+      ],
+      "album": "歌にしてしまえば、どんなことでも許されると思っていた",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27333d127d38a5cd9de2c2079c1",
+      "embedUrl": "https://open.spotify.com/embed/track/2VU59VkXEBNX4ZZf7SmGAy",
+      "externalUrl": "https://open.spotify.com/track/2VU59VkXEBNX4ZZf7SmGAy",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3OsPz5G4dGKxD1HPoKxhdh",
+      "uri": "spotify:track:3OsPz5G4dGKxD1HPoKxhdh",
+      "name": "キラキラの灰",
+      "artists": [
+        "Regallily"
+      ],
+      "album": "kirin",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c79d3554bad898404ed45519",
+      "embedUrl": "https://open.spotify.com/embed/track/3OsPz5G4dGKxD1HPoKxhdh",
+      "externalUrl": "https://open.spotify.com/track/3OsPz5G4dGKxD1HPoKxhdh",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "46ZL82YSA3UTCfYtBiSiGZ",
+      "uri": "spotify:track:46ZL82YSA3UTCfYtBiSiGZ",
+      "name": "リッケンバッカー",
+      "artists": [
+        "Regallily"
+      ],
+      "album": "the Post",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a275eca68d5a98b6bb4d5783",
+      "embedUrl": "https://open.spotify.com/embed/track/46ZL82YSA3UTCfYtBiSiGZ",
+      "externalUrl": "https://open.spotify.com/track/46ZL82YSA3UTCfYtBiSiGZ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0u0fZBgvRjNbzmiLyW6ITX",
+      "uri": "spotify:track:0u0fZBgvRjNbzmiLyW6ITX",
+      "name": "キラキラの灰",
+      "artists": [
+        "Regallily"
+      ],
+      "album": "キラキラの灰",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273084c59c203dfa26e1bb92a6f",
+      "embedUrl": "https://open.spotify.com/embed/track/0u0fZBgvRjNbzmiLyW6ITX",
+      "externalUrl": "https://open.spotify.com/track/0u0fZBgvRjNbzmiLyW6ITX",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "04W3o7dciAh2FEB2VIeR2G",
+      "uri": "spotify:track:04W3o7dciAh2FEB2VIeR2G",
+      "name": "1997",
+      "artists": [
+        "Regallily"
+      ],
+      "album": "bedtime story",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a6e2eba112ba74751433ef05",
+      "embedUrl": "https://open.spotify.com/embed/track/04W3o7dciAh2FEB2VIeR2G",
+      "externalUrl": "https://open.spotify.com/track/04W3o7dciAh2FEB2VIeR2G",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "15QwPOnO8ZJa8F08bQycIo",
+      "uri": "spotify:track:15QwPOnO8ZJa8F08bQycIo",
+      "name": "danceasphalt",
+      "artists": [
+        "Regallily"
+      ],
+      "album": "danceasphalt",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2733bce45940dc6ace7a4331b4f",
+      "embedUrl": "https://open.spotify.com/embed/track/15QwPOnO8ZJa8F08bQycIo",
+      "externalUrl": "https://open.spotify.com/track/15QwPOnO8ZJa8F08bQycIo",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6BATkjlpYgsQWBf8M3T8OH",
+      "uri": "spotify:track:6BATkjlpYgsQWBf8M3T8OH",
+      "name": "See You, Again (feat. mabanua)",
+      "artists": [
+        "SUKISHA",
+        "mabanua"
+      ],
+      "album": "Just Chilling at Home",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735742d04c390b602c78578705",
+      "embedUrl": "https://open.spotify.com/embed/track/6BATkjlpYgsQWBf8M3T8OH",
+      "externalUrl": "https://open.spotify.com/track/6BATkjlpYgsQWBf8M3T8OH",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "66lOGYNWhKurI1s4izrkdw",
+      "uri": "spotify:track:66lOGYNWhKurI1s4izrkdw",
+      "name": "Coffee Excess feat. Orono (Superorganism) & Lennon",
+      "artists": [
+        "mabanua",
+        "Orono",
+        "Lennon"
+      ],
+      "album": "Coffee Excess feat. Orono (Superorganism) & Lennon",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737c96c2cd4dff89ede4845b42",
+      "embedUrl": "https://open.spotify.com/embed/track/66lOGYNWhKurI1s4izrkdw",
+      "externalUrl": "https://open.spotify.com/track/66lOGYNWhKurI1s4izrkdw",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0VhlQcQWt0Nr0gUF0vlTe7",
+      "uri": "spotify:track:0VhlQcQWt0Nr0gUF0vlTe7",
+      "name": "Paradise feat. mabanua",
+      "artists": [
+        "Daichi Yamamoto",
+        "mabanua"
+      ],
+      "album": "Paradise feat. mabanua",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f61cc5da6d409c7e9e4b6c38",
+      "embedUrl": "https://open.spotify.com/embed/track/0VhlQcQWt0Nr0gUF0vlTe7",
+      "externalUrl": "https://open.spotify.com/track/0VhlQcQWt0Nr0gUF0vlTe7",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0pGXYiZUwRQnoVc5k9SG2X",
+      "uri": "spotify:track:0pGXYiZUwRQnoVc5k9SG2X",
+      "name": "Alright - mabanua Remix",
+      "artists": [
+        "Kenta Dedachi",
+        "mabanua"
+      ],
+      "album": "Alright (mabanua Remix)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27363e1b4d594e9ad0f042f7749",
+      "embedUrl": "https://open.spotify.com/embed/track/0pGXYiZUwRQnoVc5k9SG2X",
+      "externalUrl": "https://open.spotify.com/track/0pGXYiZUwRQnoVc5k9SG2X",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6b6D94SnWcbNYYcw7ky7YL",
+      "uri": "spotify:track:6b6D94SnWcbNYYcw7ky7YL",
+      "name": "my leaving",
+      "artists": [
+        "Kenichiro Nishihara",
+        "mabanua"
+      ],
+      "album": "Jazzy Folklore",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cdb6ffdc6a5b90fd12ae557a",
+      "embedUrl": "https://open.spotify.com/embed/track/6b6D94SnWcbNYYcw7ky7YL",
+      "externalUrl": "https://open.spotify.com/track/6b6D94SnWcbNYYcw7ky7YL",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5RbV7Ps6HM2tBbxTd3FnDh",
+      "uri": "spotify:track:5RbV7Ps6HM2tBbxTd3FnDh",
+      "name": "水星",
+      "artists": [
+        "Daoko"
+      ],
+      "album": "DAOKO",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d5088a6f78c700045e6c36e3",
+      "embedUrl": "https://open.spotify.com/embed/track/5RbV7Ps6HM2tBbxTd3FnDh",
+      "externalUrl": "https://open.spotify.com/track/5RbV7Ps6HM2tBbxTd3FnDh",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4IouQaO9GkaHC7AtMErdSa",
+      "uri": "spotify:track:4IouQaO9GkaHC7AtMErdSa",
+      "name": "打上花火",
+      "artists": [
+        "Daoko",
+        "Kenshi Yonezu"
+      ],
+      "album": "THANK YOU BLUE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e7f0b1cfcf4da8333f7644aa",
+      "embedUrl": "https://open.spotify.com/embed/track/4IouQaO9GkaHC7AtMErdSa",
+      "externalUrl": "https://open.spotify.com/track/4IouQaO9GkaHC7AtMErdSa",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2NOaTnGYEzS8mORdY2NpYI",
+      "uri": "spotify:track:2NOaTnGYEzS8mORdY2NpYI",
+      "name": "金星",
+      "artists": [
+        "QUEEN BEE",
+        "Daoko"
+      ],
+      "album": "Q",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a82518ba389db2aef028493c",
+      "embedUrl": "https://open.spotify.com/embed/track/2NOaTnGYEzS8mORdY2NpYI",
+      "externalUrl": "https://open.spotify.com/track/2NOaTnGYEzS8mORdY2NpYI",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2qdkg8NGkGhukt8UQcVYci",
+      "uri": "spotify:track:2qdkg8NGkGhukt8UQcVYci",
+      "name": "ステップアップLOVE",
+      "artists": [
+        "Daoko",
+        "Yasuyuki Okamura"
+      ],
+      "album": "THANK YOU BLUE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e7f0b1cfcf4da8333f7644aa",
+      "embedUrl": "https://open.spotify.com/embed/track/2qdkg8NGkGhukt8UQcVYci",
+      "externalUrl": "https://open.spotify.com/track/2qdkg8NGkGhukt8UQcVYci",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4mj9u28GzR6B6fgM45ritm",
+      "uri": "spotify:track:4mj9u28GzR6B6fgM45ritm",
+      "name": "What the Hell (feat. おかもとえみ)",
+      "artists": [
+        "TOSHIKI HAYASHI(%C)",
+        "Emi Okamoto"
+      ],
+      "album": "What the Hell (feat. おかもとえみ)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27303ad4b444a442205888d705e",
+      "embedUrl": "https://open.spotify.com/embed/track/4mj9u28GzR6B6fgM45ritm",
+      "externalUrl": "https://open.spotify.com/track/4mj9u28GzR6B6fgM45ritm",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5cAEkJEYiNTO26oXRKnxJn",
+      "uri": "spotify:track:5cAEkJEYiNTO26oXRKnxJn",
+      "name": "Contact - TOSHIKI HAYASHI(%C) remix",
+      "artists": [
+        "Mamiko Suzuki",
+        "TOSHIKI HAYASHI(%C)"
+      ],
+      "album": "Deep green",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27320ef01f9eb701f3ce3c81089",
+      "embedUrl": "https://open.spotify.com/embed/track/5cAEkJEYiNTO26oXRKnxJn",
+      "externalUrl": "https://open.spotify.com/track/5cAEkJEYiNTO26oXRKnxJn",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5y170aRBflCoZagqVYdUiq",
+      "uri": "spotify:track:5y170aRBflCoZagqVYdUiq",
+      "name": "Focus",
+      "artists": [
+        "荒谷翔大",
+        "Mamiko Suzuki",
+        "TOSHIKI HAYASHI(%C)"
+      ],
+      "album": "Focus",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f26df4b14ad73288a59a197f",
+      "embedUrl": "https://open.spotify.com/embed/track/5y170aRBflCoZagqVYdUiq",
+      "externalUrl": "https://open.spotify.com/track/5y170aRBflCoZagqVYdUiq",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5VBMFkU9emR1HDLPoXuOUQ",
+      "uri": "spotify:track:5VBMFkU9emR1HDLPoXuOUQ",
+      "name": "See You Later",
+      "artists": [
+        "Chocoholic",
+        "Friday Night Plans"
+      ],
+      "album": "See You Later",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738b299d86e43b3d8a7b66df92",
+      "embedUrl": "https://open.spotify.com/embed/track/5VBMFkU9emR1HDLPoXuOUQ",
+      "externalUrl": "https://open.spotify.com/track/5VBMFkU9emR1HDLPoXuOUQ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2UpVNh4FJOLl1Pz0sDGh1y",
+      "uri": "spotify:track:2UpVNh4FJOLl1Pz0sDGh1y",
+      "name": "Good Girl",
+      "artists": [
+        "Sincere",
+        "Chocoholic"
+      ],
+      "album": "Good Girl",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dd0fb3e701fdc1dd72494a5c",
+      "embedUrl": "https://open.spotify.com/embed/track/2UpVNh4FJOLl1Pz0sDGh1y",
+      "externalUrl": "https://open.spotify.com/track/2UpVNh4FJOLl1Pz0sDGh1y",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1G8jWpWgCtTEuy4Zz3Ihfe",
+      "uri": "spotify:track:1G8jWpWgCtTEuy4Zz3Ihfe",
+      "name": "Like no one's done",
+      "artists": [
+        "Sincere",
+        "Chocoholic"
+      ],
+      "album": "Like no one's done",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e559dfb0dd4319341a9d655c",
+      "embedUrl": "https://open.spotify.com/embed/track/1G8jWpWgCtTEuy4Zz3Ihfe",
+      "externalUrl": "https://open.spotify.com/track/1G8jWpWgCtTEuy4Zz3Ihfe",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6ETJ9uS0xU9XCQIHCoFE3h",
+      "uri": "spotify:track:6ETJ9uS0xU9XCQIHCoFE3h",
+      "name": "Hi-Light",
+      "artists": [
+        "Erika Nishi",
+        "Emi Okamoto",
+        "Chocoholic"
+      ],
+      "album": "flower(s)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273048fe46108b9e119d058075e",
+      "embedUrl": "https://open.spotify.com/embed/track/6ETJ9uS0xU9XCQIHCoFE3h",
+      "externalUrl": "https://open.spotify.com/track/6ETJ9uS0xU9XCQIHCoFE3h",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1pTJtmvJhSOjSkBfE56tjs",
+      "uri": "spotify:track:1pTJtmvJhSOjSkBfE56tjs",
+      "name": "Keeps Coming Back",
+      "artists": [
+        "MoMo",
+        "Chocoholic"
+      ],
+      "album": "Keeps Coming Back",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b31d2c901328ad2303467eaf",
+      "embedUrl": "https://open.spotify.com/embed/track/1pTJtmvJhSOjSkBfE56tjs",
+      "externalUrl": "https://open.spotify.com/track/1pTJtmvJhSOjSkBfE56tjs",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5kGhyr90pSevi5rXE0JDEg",
+      "uri": "spotify:track:5kGhyr90pSevi5rXE0JDEg",
+      "name": "甲州街道はもう夏なのさ",
+      "artists": [
+        "fox capture plan",
+        "Emi Okamoto"
+      ],
+      "album": "RESONANCE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27337a9f4a1d1a54b07941b94d3",
+      "embedUrl": "https://open.spotify.com/embed/track/5kGhyr90pSevi5rXE0JDEg",
+      "externalUrl": "https://open.spotify.com/track/5kGhyr90pSevi5rXE0JDEg",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4PLTgsECc9rrC36bx0my3B",
+      "uri": "spotify:track:4PLTgsECc9rrC36bx0my3B",
+      "name": "ROOM VACATION",
+      "artists": [
+        "DJ HASEBE",
+        "tubakiii",
+        "Emi Okamoto"
+      ],
+      "album": "Wonderful tomorrow",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273058b30ddbaad2e72a771623c",
+      "embedUrl": "https://open.spotify.com/embed/track/4PLTgsECc9rrC36bx0my3B",
+      "externalUrl": "https://open.spotify.com/track/4PLTgsECc9rrC36bx0my3B",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7I8UsN16TuLIv1NctuVShw",
+      "uri": "spotify:track:7I8UsN16TuLIv1NctuVShw",
+      "name": "POOL - (gappy ver.)",
+      "artists": [
+        "Emi Okamoto"
+      ],
+      "album": "gappy",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ef62ce22e5a602e7299a66f9",
+      "embedUrl": "https://open.spotify.com/embed/track/7I8UsN16TuLIv1NctuVShw",
+      "externalUrl": "https://open.spotify.com/track/7I8UsN16TuLIv1NctuVShw",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6Ol1QxYnkQ6V9Hahjp70S9",
+      "uri": "spotify:track:6Ol1QxYnkQ6V9Hahjp70S9",
+      "name": "Uwagaki",
+      "artists": [
+        "ASOBOiSM"
+      ],
+      "album": "OOTD",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b7f653546bbbd51e57dd63fa",
+      "embedUrl": "https://open.spotify.com/embed/track/6Ol1QxYnkQ6V9Hahjp70S9",
+      "externalUrl": "https://open.spotify.com/track/6Ol1QxYnkQ6V9Hahjp70S9",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "13M8jXMGKe2lziMAzCI8Eo",
+      "uri": "spotify:track:13M8jXMGKe2lziMAzCI8Eo",
+      "name": "TOTSUKA (feat. サイプレス上野)",
+      "artists": [
+        "ASOBOiSM",
+        "Cypress Ueno"
+      ],
+      "album": "OOTD",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b7f653546bbbd51e57dd63fa",
+      "embedUrl": "https://open.spotify.com/embed/track/13M8jXMGKe2lziMAzCI8Eo",
+      "externalUrl": "https://open.spotify.com/track/13M8jXMGKe2lziMAzCI8Eo",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3T6VRzUvY7pFformjCIHs3",
+      "uri": "spotify:track:3T6VRzUvY7pFformjCIHs3",
+      "name": "Little Happy",
+      "artists": [
+        "DJ HASEBE",
+        "ASOBOiSM"
+      ],
+      "album": "Wonderful tomorrow",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273058b30ddbaad2e72a771623c",
+      "embedUrl": "https://open.spotify.com/embed/track/3T6VRzUvY7pFformjCIHs3",
+      "externalUrl": "https://open.spotify.com/track/3T6VRzUvY7pFformjCIHs3",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5fGVC4zhdfEXSNcnYbSjou",
+      "uri": "spotify:track:5fGVC4zhdfEXSNcnYbSjou",
+      "name": "BELIEVE",
+      "artists": [
+        "MISIA"
+      ],
+      "album": "LOVE IS THE MESSAGE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27300998cc2710fb7457ef10b7c",
+      "embedUrl": "https://open.spotify.com/embed/track/5fGVC4zhdfEXSNcnYbSjou",
+      "externalUrl": "https://open.spotify.com/track/5fGVC4zhdfEXSNcnYbSjou",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6bkJ4p6uSKmSnKxYpmB4aG",
+      "uri": "spotify:track:6bkJ4p6uSKmSnKxYpmB4aG",
+      "name": "Everything",
+      "artists": [
+        "MISIA"
+      ],
+      "album": "Super Best Records -15th Celebration-",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27329ee6cd1adbe927a00a614f0",
+      "embedUrl": "https://open.spotify.com/embed/track/6bkJ4p6uSKmSnKxYpmB4aG",
+      "externalUrl": "https://open.spotify.com/track/6bkJ4p6uSKmSnKxYpmB4aG",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6AUHW4DJrZ07pgvfDVKsZo",
+      "uri": "spotify:track:6AUHW4DJrZ07pgvfDVKsZo",
+      "name": "つつみ込むように･･･(DAVE \"EQ3\" DUB MIX)",
+      "artists": [
+        "MISIA"
+      ],
+      "album": "Mother Father Brother Sister",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d2425cbd456293c8d149b255",
+      "embedUrl": "https://open.spotify.com/embed/track/6AUHW4DJrZ07pgvfDVKsZo",
+      "externalUrl": "https://open.spotify.com/track/6AUHW4DJrZ07pgvfDVKsZo",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5J1J23if5Y1Hzb7kqCNzyC",
+      "uri": "spotify:track:5J1J23if5Y1Hzb7kqCNzyC",
+      "name": "微熱",
+      "artists": [
+        "UA"
+      ],
+      "album": "微熱",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737537132019e79a3789fd800f",
+      "embedUrl": "https://open.spotify.com/embed/track/5J1J23if5Y1Hzb7kqCNzyC",
+      "externalUrl": "https://open.spotify.com/track/5J1J23if5Y1Hzb7kqCNzyC",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2TwrieAjsEMIwTGVI6pjrp",
+      "uri": "spotify:track:2TwrieAjsEMIwTGVI6pjrp",
+      "name": "情熱",
+      "artists": [
+        "UA"
+      ],
+      "album": "Illuminate～the very best songs～",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a9ffdcef77b72d9e29eb43ea",
+      "embedUrl": "https://open.spotify.com/embed/track/2TwrieAjsEMIwTGVI6pjrp",
+      "externalUrl": "https://open.spotify.com/track/2TwrieAjsEMIwTGVI6pjrp",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "782gyHAHXhoTQ1pcjEksD9",
+      "uri": "spotify:track:782gyHAHXhoTQ1pcjEksD9",
+      "name": "HORIZON",
+      "artists": [
+        "UA"
+      ],
+      "album": "Illuminate～the very best songs～",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a9ffdcef77b72d9e29eb43ea",
+      "embedUrl": "https://open.spotify.com/embed/track/782gyHAHXhoTQ1pcjEksD9",
+      "externalUrl": "https://open.spotify.com/track/782gyHAHXhoTQ1pcjEksD9",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5G1tZ7WSNHmvu5mzs3BpQe",
+      "uri": "spotify:track:5G1tZ7WSNHmvu5mzs3BpQe",
+      "name": "My Girl",
+      "artists": [
+        "Kan Sano"
+      ],
+      "album": "Ghost Notes",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2733142ad01e5b9905abc4011ce",
+      "embedUrl": "https://open.spotify.com/embed/track/5G1tZ7WSNHmvu5mzs3BpQe",
+      "externalUrl": "https://open.spotify.com/track/5G1tZ7WSNHmvu5mzs3BpQe",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2LJxPjHzW7c2HHSq9x3Y75",
+      "uri": "spotify:track:2LJxPjHzW7c2HHSq9x3Y75",
+      "name": "With Love feat. luv",
+      "artists": [
+        "Kan Sano",
+        "luv"
+      ],
+      "album": "MOJACAT",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736afe8bf0ae71dea4449f7c8b",
+      "embedUrl": "https://open.spotify.com/embed/track/2LJxPjHzW7c2HHSq9x3Y75",
+      "externalUrl": "https://open.spotify.com/track/2LJxPjHzW7c2HHSq9x3Y75",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "60x339UhZl3My1706HyHxR",
+      "uri": "spotify:track:60x339UhZl3My1706HyHxR",
+      "name": "Just Dance (feat. Kan Sano)",
+      "artists": [
+        "SUKISHA",
+        "Kan Sano"
+      ],
+      "album": "Just Chilling at Home",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735742d04c390b602c78578705",
+      "embedUrl": "https://open.spotify.com/embed/track/60x339UhZl3My1706HyHxR",
+      "externalUrl": "https://open.spotify.com/track/60x339UhZl3My1706HyHxR",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3zbZKozwuEKY1vLHmtULHh",
+      "uri": "spotify:track:3zbZKozwuEKY1vLHmtULHh",
+      "name": "ずるくない？",
+      "artists": [
+        "ぷにぷに電機",
+        "Kan Sano"
+      ],
+      "album": "ずるくない？",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27345276d80b0177c2ab7d9276a",
+      "embedUrl": "https://open.spotify.com/embed/track/3zbZKozwuEKY1vLHmtULHh",
+      "externalUrl": "https://open.spotify.com/track/3zbZKozwuEKY1vLHmtULHh",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6fGMN1cZjqXSstoGtwZ3Ii",
+      "uri": "spotify:track:6fGMN1cZjqXSstoGtwZ3Ii",
+      "name": "シグナル (光の当て方次第影の形)",
+      "artists": [
+        "LIBRO",
+        "元晴"
+      ],
+      "album": "なおらい",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273438adac43237ae7078730c9e",
+      "embedUrl": "https://open.spotify.com/embed/track/6fGMN1cZjqXSstoGtwZ3Ii",
+      "externalUrl": "https://open.spotify.com/track/6fGMN1cZjqXSstoGtwZ3Ii",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "30Elsi5iNcLBmo8aEUyOKr",
+      "uri": "spotify:track:30Elsi5iNcLBmo8aEUyOKr",
+      "name": "オトニカエル",
+      "artists": [
+        "EVISBEATS",
+        "LIBRO"
+      ],
+      "album": "ムスヒ",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27340832cd5092db570588feb91",
+      "embedUrl": "https://open.spotify.com/embed/track/30Elsi5iNcLBmo8aEUyOKr",
+      "externalUrl": "https://open.spotify.com/track/30Elsi5iNcLBmo8aEUyOKr",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7A2U6LKkgYjNErcm1leKLx",
+      "uri": "spotify:track:7A2U6LKkgYjNErcm1leKLx",
+      "name": "ひとつひとつPt.2 (feat. LIBRO, DAG FORCE, 鎮座DOPENESS & 句潤)",
+      "artists": [
+        "DJ KRUTCH",
+        "LIBRO",
+        "DAG FORCE",
+        "Chinza Dopeness",
+        "句潤"
+      ],
+      "album": "SOPHIC2 (DELUXE EDITION)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736495c6595a5e7d6b69658f30",
+      "embedUrl": "https://open.spotify.com/embed/track/7A2U6LKkgYjNErcm1leKLx",
+      "externalUrl": "https://open.spotify.com/track/7A2U6LKkgYjNErcm1leKLx",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5nWn8L83korKAcODlOaQud",
+      "uri": "spotify:track:5nWn8L83korKAcODlOaQud",
+      "name": "Sunday",
+      "artists": [
+        "pinoko",
+        "ケンチンミン"
+      ],
+      "album": "リバース",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27376f4d533bef2634ff10719c5",
+      "embedUrl": "https://open.spotify.com/embed/track/5nWn8L83korKAcODlOaQud",
+      "externalUrl": "https://open.spotify.com/track/5nWn8L83korKAcODlOaQud",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2g90Vi70vi0J2XVEedZL0Q",
+      "uri": "spotify:track:2g90Vi70vi0J2XVEedZL0Q",
+      "name": "Sunday",
+      "artists": [
+        "pinoko",
+        "ケンチンミン"
+      ],
+      "album": "Sunday EP",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731a71ff8e9ca564510a370f3a",
+      "embedUrl": "https://open.spotify.com/embed/track/2g90Vi70vi0J2XVEedZL0Q",
+      "externalUrl": "https://open.spotify.com/track/2g90Vi70vi0J2XVEedZL0Q",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6ZtpesFDroMHMM8CG5LlhZ",
+      "uri": "spotify:track:6ZtpesFDroMHMM8CG5LlhZ",
+      "name": "たばこ",
+      "artists": [
+        "pinoko"
+      ],
+      "album": "Hotel",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732169b68e4888fc2089c2a413",
+      "embedUrl": "https://open.spotify.com/embed/track/6ZtpesFDroMHMM8CG5LlhZ",
+      "externalUrl": "https://open.spotify.com/track/6ZtpesFDroMHMM8CG5LlhZ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "082RfyC7tCVcB1JNeMLN4x",
+      "uri": "spotify:track:082RfyC7tCVcB1JNeMLN4x",
+      "name": "すいみんやく",
+      "artists": [
+        "pinoko"
+      ],
+      "album": "Chilly Source Compile Vol.1",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e43d199b619be56d2c3630fb",
+      "embedUrl": "https://open.spotify.com/embed/track/082RfyC7tCVcB1JNeMLN4x",
+      "externalUrl": "https://open.spotify.com/track/082RfyC7tCVcB1JNeMLN4x",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3FjpjpJyFH9QU4EpMUk4Ta",
+      "uri": "spotify:track:3FjpjpJyFH9QU4EpMUk4Ta",
+      "name": "koakuma",
+      "artists": [
+        "pinoko"
+      ],
+      "album": "リバース",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27376f4d533bef2634ff10719c5",
+      "embedUrl": "https://open.spotify.com/embed/track/3FjpjpJyFH9QU4EpMUk4Ta",
+      "externalUrl": "https://open.spotify.com/track/3FjpjpJyFH9QU4EpMUk4Ta",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2LxGGThhhbFhyHkaZySaty",
+      "uri": "spotify:track:2LxGGThhhbFhyHkaZySaty",
+      "name": "Resonance",
+      "artists": [
+        "Toshiki Soejima",
+        "Takuya Kuroda",
+        "edbl"
+      ],
+      "album": "Resonance",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27351ed297a8d4f492bbff38f39",
+      "embedUrl": "https://open.spotify.com/embed/track/2LxGGThhhbFhyHkaZySaty",
+      "externalUrl": "https://open.spotify.com/track/2LxGGThhhbFhyHkaZySaty",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3bD6V7HK99QSLLmZFlJP3w",
+      "uri": "spotify:track:3bD6V7HK99QSLLmZFlJP3w",
+      "name": "Into The Night (feat. ZIN & 黒田卓也)",
+      "artists": [
+        "Kei Owada",
+        "ZIN",
+        "Takuya Kuroda"
+      ],
+      "album": "Into The Night (feat. ZIN & 黒田卓也)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737090ee55219595c02234c242",
+      "embedUrl": "https://open.spotify.com/embed/track/3bD6V7HK99QSLLmZFlJP3w",
+      "externalUrl": "https://open.spotify.com/track/3bD6V7HK99QSLLmZFlJP3w",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3bLtdC7r59InGTRIVNbYKr",
+      "uri": "spotify:track:3bLtdC7r59InGTRIVNbYKr",
+      "name": "Resonance",
+      "artists": [
+        "Toshiki Soejima",
+        "Takuya Kuroda",
+        "edbl"
+      ],
+      "album": "Komorebi",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739ee4aeebbc4871171a8073eb",
+      "embedUrl": "https://open.spotify.com/embed/track/3bLtdC7r59InGTRIVNbYKr",
+      "externalUrl": "https://open.spotify.com/track/3bLtdC7r59InGTRIVNbYKr",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6VsSAI7IlsTiXqKuCsuS81",
+      "uri": "spotify:track:6VsSAI7IlsTiXqKuCsuS81",
+      "name": "0℃の日曜",
+      "artists": [
+        "STUTS",
+        "SIKK-O",
+        "Mamiko Suzuki"
+      ],
+      "album": "ALLSEASON EP.",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cf82c74c1ea5af8d017a52ba",
+      "embedUrl": "https://open.spotify.com/embed/track/6VsSAI7IlsTiXqKuCsuS81",
+      "externalUrl": "https://open.spotify.com/track/6VsSAI7IlsTiXqKuCsuS81",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7Da7crN49ehmABnxJuo52J",
+      "uri": "spotify:track:7Da7crN49ehmABnxJuo52J",
+      "name": "Summer Situation",
+      "artists": [
+        "STUTS",
+        "SIKK-O",
+        "Mamiko Suzuki"
+      ],
+      "album": "ALLSEASON EP.",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cf82c74c1ea5af8d017a52ba",
+      "embedUrl": "https://open.spotify.com/embed/track/7Da7crN49ehmABnxJuo52J",
+      "externalUrl": "https://open.spotify.com/track/7Da7crN49ehmABnxJuo52J",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3tL2fCJDegsWrsCZEZTf82",
+      "uri": "spotify:track:3tL2fCJDegsWrsCZEZTf82",
+      "name": "tokyo (feat. 鈴木真海子, Skaai)",
+      "artists": [
+        "yonawo",
+        "Skaai",
+        "Mamiko Suzuki"
+      ],
+      "album": "tokyo (feat. 鈴木真海子, Skaai)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736976b682009571f6a4e29863",
+      "embedUrl": "https://open.spotify.com/embed/track/3tL2fCJDegsWrsCZEZTf82",
+      "externalUrl": "https://open.spotify.com/track/3tL2fCJDegsWrsCZEZTf82",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6uSe3ACORUIVrAyiP84RZi",
+      "uri": "spotify:track:6uSe3ACORUIVrAyiP84RZi",
+      "name": "melt bitter",
+      "artists": [
+        "satomoka"
+      ],
+      "album": "melt bitter",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27318a40b2c074ea88a581a24da",
+      "embedUrl": "https://open.spotify.com/embed/track/6uSe3ACORUIVrAyiP84RZi",
+      "externalUrl": "https://open.spotify.com/track/6uSe3ACORUIVrAyiP84RZi",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6UvNwRWe8Ky4d3d13YVpQa",
+      "uri": "spotify:track:6UvNwRWe8Ky4d3d13YVpQa",
+      "name": "コンビニエンスボーイ",
+      "artists": [
+        "HOTEL DONUTS",
+        "TOSHIKI HAYASHI(%C)",
+        "maco marets",
+        "satomoka",
+        "山田大介"
+      ],
+      "album": "コンビニエンスボーイ / インソムニアガール",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ac9223a0502d4f5e228094e7",
+      "embedUrl": "https://open.spotify.com/embed/track/6UvNwRWe8Ky4d3d13YVpQa",
+      "externalUrl": "https://open.spotify.com/track/6UvNwRWe8Ky4d3d13YVpQa",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "34oU2oIsfSfncN30C0NSD1",
+      "uri": "spotify:track:34oU2oIsfSfncN30C0NSD1",
+      "name": "L.A.Z.Y.",
+      "artists": [
+        "maco marets",
+        "satomoka",
+        "Shin Sakiura"
+      ],
+      "album": "WSIV: Lost in November",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734686f1e36aafeac31c02b3f0",
+      "embedUrl": "https://open.spotify.com/embed/track/34oU2oIsfSfncN30C0NSD1",
+      "externalUrl": "https://open.spotify.com/track/34oU2oIsfSfncN30C0NSD1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5TnlGq9Pm3vLkIB5Xv44sZ",
+      "uri": "spotify:track:5TnlGq9Pm3vLkIB5Xv44sZ",
+      "name": "Everyday",
+      "artists": [
+        "satomoka"
+      ],
+      "album": "ERA",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27354cfbe41117559dedbd64ecf",
+      "embedUrl": "https://open.spotify.com/embed/track/5TnlGq9Pm3vLkIB5Xv44sZ",
+      "externalUrl": "https://open.spotify.com/track/5TnlGq9Pm3vLkIB5Xv44sZ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5OwXSpTvZMZ7gs1U7mK7Cv",
+      "uri": "spotify:track:5OwXSpTvZMZ7gs1U7mK7Cv",
+      "name": "melt summer",
+      "artists": [
+        "satomoka"
+      ],
+      "album": "Merry go round",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e415a63a35b2f3229dd0812a",
+      "embedUrl": "https://open.spotify.com/embed/track/5OwXSpTvZMZ7gs1U7mK7Cv",
+      "externalUrl": "https://open.spotify.com/track/5OwXSpTvZMZ7gs1U7mK7Cv",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1ws4YZByn0lif0i5Xi3b6v",
+      "uri": "spotify:track:1ws4YZByn0lif0i5Xi3b6v",
+      "name": "Find you in the dark feat. Nenashi",
+      "artists": [
+        "Ovall",
+        "Nenashi"
+      ],
+      "album": "Still Water",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27326d3824c0e5c2c4f1f78d1a0",
+      "embedUrl": "https://open.spotify.com/embed/track/1ws4YZByn0lif0i5Xi3b6v",
+      "externalUrl": "https://open.spotify.com/track/1ws4YZByn0lif0i5Xi3b6v",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1e9z7RtCcBT2FzKSmg22Wd",
+      "uri": "spotify:track:1e9z7RtCcBT2FzKSmg22Wd",
+      "name": "接吻",
+      "artists": [
+        "Original Love",
+        "Ovall"
+      ],
+      "album": "What a Wonderful World with Original Love?",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f2ccd0b47b3bafe0b595d119",
+      "embedUrl": "https://open.spotify.com/embed/track/1e9z7RtCcBT2FzKSmg22Wd",
+      "externalUrl": "https://open.spotify.com/track/1e9z7RtCcBT2FzKSmg22Wd",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "14Z9RrWIwkULvaOpppqAxb",
+      "uri": "spotify:track:14Z9RrWIwkULvaOpppqAxb",
+      "name": "SPARKLE",
+      "artists": [
+        "Yu Sakai",
+        "Ovall",
+        "Kan Sano",
+        "Michael Kaneko",
+        "Hiro-a-key"
+      ],
+      "album": "CITY POP LOVERS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dc2ca08a274e4d967fada14c",
+      "embedUrl": "https://open.spotify.com/embed/track/14Z9RrWIwkULvaOpppqAxb",
+      "externalUrl": "https://open.spotify.com/track/14Z9RrWIwkULvaOpppqAxb",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4WrfSd93hzq8KPvklVk2D0",
+      "uri": "spotify:track:4WrfSd93hzq8KPvklVk2D0",
+      "name": "Slow Motion Town",
+      "artists": [
+        "Ovall"
+      ],
+      "album": "Ovall",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736b1d9920c230aa245919dc1a",
+      "embedUrl": "https://open.spotify.com/embed/track/4WrfSd93hzq8KPvklVk2D0",
+      "externalUrl": "https://open.spotify.com/track/4WrfSd93hzq8KPvklVk2D0",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5qz2T8QVgHyYOAyWnTfSJb",
+      "uri": "spotify:track:5qz2T8QVgHyYOAyWnTfSJb",
+      "name": "ひらりとパーキー",
+      "artists": [
+        "Kaneyorimasaru"
+      ],
+      "album": "かけがえなくなりたい",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b584858b157c4edd508cd5a1",
+      "embedUrl": "https://open.spotify.com/embed/track/5qz2T8QVgHyYOAyWnTfSJb",
+      "externalUrl": "https://open.spotify.com/track/5qz2T8QVgHyYOAyWnTfSJb",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7bVp22vfS34uesqkTXK7Yo",
+      "uri": "spotify:track:7bVp22vfS34uesqkTXK7Yo",
+      "name": "どうにかなればいいのに (feat. クボタカイ)",
+      "artists": [
+        "Kaneyorimasaru",
+        "クボタカイ"
+      ],
+      "album": "ヒント",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c0fb8297682a4d4dc2ab4cd6",
+      "embedUrl": "https://open.spotify.com/embed/track/7bVp22vfS34uesqkTXK7Yo",
+      "externalUrl": "https://open.spotify.com/track/7bVp22vfS34uesqkTXK7Yo",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6xjv5IO0w8RI0WxuyLgXTT",
+      "uri": "spotify:track:6xjv5IO0w8RI0WxuyLgXTT",
+      "name": "もしも",
+      "artists": [
+        "Kaneyorimasaru"
+      ],
+      "album": "かけがえなくなりたい",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b584858b157c4edd508cd5a1",
+      "embedUrl": "https://open.spotify.com/embed/track/6xjv5IO0w8RI0WxuyLgXTT",
+      "externalUrl": "https://open.spotify.com/track/6xjv5IO0w8RI0WxuyLgXTT",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "451U7NEyfqtVefeIgSoJF0",
+      "uri": "spotify:track:451U7NEyfqtVefeIgSoJF0",
+      "name": "NEW LOOK",
+      "artists": [
+        "MISAMO"
+      ],
+      "album": "NEW LOOK",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e6c2507ea4f1e5768409c8ff",
+      "embedUrl": "https://open.spotify.com/embed/track/451U7NEyfqtVefeIgSoJF0",
+      "externalUrl": "https://open.spotify.com/track/451U7NEyfqtVefeIgSoJF0",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2dcUJfnd2BAKS7jUSdlmmO",
+      "uri": "spotify:track:2dcUJfnd2BAKS7jUSdlmmO",
+      "name": "NEW LOOK",
+      "artists": [
+        "MISAMO"
+      ],
+      "album": "HAUTE COUTURE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273787fbba70ff6da45edc9214b",
+      "embedUrl": "https://open.spotify.com/embed/track/2dcUJfnd2BAKS7jUSdlmmO",
+      "externalUrl": "https://open.spotify.com/track/2dcUJfnd2BAKS7jUSdlmmO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0ajk8JtkXycnWgbIZIfG0f",
+      "uri": "spotify:track:0ajk8JtkXycnWgbIZIfG0f",
+      "name": "いい日 旅立ち",
+      "artists": [
+        "Momoe Yamaguchi"
+      ],
+      "album": "二十才の記念碑　曼珠沙華",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736773952c1551f60131ce8733",
+      "embedUrl": "https://open.spotify.com/embed/track/0ajk8JtkXycnWgbIZIfG0f",
+      "externalUrl": "https://open.spotify.com/track/0ajk8JtkXycnWgbIZIfG0f",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7zwWa2rPNiqzWITeazIXQO",
+      "uri": "spotify:track:7zwWa2rPNiqzWITeazIXQO",
+      "name": "Love Is Waiting",
+      "artists": [
+        "grooveman Spot",
+        "aimi"
+      ],
+      "album": "LUV 4 ME",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273bcc786aba46c96b47209f314",
+      "embedUrl": "https://open.spotify.com/embed/track/7zwWa2rPNiqzWITeazIXQO",
+      "externalUrl": "https://open.spotify.com/track/7zwWa2rPNiqzWITeazIXQO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1sGzVi8FsCHUXTexlXtvBT",
+      "uri": "spotify:track:1sGzVi8FsCHUXTexlXtvBT",
+      "name": "Games - grooveman Spot Remix",
+      "artists": [
+        "reina",
+        "Lil Summer",
+        "grooveman Spot"
+      ],
+      "album": "Games (grooveman Spot Remix)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736886f87283f4668ca97fd889",
+      "embedUrl": "https://open.spotify.com/embed/track/1sGzVi8FsCHUXTexlXtvBT",
+      "externalUrl": "https://open.spotify.com/track/1sGzVi8FsCHUXTexlXtvBT",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3aBDAjc19S52UmQMHCvooM",
+      "uri": "spotify:track:3aBDAjc19S52UmQMHCvooM",
+      "name": "Upgrading!",
+      "artists": [
+        "Lil Summer",
+        "grooveman Spot"
+      ],
+      "album": "Azul",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732e51f4cc5e40d6e619a817e6",
+      "embedUrl": "https://open.spotify.com/embed/track/3aBDAjc19S52UmQMHCvooM",
+      "externalUrl": "https://open.spotify.com/track/3aBDAjc19S52UmQMHCvooM",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0pJkrROQ4fWdbFDl5oDCwE",
+      "uri": "spotify:track:0pJkrROQ4fWdbFDl5oDCwE",
+      "name": "Dirac Sea (feat. KenT & CHOYO) - grooveman Spot Remix",
+      "artists": [
+        "Lil Summer",
+        "grooveman Spot",
+        "KenT",
+        "CHOYO"
+      ],
+      "album": "Dirac Sea (feat. KenT & CHOYO) [grooveman Spot Remix]",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273bdca363accab22eb9f053458",
+      "embedUrl": "https://open.spotify.com/embed/track/0pJkrROQ4fWdbFDl5oDCwE",
+      "externalUrl": "https://open.spotify.com/track/0pJkrROQ4fWdbFDl5oDCwE",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4sIejb0eG9n1R28IVRED5G",
+      "uri": "spotify:track:4sIejb0eG9n1R28IVRED5G",
+      "name": "Flowers",
+      "artists": [
+        "Lil Summer",
+        "grooveman Spot"
+      ],
+      "album": "Flowers",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273eb7e854a60df2eec59f1ffbe",
+      "embedUrl": "https://open.spotify.com/embed/track/4sIejb0eG9n1R28IVRED5G",
+      "externalUrl": "https://open.spotify.com/track/4sIejb0eG9n1R28IVRED5G",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "71TekkQ6MUZf8wsUKhuxhx",
+      "uri": "spotify:track:71TekkQ6MUZf8wsUKhuxhx",
+      "name": "なんてね",
+      "artists": [
+        "ena mori",
+        "Tomggg"
+      ],
+      "album": "なんてね",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273312931f18f1d4f8bb8dd97c5",
+      "embedUrl": "https://open.spotify.com/embed/track/71TekkQ6MUZf8wsUKhuxhx",
+      "externalUrl": "https://open.spotify.com/track/71TekkQ6MUZf8wsUKhuxhx",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0zTaCJmykwtArK5wZmQG6l",
+      "uri": "spotify:track:0zTaCJmykwtArK5wZmQG6l",
+      "name": "Limbo",
+      "artists": [
+        "haruno",
+        "Tomggg"
+      ],
+      "album": "The Lover",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273608a6029b23695f55fbccb7c",
+      "embedUrl": "https://open.spotify.com/embed/track/0zTaCJmykwtArK5wZmQG6l",
+      "externalUrl": "https://open.spotify.com/track/0zTaCJmykwtArK5wZmQG6l",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "68xVChLdqq19GB31tC4yXE",
+      "uri": "spotify:track:68xVChLdqq19GB31tC4yXE",
+      "name": "Loop",
+      "artists": [
+        "satomoka",
+        "Tomggg"
+      ],
+      "album": "Merry go round",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e415a63a35b2f3229dd0812a",
+      "embedUrl": "https://open.spotify.com/embed/track/68xVChLdqq19GB31tC4yXE",
+      "externalUrl": "https://open.spotify.com/track/68xVChLdqq19GB31tC4yXE",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "552bKr16XTYdsBktOoMxI9",
+      "uri": "spotify:track:552bKr16XTYdsBktOoMxI9",
+      "name": "Limbo",
+      "artists": [
+        "haruno",
+        "Tomggg"
+      ],
+      "album": "Limbo",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734eb2cb7ddadc6a23d76d73d7",
+      "embedUrl": "https://open.spotify.com/embed/track/552bKr16XTYdsBktOoMxI9",
+      "externalUrl": "https://open.spotify.com/track/552bKr16XTYdsBktOoMxI9",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3WTM6UengrBsByym3I96Ye",
+      "uri": "spotify:track:3WTM6UengrBsByym3I96Ye",
+      "name": "Tempo de sonhar (feat. kiki vivi lily)",
+      "artists": [
+        "Sweet William",
+        "kiki vivi lily"
+      ],
+      "album": "Brown",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27395c4ac08c6edbae647c03a53",
+      "embedUrl": "https://open.spotify.com/embed/track/3WTM6UengrBsByym3I96Ye",
+      "externalUrl": "https://open.spotify.com/track/3WTM6UengrBsByym3I96Ye",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3YYTC5pZvYktHqfxdfsDUC",
+      "uri": "spotify:track:3YYTC5pZvYktHqfxdfsDUC",
+      "name": "Sky Lady (feat. Jinmenusagi, Itto & Kiki vivi lily)",
+      "artists": [
+        "Sweet William",
+        "Jinmenusagi",
+        "Itto",
+        "kiki vivi lily"
+      ],
+      "album": "Arte Frasco",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c8ecbf53ebf80cd23eb21b2b",
+      "embedUrl": "https://open.spotify.com/embed/track/3YYTC5pZvYktHqfxdfsDUC",
+      "externalUrl": "https://open.spotify.com/track/3YYTC5pZvYktHqfxdfsDUC",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5b6ZcC3q855F3Sv1rV9jsF",
+      "uri": "spotify:track:5b6ZcC3q855F3Sv1rV9jsF",
+      "name": "Rainbow Town",
+      "artists": [
+        "SUKISHA",
+        "kiki vivi lily"
+      ],
+      "album": "Over the Rainbow",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736b47885923785a35b612be65",
+      "embedUrl": "https://open.spotify.com/embed/track/5b6ZcC3q855F3Sv1rV9jsF",
+      "externalUrl": "https://open.spotify.com/track/5b6ZcC3q855F3Sv1rV9jsF",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3GpGmLAJfHdqFATR9cHeb0",
+      "uri": "spotify:track:3GpGmLAJfHdqFATR9cHeb0",
+      "name": "いつもの (feat. ぜったくん)",
+      "artists": [
+        "SUKISHA",
+        "ZETTAKUN"
+      ],
+      "album": "Sketch Simply",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ada49fae2e001bbb818212a6",
+      "embedUrl": "https://open.spotify.com/embed/track/3GpGmLAJfHdqFATR9cHeb0",
+      "externalUrl": "https://open.spotify.com/track/3GpGmLAJfHdqFATR9cHeb0",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0RZQD2GMITqRWoJgb7Rqvb",
+      "uri": "spotify:track:0RZQD2GMITqRWoJgb7Rqvb",
+      "name": "Magic Spell (feat. kojikoji, ぜったくん & Kou-kei)",
+      "artists": [
+        "SUKISHA",
+        "kojikoji",
+        "ZETTAKUN",
+        "kou-kei"
+      ],
+      "album": "Kiss The Knowledge Knives",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27383e34d768358bec457488158",
+      "embedUrl": "https://open.spotify.com/embed/track/0RZQD2GMITqRWoJgb7Rqvb",
+      "externalUrl": "https://open.spotify.com/track/0RZQD2GMITqRWoJgb7Rqvb",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2pfmztjuoTSZrHQ2yXRura",
+      "uri": "spotify:track:2pfmztjuoTSZrHQ2yXRura",
+      "name": "味噌つけてキュウリ食べたい",
+      "artists": [
+        "ZETTAKUN"
+      ],
+      "album": "Bed in Wonderland",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27315119fc890b5200a2e9b9c6a",
+      "embedUrl": "https://open.spotify.com/embed/track/2pfmztjuoTSZrHQ2yXRura",
+      "externalUrl": "https://open.spotify.com/track/2pfmztjuoTSZrHQ2yXRura",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7iy5CzNNrpJD3i0hx8t83n",
+      "uri": "spotify:track:7iy5CzNNrpJD3i0hx8t83n",
+      "name": "99 Steps",
+      "artists": [
+        "STUTS",
+        "Kohjiya",
+        "Hana Hope"
+      ],
+      "album": "99 Steps",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27399900deb18102c9c54a0cc3c",
+      "embedUrl": "https://open.spotify.com/embed/track/7iy5CzNNrpJD3i0hx8t83n",
+      "externalUrl": "https://open.spotify.com/track/7iy5CzNNrpJD3i0hx8t83n",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6DEFsd0UlQMBzyHJR8IgGT",
+      "uri": "spotify:track:6DEFsd0UlQMBzyHJR8IgGT",
+      "name": "Here To Stay",
+      "artists": [
+        "Soulflex"
+      ],
+      "album": "Here To Stay",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27363b794562e629f6690facb31",
+      "embedUrl": "https://open.spotify.com/embed/track/6DEFsd0UlQMBzyHJR8IgGT",
+      "externalUrl": "https://open.spotify.com/track/6DEFsd0UlQMBzyHJR8IgGT",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0lu8u5v34pv4dY2NiShdQ6",
+      "uri": "spotify:track:0lu8u5v34pv4dY2NiShdQ6",
+      "name": "Refill",
+      "artists": [
+        "Soulflex"
+      ],
+      "album": "Refill",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27366f2843b5045decc92a34b90",
+      "embedUrl": "https://open.spotify.com/embed/track/0lu8u5v34pv4dY2NiShdQ6",
+      "externalUrl": "https://open.spotify.com/track/0lu8u5v34pv4dY2NiShdQ6",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4Zis7dn5e6yKSmYaqJ2xSY",
+      "uri": "spotify:track:4Zis7dn5e6yKSmYaqJ2xSY",
+      "name": "Someone Like You",
+      "artists": [
+        "Soulflex"
+      ],
+      "album": "Lucky / Someone Like You",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273358e8a9bf4f82dad0b128b8b",
+      "embedUrl": "https://open.spotify.com/embed/track/4Zis7dn5e6yKSmYaqJ2xSY",
+      "externalUrl": "https://open.spotify.com/track/4Zis7dn5e6yKSmYaqJ2xSY",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0iVfiCuwAvIvzyyOEFvZo5",
+      "uri": "spotify:track:0iVfiCuwAvIvzyyOEFvZo5",
+      "name": "Celebrate",
+      "artists": [
+        "Soulflex"
+      ],
+      "album": "More Vibrant",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273153bd10a63dac5318dd65cba",
+      "embedUrl": "https://open.spotify.com/embed/track/0iVfiCuwAvIvzyyOEFvZo5",
+      "externalUrl": "https://open.spotify.com/track/0iVfiCuwAvIvzyyOEFvZo5",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3H7HQHxLAqwy7vqwnnZPyc",
+      "uri": "spotify:track:3H7HQHxLAqwy7vqwnnZPyc",
+      "name": "Free Ya Mind",
+      "artists": [
+        "Soulflex"
+      ],
+      "album": "Collected (1)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b156db0936f5dd7456a79e74",
+      "embedUrl": "https://open.spotify.com/embed/track/3H7HQHxLAqwy7vqwnnZPyc",
+      "externalUrl": "https://open.spotify.com/track/3H7HQHxLAqwy7vqwnnZPyc",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3aXVk1lC2fnyNMsJIxzFjg",
+      "uri": "spotify:track:3aXVk1lC2fnyNMsJIxzFjg",
+      "name": "Routine",
+      "artists": [
+        "ケンチンミン",
+        "tubakiii"
+      ],
+      "album": "Chilly Source Compile Vol.1",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e43d199b619be56d2c3630fb",
+      "embedUrl": "https://open.spotify.com/embed/track/3aXVk1lC2fnyNMsJIxzFjg",
+      "externalUrl": "https://open.spotify.com/track/3aXVk1lC2fnyNMsJIxzFjg",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4r8kFMelMJ6cGVy6J0LgDU",
+      "uri": "spotify:track:4r8kFMelMJ6cGVy6J0LgDU",
+      "name": "Touhikou -逃避行- (feat. 906 / Nine-O-Six)",
+      "artists": [
+        "ケンチンミン",
+        "906 / Nine-O-Six"
+      ],
+      "album": "Touhikou -逃避行- (feat. 906 / Nine-O-Six)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2733e795d47a264bde86f549ec6",
+      "embedUrl": "https://open.spotify.com/embed/track/4r8kFMelMJ6cGVy6J0LgDU",
+      "externalUrl": "https://open.spotify.com/track/4r8kFMelMJ6cGVy6J0LgDU",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7KPVMmDcmsqpYScSwI7ICz",
+      "uri": "spotify:track:7KPVMmDcmsqpYScSwI7ICz",
+      "name": "とける [feat. Baby T-Rex] - Remix",
+      "artists": [
+        "ケンチンミン",
+        "illmore",
+        "Baby T-Rex"
+      ],
+      "album": "UNITED",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736d791d04b0b193e4929cce85",
+      "embedUrl": "https://open.spotify.com/embed/track/7KPVMmDcmsqpYScSwI7ICz",
+      "externalUrl": "https://open.spotify.com/track/7KPVMmDcmsqpYScSwI7ICz",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0N8Xztr4pBHJ7V0moJWhbO",
+      "uri": "spotify:track:0N8Xztr4pBHJ7V0moJWhbO",
+      "name": "愛を伝えたいだとか",
+      "artists": [
+        "Aimyon"
+      ],
+      "album": "青春のエキサイトメント",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27333c05e1d08fec494a30bd240",
+      "embedUrl": "https://open.spotify.com/embed/track/0N8Xztr4pBHJ7V0moJWhbO",
+      "externalUrl": "https://open.spotify.com/track/0N8Xztr4pBHJ7V0moJWhbO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2cKiHG16JBiqHdi7Llq0r7",
+      "uri": "spotify:track:2cKiHG16JBiqHdi7Llq0r7",
+      "name": "マリーゴールド",
+      "artists": [
+        "Aimyon"
+      ],
+      "album": "瞬間的シックスセンス",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c12d785df5dbf2b15ec49504",
+      "embedUrl": "https://open.spotify.com/embed/track/2cKiHG16JBiqHdi7Llq0r7",
+      "externalUrl": "https://open.spotify.com/track/2cKiHG16JBiqHdi7Llq0r7",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "59eluCMn0XbOWqeWQ91FTM",
+      "uri": "spotify:track:59eluCMn0XbOWqeWQ91FTM",
+      "name": "君はロックを聴かない",
+      "artists": [
+        "Aimyon"
+      ],
+      "album": "青春のエキサイトメント",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27333c05e1d08fec494a30bd240",
+      "embedUrl": "https://open.spotify.com/embed/track/59eluCMn0XbOWqeWQ91FTM",
+      "externalUrl": "https://open.spotify.com/track/59eluCMn0XbOWqeWQ91FTM",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3xSuGh3Ptysc3c6RKHMN2y",
+      "uri": "spotify:track:3xSuGh3Ptysc3c6RKHMN2y",
+      "name": "ピエロチック",
+      "artists": [
+        "Yu Sakai",
+        "Motohiro Hata"
+      ],
+      "album": "Coming Up Roses",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273790701a96c8ae1927e491f04",
+      "embedUrl": "https://open.spotify.com/embed/track/3xSuGh3Ptysc3c6RKHMN2y",
+      "externalUrl": "https://open.spotify.com/track/3xSuGh3Ptysc3c6RKHMN2y",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6z80imotdvWel8MBzCZJhw",
+      "uri": "spotify:track:6z80imotdvWel8MBzCZJhw",
+      "name": "プラスティック・ラブ",
+      "artists": [
+        "Yu Sakai",
+        "Kan Sano"
+      ],
+      "album": "CITY POP LOVERS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dc2ca08a274e4d967fada14c",
+      "embedUrl": "https://open.spotify.com/embed/track/6z80imotdvWel8MBzCZJhw",
+      "externalUrl": "https://open.spotify.com/track/6z80imotdvWel8MBzCZJhw",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7Mcc9ALtE88f2l34kkyVG6",
+      "uri": "spotify:track:7Mcc9ALtE88f2l34kkyVG6",
+      "name": "薔薇とローズ",
+      "artists": [
+        "Yu Sakai"
+      ],
+      "album": "Coming Up Roses",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273790701a96c8ae1927e491f04",
+      "embedUrl": "https://open.spotify.com/embed/track/7Mcc9ALtE88f2l34kkyVG6",
+      "externalUrl": "https://open.spotify.com/track/7Mcc9ALtE88f2l34kkyVG6",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3uOaQ3wJVAghg5YB7jWCuU",
+      "uri": "spotify:track:3uOaQ3wJVAghg5YB7jWCuU",
+      "name": "Get it together",
+      "artists": [
+        "Yu Sakai",
+        "Michael Kaneko",
+        "レイ・パーカーJr."
+      ],
+      "album": "Yu Are Something",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273606f7e8e4d31dddb0ec35bae",
+      "embedUrl": "https://open.spotify.com/embed/track/3uOaQ3wJVAghg5YB7jWCuU",
+      "externalUrl": "https://open.spotify.com/track/3uOaQ3wJVAghg5YB7jWCuU",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2GGyfG8DBQEqoDOZyAaT6Z",
+      "uri": "spotify:track:2GGyfG8DBQEqoDOZyAaT6Z",
+      "name": "靴下 (feat. kojikoji)",
+      "artists": [
+        "FARMHOUSE",
+        "kojikoji"
+      ],
+      "album": "Paddle",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27307899b3f5f9fb04fcf1c8eae",
+      "embedUrl": "https://open.spotify.com/embed/track/2GGyfG8DBQEqoDOZyAaT6Z",
+      "externalUrl": "https://open.spotify.com/track/2GGyfG8DBQEqoDOZyAaT6Z",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3b2frYNSBci8eM85TYbLUj",
+      "uri": "spotify:track:3b2frYNSBci8eM85TYbLUj",
+      "name": "表情筋",
+      "artists": [
+        "SUKISHA",
+        "kojikoji"
+      ],
+      "album": "表情筋",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27322da7ac032d526522cba0362",
+      "embedUrl": "https://open.spotify.com/embed/track/3b2frYNSBci8eM85TYbLUj",
+      "externalUrl": "https://open.spotify.com/track/3b2frYNSBci8eM85TYbLUj",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3F3ND4kdC19c5n08haZHnk",
+      "uri": "spotify:track:3F3ND4kdC19c5n08haZHnk",
+      "name": "CAREFREE",
+      "artists": [
+        "lo-key design",
+        "kojikoji"
+      ],
+      "album": "DESIGN",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738f6c32bbaaa3a8fff43cbe5b",
+      "embedUrl": "https://open.spotify.com/embed/track/3F3ND4kdC19c5n08haZHnk",
+      "externalUrl": "https://open.spotify.com/track/3F3ND4kdC19c5n08haZHnk",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1aUyijECvtZPFcgdiCq5rH",
+      "uri": "spotify:track:1aUyijECvtZPFcgdiCq5rH",
+      "name": "帰り道 (feat. kojikoji)",
+      "artists": [
+        "Hiplin",
+        "kojikoji"
+      ],
+      "album": "CHOKING",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739f602e87e76a30eba4978ef8",
+      "embedUrl": "https://open.spotify.com/embed/track/1aUyijECvtZPFcgdiCq5rH",
+      "externalUrl": "https://open.spotify.com/track/1aUyijECvtZPFcgdiCq5rH",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6zGqaIqHgvWTzzlOE72xp6",
+      "uri": "spotify:track:6zGqaIqHgvWTzzlOE72xp6",
+      "name": "PRISM",
+      "artists": [
+        "Friday Night Plans",
+        "JJJ",
+        "STUTS"
+      ],
+      "album": "PRISM",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27304eef2292b3c72d7d03b6e57",
+      "embedUrl": "https://open.spotify.com/embed/track/6zGqaIqHgvWTzzlOE72xp6",
+      "externalUrl": "https://open.spotify.com/track/6zGqaIqHgvWTzzlOE72xp6",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2qxTmEfGbBGMSJrwu4Ez1v",
+      "uri": "spotify:track:2qxTmEfGbBGMSJrwu4Ez1v",
+      "name": "Plastic Love",
+      "artists": [
+        "Friday Night Plans"
+      ],
+      "album": "Plastic Love",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e1751c9aee471a40f86601d7",
+      "embedUrl": "https://open.spotify.com/embed/track/2qxTmEfGbBGMSJrwu4Ez1v",
+      "externalUrl": "https://open.spotify.com/track/2qxTmEfGbBGMSJrwu4Ez1v",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "77azg0CqdGqD9016ZF9jBO",
+      "uri": "spotify:track:77azg0CqdGqD9016ZF9jBO",
+      "name": "HONDA",
+      "artists": [
+        "Friday Night Plans"
+      ],
+      "album": "HONDA",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738126f495112a2142fc0e90c8",
+      "embedUrl": "https://open.spotify.com/embed/track/77azg0CqdGqD9016ZF9jBO",
+      "externalUrl": "https://open.spotify.com/track/77azg0CqdGqD9016ZF9jBO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4tA1O7QcsMk7eo2F04hVIa",
+      "uri": "spotify:track:4tA1O7QcsMk7eo2F04hVIa",
+      "name": "That was one small step for you.",
+      "artists": [
+        "Friday Night Plans"
+      ],
+      "album": "LOCATION - Los Angeles",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27306049eff0ad51f9b07df9d1b",
+      "embedUrl": "https://open.spotify.com/embed/track/4tA1O7QcsMk7eo2F04hVIa",
+      "externalUrl": "https://open.spotify.com/track/4tA1O7QcsMk7eo2F04hVIa",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6hVDjNzsechvfAkRDkNYRn",
+      "uri": "spotify:track:6hVDjNzsechvfAkRDkNYRn",
+      "name": "Meet us in the park we used to play.",
+      "artists": [
+        "Friday Night Plans"
+      ],
+      "album": "LOCATION - Los Angeles",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27306049eff0ad51f9b07df9d1b",
+      "embedUrl": "https://open.spotify.com/embed/track/6hVDjNzsechvfAkRDkNYRn",
+      "externalUrl": "https://open.spotify.com/track/6hVDjNzsechvfAkRDkNYRn",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7zBjKO6CGdnCbd1EPyianB",
+      "uri": "spotify:track:7zBjKO6CGdnCbd1EPyianB",
+      "name": "Balloon",
+      "artists": [
+        "chelmico"
+      ],
+      "album": "Fishing",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730f6e89f0b6a232df80c8bf87",
+      "embedUrl": "https://open.spotify.com/embed/track/7zBjKO6CGdnCbd1EPyianB",
+      "externalUrl": "https://open.spotify.com/track/7zBjKO6CGdnCbd1EPyianB",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "17JZ5WJ1XZfAMmI1s1OGB0",
+      "uri": "spotify:track:17JZ5WJ1XZfAMmI1s1OGB0",
+      "name": "Disco (Bad dance doesn't matter)",
+      "artists": [
+        "chelmico"
+      ],
+      "album": "maze",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27390d6c206526883f7644ad498",
+      "embedUrl": "https://open.spotify.com/embed/track/17JZ5WJ1XZfAMmI1s1OGB0",
+      "externalUrl": "https://open.spotify.com/track/17JZ5WJ1XZfAMmI1s1OGB0",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3wDaaRp1lnPTveSW5ti6ci",
+      "uri": "spotify:track:3wDaaRp1lnPTveSW5ti6ci",
+      "name": "あの子とダンス (feat. chelmico)",
+      "artists": [
+        "Mega Shinnosuke",
+        "chelmico"
+      ],
+      "album": "君にモテたいっ!!",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a246387d197259f3d92c2d82",
+      "embedUrl": "https://open.spotify.com/embed/track/3wDaaRp1lnPTveSW5ti6ci",
+      "externalUrl": "https://open.spotify.com/track/3wDaaRp1lnPTveSW5ti6ci",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4G8VYP3HTnU7fWLoTF77VI",
+      "uri": "spotify:track:4G8VYP3HTnU7fWLoTF77VI",
+      "name": "Smile in your face",
+      "artists": [
+        "松本千夏",
+        "LITTLE"
+      ],
+      "album": "Smile in your face",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d93b77da746db780b6f83e43",
+      "embedUrl": "https://open.spotify.com/embed/track/4G8VYP3HTnU7fWLoTF77VI",
+      "externalUrl": "https://open.spotify.com/track/4G8VYP3HTnU7fWLoTF77VI",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "02KiwJs7p6AV7nw3dtIPf1",
+      "uri": "spotify:track:02KiwJs7p6AV7nw3dtIPf1",
+      "name": "KEMURI",
+      "artists": [
+        "松本千夏"
+      ],
+      "album": "KEMURI",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273351386ed4000dd30bc62fb19",
+      "embedUrl": "https://open.spotify.com/embed/track/02KiwJs7p6AV7nw3dtIPf1",
+      "externalUrl": "https://open.spotify.com/track/02KiwJs7p6AV7nw3dtIPf1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "48jONNIfgZWK4nOs729a8S",
+      "uri": "spotify:track:48jONNIfgZWK4nOs729a8S",
+      "name": "僕らのまま",
+      "artists": [
+        "悠馬",
+        "松本千夏"
+      ],
+      "album": "僕らのまま",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731df4b283ba3bce46e6d76d0e",
+      "embedUrl": "https://open.spotify.com/embed/track/48jONNIfgZWK4nOs729a8S",
+      "externalUrl": "https://open.spotify.com/track/48jONNIfgZWK4nOs729a8S",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4WQMQkNCcP4rXXBRisNISt",
+      "uri": "spotify:track:4WQMQkNCcP4rXXBRisNISt",
+      "name": "ゆーえんみ",
+      "artists": [
+        "松本千夏",
+        "Eito"
+      ],
+      "album": "ゆーえんみ",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730f6ca46e524e17f85f4d45f9",
+      "embedUrl": "https://open.spotify.com/embed/track/4WQMQkNCcP4rXXBRisNISt",
+      "externalUrl": "https://open.spotify.com/track/4WQMQkNCcP4rXXBRisNISt",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5HjD7jSdcc6ms2ZIsr8d37",
+      "uri": "spotify:track:5HjD7jSdcc6ms2ZIsr8d37",
+      "name": "またね - feat.松本千夏",
+      "artists": [
+        "Eito",
+        "松本千夏"
+      ],
+      "album": "香水",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738c619e91247463929b384517",
+      "embedUrl": "https://open.spotify.com/embed/track/5HjD7jSdcc6ms2ZIsr8d37",
+      "externalUrl": "https://open.spotify.com/track/5HjD7jSdcc6ms2ZIsr8d37",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "33nIzZp7S7ok3sx7DDyvng",
+      "uri": "spotify:track:33nIzZp7S7ok3sx7DDyvng",
+      "name": "ALRIGHT",
+      "artists": [
+        "竹内アンナ"
+      ],
+      "album": "MATOUSIC",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aae29105d831cbd370311757",
+      "embedUrl": "https://open.spotify.com/embed/track/33nIzZp7S7ok3sx7DDyvng",
+      "externalUrl": "https://open.spotify.com/track/33nIzZp7S7ok3sx7DDyvng",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0vfw1sfabMSJu1LN90M5s8",
+      "uri": "spotify:track:0vfw1sfabMSJu1LN90M5s8",
+      "name": "TOKYO NITE",
+      "artists": [
+        "竹内アンナ"
+      ],
+      "album": "MATOUSIC",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aae29105d831cbd370311757",
+      "embedUrl": "https://open.spotify.com/embed/track/0vfw1sfabMSJu1LN90M5s8",
+      "externalUrl": "https://open.spotify.com/track/0vfw1sfabMSJu1LN90M5s8",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0rxKaQfoP9nfHNSThbrHHM",
+      "uri": "spotify:track:0rxKaQfoP9nfHNSThbrHHM",
+      "name": "adabana midnight",
+      "artists": [
+        "竹内アンナ"
+      ],
+      "album": "adabana midnight",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273003c1b5ac0110074e32fa86a",
+      "embedUrl": "https://open.spotify.com/embed/track/0rxKaQfoP9nfHNSThbrHHM",
+      "externalUrl": "https://open.spotify.com/track/0rxKaQfoP9nfHNSThbrHHM",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2O2X3qSmsS94ERvoOQyfiv",
+      "uri": "spotify:track:2O2X3qSmsS94ERvoOQyfiv",
+      "name": "SUNKISSed GIRL",
+      "artists": [
+        "竹内アンナ"
+      ],
+      "album": "MATOUSIC",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aae29105d831cbd370311757",
+      "embedUrl": "https://open.spotify.com/embed/track/2O2X3qSmsS94ERvoOQyfiv",
+      "externalUrl": "https://open.spotify.com/track/2O2X3qSmsS94ERvoOQyfiv",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5LlgHUCQ4pd4m1diX5NGah",
+      "uri": "spotify:track:5LlgHUCQ4pd4m1diX5NGah",
+      "name": "RIDE ON WEEKEND",
+      "artists": [
+        "竹内アンナ"
+      ],
+      "album": "MATOUSIC",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aae29105d831cbd370311757",
+      "embedUrl": "https://open.spotify.com/embed/track/5LlgHUCQ4pd4m1diX5NGah",
+      "externalUrl": "https://open.spotify.com/track/5LlgHUCQ4pd4m1diX5NGah",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1EfPleE2AT7pvxpvFYIlIO",
+      "uri": "spotify:track:1EfPleE2AT7pvxpvFYIlIO",
+      "name": "Life Is Good",
+      "artists": [
+        "DENIMS"
+      ],
+      "album": "ugly beauty",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273be0064eb7c791090fe77a5cf",
+      "embedUrl": "https://open.spotify.com/embed/track/1EfPleE2AT7pvxpvFYIlIO",
+      "externalUrl": "https://open.spotify.com/track/1EfPleE2AT7pvxpvFYIlIO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1PfhYPRfrcvD5dXYx2RN4n",
+      "uri": "spotify:track:1PfhYPRfrcvD5dXYx2RN4n",
+      "name": "fools",
+      "artists": [
+        "DENIMS"
+      ],
+      "album": "DENIMS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27312452c04478181696039f774",
+      "embedUrl": "https://open.spotify.com/embed/track/1PfhYPRfrcvD5dXYx2RN4n",
+      "externalUrl": "https://open.spotify.com/track/1PfhYPRfrcvD5dXYx2RN4n",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3b9EH8oX1kBNwqQ1QMSTRR",
+      "uri": "spotify:track:3b9EH8oX1kBNwqQ1QMSTRR",
+      "name": "BENNY",
+      "artists": [
+        "DENIMS"
+      ],
+      "album": "Daily use",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27317a755a82097767c7b69d118",
+      "embedUrl": "https://open.spotify.com/embed/track/3b9EH8oX1kBNwqQ1QMSTRR",
+      "externalUrl": "https://open.spotify.com/track/3b9EH8oX1kBNwqQ1QMSTRR",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "74izDIlS396ZKEuN87Lksu",
+      "uri": "spotify:track:74izDIlS396ZKEuN87Lksu",
+      "name": "ゆるりゆらり",
+      "artists": [
+        "DENIMS"
+      ],
+      "album": "DENIMS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27312452c04478181696039f774",
+      "embedUrl": "https://open.spotify.com/embed/track/74izDIlS396ZKEuN87Lksu",
+      "externalUrl": "https://open.spotify.com/track/74izDIlS396ZKEuN87Lksu",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5VfkYtVseqjlPDUTxqEzs1",
+      "uri": "spotify:track:5VfkYtVseqjlPDUTxqEzs1",
+      "name": "おかしなやつばかり",
+      "artists": [
+        "DENIMS"
+      ],
+      "album": "おかしなやつばかり",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cfb76f2be37b07567a644d32",
+      "embedUrl": "https://open.spotify.com/embed/track/5VfkYtVseqjlPDUTxqEzs1",
+      "externalUrl": "https://open.spotify.com/track/5VfkYtVseqjlPDUTxqEzs1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5qKkgFi8IBOb6mnbRmg4XG",
+      "uri": "spotify:track:5qKkgFi8IBOb6mnbRmg4XG",
+      "name": "見えない糸 - STUTS remix",
+      "artists": [
+        "Mizuki Ohira",
+        "STUTS"
+      ],
+      "album": "見えない糸 (STUTS remix)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273350e552aa23d03ec2edfab40",
+      "embedUrl": "https://open.spotify.com/embed/track/5qKkgFi8IBOb6mnbRmg4XG",
+      "externalUrl": "https://open.spotify.com/track/5qKkgFi8IBOb6mnbRmg4XG",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6fJqJnmVyFGmzFM6itz7DJ",
+      "uri": "spotify:track:6fJqJnmVyFGmzFM6itz7DJ",
+      "name": "いかれたBABY",
+      "artists": [
+        "Mizuki Ohira"
+      ],
+      "album": "IN ANY WAY",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2733ff5e49880e0732bba984d5c",
+      "embedUrl": "https://open.spotify.com/embed/track/6fJqJnmVyFGmzFM6itz7DJ",
+      "externalUrl": "https://open.spotify.com/track/6fJqJnmVyFGmzFM6itz7DJ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "62xbtDS7WL2thS0NPDQwrR",
+      "uri": "spotify:track:62xbtDS7WL2thS0NPDQwrR",
+      "name": "アロエの花",
+      "artists": [
+        "Mizuki Ohira"
+      ],
+      "album": "アロエの花",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736aa5a0afa26eab8645ab7b03",
+      "embedUrl": "https://open.spotify.com/embed/track/62xbtDS7WL2thS0NPDQwrR",
+      "externalUrl": "https://open.spotify.com/track/62xbtDS7WL2thS0NPDQwrR",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4NriLHKb6i56n3AK5xseMm",
+      "uri": "spotify:track:4NriLHKb6i56n3AK5xseMm",
+      "name": "幻じゃない海辺",
+      "artists": [
+        "DJ HASEBE",
+        "大比良瑞希",
+        "KEISUKE SAITO"
+      ],
+      "album": "幻じゃない海辺",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735a6a79249ea9c0858f66b9b7",
+      "embedUrl": "https://open.spotify.com/embed/track/4NriLHKb6i56n3AK5xseMm",
+      "externalUrl": "https://open.spotify.com/track/4NriLHKb6i56n3AK5xseMm",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "60k1ZuVrHdHdJcpxhKpQvr",
+      "uri": "spotify:track:60k1ZuVrHdHdJcpxhKpQvr",
+      "name": "ドンセイグッバイ",
+      "artists": [
+        "Tavito Nanao",
+        "Mizuki Ohira"
+      ],
+      "album": "Long Voyage",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273947f6b9216960d53aecf2613",
+      "embedUrl": "https://open.spotify.com/embed/track/60k1ZuVrHdHdJcpxhKpQvr",
+      "externalUrl": "https://open.spotify.com/track/60k1ZuVrHdHdJcpxhKpQvr",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1mJxoz6ErtRhtkZHVgOuK6",
+      "uri": "spotify:track:1mJxoz6ErtRhtkZHVgOuK6",
+      "name": "NEW ERA",
+      "artists": [
+        "Nulbarich"
+      ],
+      "album": "Guess Who?",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273066729767e2afbcce14f1d71",
+      "embedUrl": "https://open.spotify.com/embed/track/1mJxoz6ErtRhtkZHVgOuK6",
+      "externalUrl": "https://open.spotify.com/track/1mJxoz6ErtRhtkZHVgOuK6",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7E0HrAjY5imdytUxy8Nerf",
+      "uri": "spotify:track:7E0HrAjY5imdytUxy8Nerf",
+      "name": "Sweet and Sour",
+      "artists": [
+        "Nulbarich"
+      ],
+      "album": "Blank Envelope",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735d28c672a681a9ea04eb0872",
+      "embedUrl": "https://open.spotify.com/embed/track/7E0HrAjY5imdytUxy8Nerf",
+      "externalUrl": "https://open.spotify.com/track/7E0HrAjY5imdytUxy8Nerf",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6DqmRsI9FxY5OR6yFo3QR1",
+      "uri": "spotify:track:6DqmRsI9FxY5OR6yFo3QR1",
+      "name": "ASH feat. Vaundy",
+      "artists": [
+        "Nulbarich",
+        "Vaundy"
+      ],
+      "album": "ASH feat. Vaundy",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a55f057576f0aac3fadf49ce",
+      "embedUrl": "https://open.spotify.com/embed/track/6DqmRsI9FxY5OR6yFo3QR1",
+      "externalUrl": "https://open.spotify.com/track/6DqmRsI9FxY5OR6yFo3QR1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0q7srV6oZ46Xyp5LZS80Jr",
+      "uri": "spotify:track:0q7srV6oZ46Xyp5LZS80Jr",
+      "name": "MINT",
+      "artists": [
+        "Suchmos"
+      ],
+      "album": "THE KIDS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27367d40a85b18ed1694d96e16b",
+      "embedUrl": "https://open.spotify.com/embed/track/0q7srV6oZ46Xyp5LZS80Jr",
+      "externalUrl": "https://open.spotify.com/track/0q7srV6oZ46Xyp5LZS80Jr",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1KKc8f9ZiKFzOeRJJ3SYn7",
+      "uri": "spotify:track:1KKc8f9ZiKFzOeRJJ3SYn7",
+      "name": "STAY TUNE",
+      "artists": [
+        "Suchmos"
+      ],
+      "album": "THE KIDS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27367d40a85b18ed1694d96e16b",
+      "embedUrl": "https://open.spotify.com/embed/track/1KKc8f9ZiKFzOeRJJ3SYn7",
+      "externalUrl": "https://open.spotify.com/track/1KKc8f9ZiKFzOeRJJ3SYn7",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2ODmHzrO4q7EmW3ZFv1wD3",
+      "uri": "spotify:track:2ODmHzrO4q7EmW3ZFv1wD3",
+      "name": "Life Easy",
+      "artists": [
+        "Suchmos"
+      ],
+      "album": "Essence",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273405d1b446ce181a31bbabd8d",
+      "embedUrl": "https://open.spotify.com/embed/track/2ODmHzrO4q7EmW3ZFv1wD3",
+      "externalUrl": "https://open.spotify.com/track/2ODmHzrO4q7EmW3ZFv1wD3",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6w3QGOV54PA8hsbFFD6FmJ",
+      "uri": "spotify:track:6w3QGOV54PA8hsbFFD6FmJ",
+      "name": "エイリアンズ",
+      "artists": [
+        "BREIMEN"
+      ],
+      "album": "エイリアンズ",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27330087fbe75c32a800f7f770e",
+      "embedUrl": "https://open.spotify.com/embed/track/6w3QGOV54PA8hsbFFD6FmJ",
+      "externalUrl": "https://open.spotify.com/track/6w3QGOV54PA8hsbFFD6FmJ",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0Pb3bfWWVklhjwYOeZd4WV",
+      "uri": "spotify:track:0Pb3bfWWVklhjwYOeZd4WV",
+      "name": "棒人間",
+      "artists": [
+        "BREIMEN"
+      ],
+      "album": "TITY",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734b9e744be811e65f1373dff8",
+      "embedUrl": "https://open.spotify.com/embed/track/0Pb3bfWWVklhjwYOeZd4WV",
+      "externalUrl": "https://open.spotify.com/track/0Pb3bfWWVklhjwYOeZd4WV",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5nXb09reEw4Iat5wLkSgaU",
+      "uri": "spotify:track:5nXb09reEw4Iat5wLkSgaU",
+      "name": "IDEN",
+      "artists": [
+        "BREIMEN",
+        "AAAMYYY"
+      ],
+      "album": "TITY",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734b9e744be811e65f1373dff8",
+      "embedUrl": "https://open.spotify.com/embed/track/5nXb09reEw4Iat5wLkSgaU",
+      "externalUrl": "https://open.spotify.com/track/5nXb09reEw4Iat5wLkSgaU",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6Y6cPGEbfR5Pnhc684cztG",
+      "uri": "spotify:track:6Y6cPGEbfR5Pnhc684cztG",
+      "name": "合図 EYES 合図",
+      "artists": [
+        "XinU"
+      ],
+      "album": "XinU EP #02",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273353c7bd16d864a08b8c9aa42",
+      "embedUrl": "https://open.spotify.com/embed/track/6Y6cPGEbfR5Pnhc684cztG",
+      "externalUrl": "https://open.spotify.com/track/6Y6cPGEbfR5Pnhc684cztG",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1BsQwhwVGNnCNni42IL3X0",
+      "uri": "spotify:track:1BsQwhwVGNnCNni42IL3X0",
+      "name": "オモイオモワレ",
+      "artists": [
+        "XinU"
+      ],
+      "album": "XinU",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737f07f03a3ca67a7a8df75d0a",
+      "embedUrl": "https://open.spotify.com/embed/track/1BsQwhwVGNnCNni42IL3X0",
+      "externalUrl": "https://open.spotify.com/track/1BsQwhwVGNnCNni42IL3X0",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1bLf1IKQPmCxsOvpzbq0tV",
+      "uri": "spotify:track:1bLf1IKQPmCxsOvpzbq0tV",
+      "name": "鼓動",
+      "artists": [
+        "XinU"
+      ],
+      "album": "XinU",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737f07f03a3ca67a7a8df75d0a",
+      "embedUrl": "https://open.spotify.com/embed/track/1bLf1IKQPmCxsOvpzbq0tV",
+      "externalUrl": "https://open.spotify.com/track/1bLf1IKQPmCxsOvpzbq0tV",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4WV6zSmQVMmgSAaY9M5bVE",
+      "uri": "spotify:track:4WV6zSmQVMmgSAaY9M5bVE",
+      "name": "LONGINESS REMIX",
+      "artists": [
+        "SugLawd Familiar",
+        "CHICO CARLITO",
+        "Awich"
+      ],
+      "album": "LONGINESS REMIX",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273eda9b13f562d5bca95b91410",
+      "embedUrl": "https://open.spotify.com/embed/track/4WV6zSmQVMmgSAaY9M5bVE",
+      "externalUrl": "https://open.spotify.com/track/4WV6zSmQVMmgSAaY9M5bVE",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7zhLO6LWXtQ2RwP4y2buoc",
+      "uri": "spotify:track:7zhLO6LWXtQ2RwP4y2buoc",
+      "name": "琉球愛歌 Remix",
+      "artists": [
+        "Awich"
+      ],
+      "album": "098RADIO vol.1 Hosted by Awich",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737eca0a952a35b51d100c081e",
+      "embedUrl": "https://open.spotify.com/embed/track/7zhLO6LWXtQ2RwP4y2buoc",
+      "externalUrl": "https://open.spotify.com/track/7zhLO6LWXtQ2RwP4y2buoc",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7qU0zH4eG1f6JZolLL6kjw",
+      "uri": "spotify:track:7qU0zH4eG1f6JZolLL6kjw",
+      "name": "好きなこと - Remix",
+      "artists": [
+        "柊人",
+        "Awich",
+        "Chouji"
+      ],
+      "album": "098RADIO vol.2 Hosted by Awich",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736117cbc292758db2f3df3dc3",
+      "embedUrl": "https://open.spotify.com/embed/track/7qU0zH4eG1f6JZolLL6kjw",
+      "externalUrl": "https://open.spotify.com/track/7qU0zH4eG1f6JZolLL6kjw",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "50NVtluqajoreBzbFxyz2A",
+      "uri": "spotify:track:50NVtluqajoreBzbFxyz2A",
+      "name": "Balmy Life",
+      "artists": [
+        "Kroi"
+      ],
+      "album": "LENS",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27379ea61604fc15fc7a78f7fb1",
+      "embedUrl": "https://open.spotify.com/embed/track/50NVtluqajoreBzbFxyz2A",
+      "externalUrl": "https://open.spotify.com/track/50NVtluqajoreBzbFxyz2A",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0s6mBYmLTyuvWQss0wvtAC",
+      "uri": "spotify:track:0s6mBYmLTyuvWQss0wvtAC",
+      "name": "熱海",
+      "artists": [
+        "Kroi"
+      ],
+      "album": "telegraph",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27383496079c6585760de3f010a",
+      "embedUrl": "https://open.spotify.com/embed/track/0s6mBYmLTyuvWQss0wvtAC",
+      "externalUrl": "https://open.spotify.com/track/0s6mBYmLTyuvWQss0wvtAC",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "66jkuSubbkHhSRPl6ye5RN",
+      "uri": "spotify:track:66jkuSubbkHhSRPl6ye5RN",
+      "name": "Network",
+      "artists": [
+        "Kroi"
+      ],
+      "album": "Network",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cc24eb849cc6258429ee7a9f",
+      "embedUrl": "https://open.spotify.com/embed/track/66jkuSubbkHhSRPl6ye5RN",
+      "externalUrl": "https://open.spotify.com/track/66jkuSubbkHhSRPl6ye5RN",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0cRkX9lHRJWIAAu4uDvahI",
+      "uri": "spotify:track:0cRkX9lHRJWIAAu4uDvahI",
+      "name": "HAZE",
+      "artists": [
+        "Kroi"
+      ],
+      "album": "HAZE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27365205c0b7409fbe5dbd0e9c0",
+      "embedUrl": "https://open.spotify.com/embed/track/0cRkX9lHRJWIAAu4uDvahI",
+      "externalUrl": "https://open.spotify.com/track/0cRkX9lHRJWIAAu4uDvahI",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "6xQlyfluHpsywky6j6VXDl",
+      "uri": "spotify:track:6xQlyfluHpsywky6j6VXDl",
+      "name": "Fire Brain",
+      "artists": [
+        "Kroi"
+      ],
+      "album": "Fire Brain",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349cd2ab96e75716019898e47",
+      "embedUrl": "https://open.spotify.com/embed/track/6xQlyfluHpsywky6j6VXDl",
+      "externalUrl": "https://open.spotify.com/track/6xQlyfluHpsywky6j6VXDl",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "095Hfo6p9OEX2rYUsbmAtu",
+      "uri": "spotify:track:095Hfo6p9OEX2rYUsbmAtu",
+      "name": "Nothing",
+      "artists": [
+        "WONK"
+      ],
+      "album": "EYES",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273328814a6935da0368a3303ab",
+      "embedUrl": "https://open.spotify.com/embed/track/095Hfo6p9OEX2rYUsbmAtu",
+      "externalUrl": "https://open.spotify.com/track/095Hfo6p9OEX2rYUsbmAtu",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7y70SOyBi1iQK0c4B0pqNM",
+      "uri": "spotify:track:7y70SOyBi1iQK0c4B0pqNM",
+      "name": "Umbrella",
+      "artists": [
+        "WONK"
+      ],
+      "album": "artless",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273db3efdfae0662e724973e57c",
+      "embedUrl": "https://open.spotify.com/embed/track/7y70SOyBi1iQK0c4B0pqNM",
+      "externalUrl": "https://open.spotify.com/track/7y70SOyBi1iQK0c4B0pqNM",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5zFVf5N47rMPLuq7vvc5S1",
+      "uri": "spotify:track:5zFVf5N47rMPLuq7vvc5S1",
+      "name": "MAP for LOVE",
+      "artists": [
+        "Tomita Lab.",
+        "KENTO NAGATSUKA (WONK)",
+        "WONK",
+        "Maaya Sakamoto",
+        "長岡亮介",
+        "Petrolz",
+        "Naz",
+        "bird",
+        "Sakura Fujiwara",
+        "Yasuyuki Horigome"
+      ],
+      "album": "MAP for LOVE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273bfe4d4d87d6ea51c8daf0a14",
+      "embedUrl": "https://open.spotify.com/embed/track/5zFVf5N47rMPLuq7vvc5S1",
+      "externalUrl": "https://open.spotify.com/track/5zFVf5N47rMPLuq7vvc5S1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5faiz7Vs6OVJOGaHizHd63",
+      "uri": "spotify:track:5faiz7Vs6OVJOGaHizHd63",
+      "name": "マジックアワー",
+      "artists": [
+        "STUTS",
+        "BIM",
+        "RYO-Z"
+      ],
+      "album": "マジックアワー",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d1dd420bc32d6799a8939499",
+      "embedUrl": "https://open.spotify.com/embed/track/5faiz7Vs6OVJOGaHizHd63",
+      "externalUrl": "https://open.spotify.com/track/5faiz7Vs6OVJOGaHizHd63",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3SPoYmmSbA5wnAksRWFKEr",
+      "uri": "spotify:track:3SPoYmmSbA5wnAksRWFKEr",
+      "name": "Presence Remix",
+      "artists": [
+        "STUTS",
+        "Takako Matsu",
+        "T-Pablow",
+        "Daichi Yamamoto",
+        "NENE",
+        "BIM",
+        "KID FRESINO",
+        "3exes"
+      ],
+      "album": "Presence",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739d3c17cc3bdb8115f782f621",
+      "embedUrl": "https://open.spotify.com/embed/track/3SPoYmmSbA5wnAksRWFKEr",
+      "externalUrl": "https://open.spotify.com/track/3SPoYmmSbA5wnAksRWFKEr",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3nji4a0gqCYi1HgYi00GVn",
+      "uri": "spotify:track:3nji4a0gqCYi1HgYi00GVn",
+      "name": "言えないわ",
+      "artists": [
+        "Furui Riho",
+        "knoak"
+      ],
+      "album": "Letters",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27337e12f3f33b190328daf5e90",
+      "embedUrl": "https://open.spotify.com/embed/track/3nji4a0gqCYi1HgYi00GVn",
+      "externalUrl": "https://open.spotify.com/track/3nji4a0gqCYi1HgYi00GVn",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7Bek5MohEgCbfAs91H3Di1",
+      "uri": "spotify:track:7Bek5MohEgCbfAs91H3Di1",
+      "name": "Your Love",
+      "artists": [
+        "Furui Riho",
+        "knoak"
+      ],
+      "album": "Love One Another",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27316bff38790a533a1a8b66e45",
+      "embedUrl": "https://open.spotify.com/embed/track/7Bek5MohEgCbfAs91H3Di1",
+      "externalUrl": "https://open.spotify.com/track/7Bek5MohEgCbfAs91H3Di1",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7fFwkEjPSEapRqQRSOH8uL",
+      "uri": "spotify:track:7fFwkEjPSEapRqQRSOH8uL",
+      "name": "LOA",
+      "artists": [
+        "Furui Riho",
+        "knoak"
+      ],
+      "album": "LOA",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736831393d8c4394c6d7186d56",
+      "embedUrl": "https://open.spotify.com/embed/track/7fFwkEjPSEapRqQRSOH8uL",
+      "externalUrl": "https://open.spotify.com/track/7fFwkEjPSEapRqQRSOH8uL",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1Z9aXBfOBXrHOCRx5ZfdqH",
+      "uri": "spotify:track:1Z9aXBfOBXrHOCRx5ZfdqH",
+      "name": "でこぼこ",
+      "artists": [
+        "Furui Riho"
+      ],
+      "album": "Green Light",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27366cfbae6b95399d43df58510",
+      "embedUrl": "https://open.spotify.com/embed/track/1Z9aXBfOBXrHOCRx5ZfdqH",
+      "externalUrl": "https://open.spotify.com/track/1Z9aXBfOBXrHOCRx5ZfdqH",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3VGQWb2bhx06qMH6OvWPK3",
+      "uri": "spotify:track:3VGQWb2bhx06qMH6OvWPK3",
+      "name": "LOA",
+      "artists": [
+        "Furui Riho",
+        "knoak"
+      ],
+      "album": "Love One Another",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27316bff38790a533a1a8b66e45",
+      "embedUrl": "https://open.spotify.com/embed/track/3VGQWb2bhx06qMH6OvWPK3",
+      "externalUrl": "https://open.spotify.com/track/3VGQWb2bhx06qMH6OvWPK3",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5fEXpxCf0jdocnP8Qmh9b5",
+      "uri": "spotify:track:5fEXpxCf0jdocnP8Qmh9b5",
+      "name": "ラスト・サマー",
+      "artists": [
+        "ぷにぷに電機",
+        "Mikeneko Homeless"
+      ],
+      "album": "ラスト・サマー",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735f7b62a1a84aafc375d62a44",
+      "embedUrl": "https://open.spotify.com/embed/track/5fEXpxCf0jdocnP8Qmh9b5",
+      "externalUrl": "https://open.spotify.com/track/5fEXpxCf0jdocnP8Qmh9b5",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2qQUQyngVF9hSqWUlcbriG",
+      "uri": "spotify:track:2qQUQyngVF9hSqWUlcbriG",
+      "name": "君はQueen",
+      "artists": [
+        "ぷにぷに電機",
+        "Mikeneko Homeless",
+        "Shin Sakiura"
+      ],
+      "album": "君はQueen",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730304de27a24aa896a55800eb",
+      "embedUrl": "https://open.spotify.com/embed/track/2qQUQyngVF9hSqWUlcbriG",
+      "externalUrl": "https://open.spotify.com/track/2qQUQyngVF9hSqWUlcbriG",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3JmAjkMgns7wZfk3KtN1J4",
+      "uri": "spotify:track:3JmAjkMgns7wZfk3KtN1J4",
+      "name": "ラスト・サマー - DJ Mixed Version",
+      "artists": [
+        "ぷにぷに電機",
+        "Mikeneko Homeless"
+      ],
+      "album": "TOKYO R&B GROOVE (mixed by DJ HASEBE)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dcc4837075cc54c30dfa489d",
+      "embedUrl": "https://open.spotify.com/embed/track/3JmAjkMgns7wZfk3KtN1J4",
+      "externalUrl": "https://open.spotify.com/track/3JmAjkMgns7wZfk3KtN1J4",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1LVPJhseHDWNLd4K3LqZqB",
+      "uri": "spotify:track:1LVPJhseHDWNLd4K3LqZqB",
+      "name": "Watermelon",
+      "artists": [
+        "lulu",
+        "Mikeneko Homeless"
+      ],
+      "album": "海に行きたい",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273616efc3e3549e4b6af71dace",
+      "embedUrl": "https://open.spotify.com/embed/track/1LVPJhseHDWNLd4K3LqZqB",
+      "externalUrl": "https://open.spotify.com/track/1LVPJhseHDWNLd4K3LqZqB",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3JsfF2btaLgv9KEsp9UyCf",
+      "uri": "spotify:track:3JsfF2btaLgv9KEsp9UyCf",
+      "name": "Neon Ocean",
+      "artists": [
+        "ぷにぷに電機",
+        "Mikeneko Homeless"
+      ],
+      "album": "Neon Ocean",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730e8418edc17fd84225f04b16",
+      "embedUrl": "https://open.spotify.com/embed/track/3JsfF2btaLgv9KEsp9UyCf",
+      "externalUrl": "https://open.spotify.com/track/3JsfF2btaLgv9KEsp9UyCf",
+      "isPlayable": true
+    }
+  ]
 }

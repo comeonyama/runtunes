@@ -1,5 +1,6 @@
 import { Music2, Sparkles } from "lucide-react";
 import { useRef, useState } from "react";
+import useSpotifyEmbedController from "../../hooks/useSpotifyEmbedController";
 import type { AITrackSelectionResponse } from "../../services/openaiService";
 import type {
   CreateSpotifyPlaylistResponse,
@@ -27,6 +28,9 @@ function AISelectionResults({
     useState<CandidateTrack | null>(() => tracks[0] ?? null);
   const [previousTracks, setPreviousTracks] = useState(tracks);
   const playerRef = useRef<HTMLDivElement>(null);
+  const { embedContainerRef, playTrack } = useSpotifyEmbedController(
+    status === "success" ? tracks : undefined,
+  );
 
   if (tracks !== previousTracks) {
     setPreviousTracks(tracks);
@@ -35,6 +39,7 @@ function AISelectionResults({
 
   const handleSelectTrack = (track: CandidateTrack) => {
     setSelectedAiTrack(track);
+    playTrack(track.uri);
     requestAnimationFrame(() => {
       playerRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -95,15 +100,11 @@ function AISelectionResults({
         <>
           {selectedAiTrack && (
             <div className="mb-4" ref={playerRef}>
-              <iframe
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              <div
                 className="block border-0"
-                height="80"
-                loading="lazy"
-                src={selectedAiTrack.embedUrl}
+                ref={embedContainerRef}
                 style={{ borderRadius: "12px" }}
                 title={`${selectedAiTrack.name} by ${selectedAiTrack.artists.join(", ")} on Spotify`}
-                width="100%"
               />
             </div>
           )}
