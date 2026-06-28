@@ -5,7 +5,7 @@ import {
   type BatchState,
 } from "../repositories/batchStateRepository.js";
 import { CandidateRepository } from "../repositories/candidateRepository.js";
-import { loadJGrooveSeedArtists } from "./jGrooveSeedService.js";
+import { loadSeeds, type Seed } from "./seedService.js";
 import { SpotifySearchService } from "./spotifySearchService.js";
 import type {
   CandidateTrack,
@@ -26,6 +26,7 @@ type BatchServiceDependencies = {
   spotifySearchService: SpotifySearchService;
   requestIntervalMs: number;
   getAccessToken: () => Promise<string>;
+  loadSeeds: (genre: SpotifySearchGenre) => Promise<Seed[]>;
   log: (message: string) => void;
   sleep: (milliseconds: number) => Promise<void>;
 };
@@ -35,12 +36,8 @@ export type BatchRunResult =
   | { status: "rate-limited"; nextAllowedAt: string }
   | { status: "waiting"; nextAllowedAt: string };
 
-const STANDARD_SEEDS: Record<"global" | "kpop", readonly string[]> = {
-  global: ["pop", "rock", "hip hop", "dance pop", "edm"],
-  kpop: ["k-pop", "kpop", "korean pop", "korean dance pop"],
-};
-const STANDARD_QUERY_LIMIT = 20;
 const ARTIST_QUERY_LIMIT = 5;
+const KEYWORD_QUERY_LIMIT = 20;
 const EXCLUDED_COMPILATION_TERMS = [
   "playlist",
   "workout",
@@ -59,6 +56,7 @@ export class BatchService {
       spotifySearchService: new SpotifySearchService(),
       requestIntervalMs: getRequestIntervalMs(),
       getAccessToken: loadBatchAccessToken,
+      loadSeeds,
       log: console.log,
       sleep: (milliseconds) =>
         new Promise((resolve) => setTimeout(resolve, milliseconds)),
@@ -165,18 +163,13 @@ export class BatchService {
   }
 
   private async loadSeeds(genre: SpotifySearchGenre): Promise<BatchSeed[]> {
-    if (genre !== "jgroove") {
-      return STANDARD_SEEDS[genre].map((query) => ({
-        label: query,
-        query,
-        limit: STANDARD_QUERY_LIMIT,
-      }));
-    }
-
-    return (await loadJGrooveSeedArtists()).map(({ name }) => ({
-      label: name,
-      query: `artist:"${name.replaceAll('"', '\\"')}"`,
-      limit: ARTIST_QUERY_LIMIT,
+    return (await this.dependencies.loadSeeds(genre)).map((seed) => ({
+      label: `${seed.type}: ${seed.value}`,
+      query:
+        seed.type === "artist"
+          ? `artist:"${seed.value.replaceAll('"', '\\"')}"`
+          : seed.value,
+      limit: seed.type === "artist" ? ARTIST_QUERY_LIMIT : KEYWORD_QUERY_LIMIT,
     }));
   }
 }

@@ -76,7 +76,6 @@ export async function requestAITrackSelection({
       distance: criteria.distanceKm,
       pace: criteria.paceSeconds,
       genre: criteria.genre,
-      mood: criteria.mood,
       tracks: tracks.map(({ id, name, artists, album }) => ({
         id,
         name,

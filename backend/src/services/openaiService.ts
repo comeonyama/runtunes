@@ -7,7 +7,6 @@ const CONNECTION_TEST_PROMPT =
   "Reply with one short sentence confirming that RunTunes connected to OpenAI successfully.";
 
 const GENRES = ["global", "J_GROOVE", "kpop"] as const;
-const MOODS = ["motivation", "happy", "relax"] as const;
 
 const COMMON_SELECTION_RULES = `
 You are a running playlist curator.
@@ -15,7 +14,7 @@ You are a running playlist curator.
 - Every selectedTrackIds entry must be an exact ID from the supplied candidates.
 - Never select the same track more than once.
 - If suitable candidates are limited, return fewer tracks instead of selecting off-genre or unsuitable tracks, except where the active genre rules explicitly permit a fallback.
-- Consider distance, pace, and mood together when designing the entire playlist. Interpret "motivation" as Driven and "relax" as Easy.
+- Consider distance, pace, and genre together when designing the entire playlist.
 - For longer distances, favor a varied sequence that remains comfortable to hear over time.
 - For faster paces, prioritize clear rhythm, forward momentum, and energetic tempo feel.
 - Exclude workout remixes, running compilations, generic fitness recordings, and tracks unsuitable for maintaining a running rhythm.
@@ -61,7 +60,6 @@ export type TrackSelectionRequest = {
   distance: number;
   pace: number;
   genre: (typeof GENRES)[number];
-  mood: (typeof MOODS)[number];
   tracks: TrackSelectionCandidate[];
 };
 
@@ -162,7 +160,6 @@ export async function selectTracksWithAI(
           distanceKm: request.distance,
           paceSecondsPerKm: request.pace,
           genre: request.genre,
-          mood: request.mood,
           targetTrackCount,
           tracks: request.tracks,
         }),

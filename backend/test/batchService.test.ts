@@ -13,16 +13,32 @@ import { SpotifyApiError } from "../src/services/spotifyService.js";
 
 class FakeSpotifySearchService extends SpotifySearchService {
   calls = 0;
+  limits: number[] = [];
+  queries: string[] = [];
 
-  constructor(private readonly handler: () => Promise<SpotifySearchTrack[]>) {
+  constructor(
+    private readonly handler: (query: string) => Promise<SpotifySearchTrack[]>,
+  ) {
     super();
   }
 
-  override async searchTracks(): Promise<SpotifySearchTrack[]> {
+  override async searchTracks(
+    _accessToken: string,
+    query: string,
+    limit: number,
+  ): Promise<SpotifySearchTrack[]> {
     this.calls += 1;
-    return this.handler();
+    this.queries.push(query);
+    this.limits.push(limit);
+    return this.handler(query);
   }
 }
+
+const loadTestSeeds = async () => [
+  { type: "artist" as const, value: "Artist One", weight: 1 },
+  { type: "artist" as const, value: 'Artist "Two"', weight: 1 },
+  { type: "keyword" as const, value: "k-pop dance", weight: 1 },
+];
 
 async function createRepositories() {
   const directory = await mkdtemp(join(tmpdir(), "runtunes-batch-"));
@@ -64,13 +80,20 @@ test("adds candidates once and resets progress after completion", async () => {
       spotifySearchService: searchService,
       requestIntervalMs: 0,
       getAccessToken: async () => "token",
+      loadSeeds: loadTestSeeds,
       log: () => undefined,
       sleep: async () => undefined,
     });
 
     const result = await batch.run("global");
-    assert.deepEqual(result, { status: "completed", processedSeeds: 5 });
-    assert.equal(searchService.calls, 5);
+    assert.deepEqual(result, { status: "completed", processedSeeds: 3 });
+    assert.equal(searchService.calls, 3);
+    assert.deepEqual(searchService.queries, [
+      'artist:"Artist One"',
+      'artist:"Artist \\"Two\\""',
+      "k-pop dance",
+    ]);
+    assert.deepEqual(searchService.limits, [5, 5, 20]);
     assert.equal(
       (await repositories.candidateRepository.findAll("global")).length,
       1,
@@ -95,6 +118,7 @@ test("persists Retry-After and the current seed when Spotify returns 429", async
       spotifySearchService: searchService,
       requestIntervalMs: 0,
       getAccessToken: async () => "token",
+      loadSeeds: loadTestSeeds,
       log: () => undefined,
       sleep: async () => undefined,
     });

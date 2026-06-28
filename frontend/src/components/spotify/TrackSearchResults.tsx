@@ -71,7 +71,7 @@ function TrackSearchResults({
         aria-live="polite"
         className="mt-5 w-full rounded-2xl border border-white/10 bg-run-surface p-6 text-center text-sm text-neutral-400"
       >
-        No tracks found. Try another genre or mood.
+        No tracks found. Try another genre.
       </section>
     );
   }

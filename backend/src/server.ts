@@ -138,8 +138,6 @@ function isTrackSelectionRequest(
     value.pace > 0 &&
     "genre" in value &&
     ["global", "J_GROOVE", "kpop"].includes(String(value.genre)) &&
-    "mood" in value &&
-    ["motivation", "happy", "relax"].includes(String(value.mood)) &&
     "tracks" in value &&
     Array.isArray(value.tracks) &&
     value.tracks.length > 0 &&

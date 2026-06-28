@@ -1,19 +1,14 @@
 import {
   Clock3,
-  Flame,
   Globe2,
   MicVocal,
-  Moon,
   Music2,
   Ruler,
-  Smile,
-  Zap,
   type LucideIcon,
 } from "lucide-react";
 import { useState, type CSSProperties } from "react";
 import { GENRE_OPTIONS } from "../../constants/genres";
-import { MOOD_OPTIONS } from "../../constants/moods";
-import type { Genre, Mood, PlaylistFormData } from "../../types/form";
+import type { Genre, PlaylistFormData } from "../../types/form";
 
 const DISTANCE_RANGE = {
   min: 1,
@@ -41,18 +36,8 @@ const genreIcons: Record<Genre, LucideIcon> = {
   kpop: MicVocal,
 };
 
-const moodIcons: Record<Mood, LucideIcon> = {
-  motivation: Flame,
-  happy: Smile,
-  relax: Moon,
-};
-
 const genreChoices: readonly ChoiceOption<Genre>[] = GENRE_OPTIONS.map(
   (option) => ({ ...option, icon: genreIcons[option.value] }),
-);
-
-const moodChoices: readonly ChoiceOption<Mood>[] = MOOD_OPTIONS.map(
-  (option) => ({ ...option, icon: moodIcons[option.value] }),
 );
 
 const choiceGridClassName = {
@@ -258,7 +243,6 @@ function PlaylistForm({
     distanceKm: DISTANCE_RANGE.defaultValue,
     paceSeconds: PACE_RANGE.defaultValue,
     genre: GENRE_OPTIONS[0].value,
-    mood: MOOD_OPTIONS[0].value,
   });
 
   return (
@@ -281,7 +265,7 @@ function PlaylistForm({
           Set your run. Find your rhythm.
         </h2>
         <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-400">
-          Tune the distance, pace, and energy for a playlist made to move with
+          Tune the distance, pace, and genre for a playlist made to move with
           you.
         </p>
       </div>
@@ -323,27 +307,19 @@ function PlaylistForm({
           value={formData.paceSeconds}
         />
 
-        <ChoiceGroup
-          disabled={isLoading}
-          icon={Music2}
-          label="Genre"
-          name="genre"
-          onChange={(genre) =>
-            setFormData((current) => ({ ...current, genre }))
-          }
-          options={genreChoices}
-          value={formData.genre}
-        />
-
-        <ChoiceGroup
-          disabled={isLoading}
-          icon={Zap}
-          label="Mood"
-          name="mood"
-          onChange={(mood) => setFormData((current) => ({ ...current, mood }))}
-          options={moodChoices}
-          value={formData.mood}
-        />
+        <div className="md:col-span-2">
+          <ChoiceGroup
+            disabled={isLoading}
+            icon={Music2}
+            label="Genre"
+            name="genre"
+            onChange={(genre) =>
+              setFormData((current) => ({ ...current, genre }))
+            }
+            options={genreChoices}
+            value={formData.genre}
+          />
+        </div>
       </div>
 
       <button
