@@ -49,7 +49,7 @@ function TrackSearchResults({
           aria-hidden="true"
           className="mx-auto mb-3 block size-6 animate-spin rounded-full border-2 border-neutral-700 border-t-run-green"
         />
-        Searching Spotify...
+        Loading track candidates...
       </section>
     );
   }
@@ -81,7 +81,7 @@ function TrackSearchResults({
       <div className="mb-4 flex items-end justify-between gap-4 px-1">
         <div>
           <p className="text-xs font-bold tracking-[0.18em] text-run-green uppercase">
-            Spotify Search
+            Candidate DB
           </p>
           <h2
             className="mt-1 text-xl font-bold text-white"

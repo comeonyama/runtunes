@@ -1,4 +1,5 @@
 import Fastify from "fastify";
+import { CandidateRepository } from "./repositories/candidateRepository.js";
 import {
   requestOpenAIConnectionTest,
   selectTracksWithAI,
@@ -8,26 +9,16 @@ import {
 } from "./services/openaiService.js";
 import {
   createSpotifyPlaylist,
+  getRetryAfterSeconds,
   getCurrentUserProfile,
   SpotifyApiError,
   type CreateSpotifyPlaylistResult,
   type SpotifyUserProfile,
 } from "./services/spotifyService.js";
-import { SpotifyWebSearchApi } from "./services/spotifySearchApi.js";
-import { FileSpotifySearchCache } from "./services/spotifySearchCache.js";
-import { FileSpotifyRateLimitStore } from "./services/spotifyRateLimitStore.js";
-import {
-  getRetryAfterSeconds,
-  SpotifySearchService,
-} from "./services/spotifySearchService.js";
 import type {
   SpotifySearchGenre,
   SpotifyTrackSearchResult,
 } from "./services/spotifySearchTypes.js";
-import {
-  loadJGrooveSeedArtists,
-  type JGrooveSeedArtist,
-} from "./services/jGrooveSeedService.js";
 
 type OpenAIConnectionResponse = {
   text: string;
@@ -39,80 +30,31 @@ type ErrorResponse = {
 };
 
 const server = Fastify({ logger: true });
-const spotifySearchService = new SpotifySearchService({
-  cache: new FileSpotifySearchCache(
-    new URL("../cache/spotify/", import.meta.url),
-  ),
-  loadJGrooveSeedArtists,
-  rateLimitStore: new FileSpotifyRateLimitStore(
-    new URL("../cache/spotify-rate-limit.json", import.meta.url),
-  ),
-  spotifyApi: new SpotifyWebSearchApi(),
-  log: (message) => server.log.info(message),
-});
+const candidateRepository = new CandidateRepository();
 
 const SPOTIFY_RATE_LIMIT_MESSAGE = "Spotify rate limit exceeded.";
-
-server.get<{ Reply: { artists: JGrooveSeedArtist[] } | ErrorResponse }>(
-  "/api/spotify/jgroove-seed",
-  async (request, reply) => {
-    try {
-      return reply.send({ artists: await loadJGrooveSeedArtists() });
-    } catch {
-      request.log.error("Could not load J-Groove seed artists");
-      return reply
-        .code(500)
-        .send({ message: "Could not load J-Groove seed artists." });
-    }
-  },
-);
 
 server.get<{
   Querystring: { genre?: string };
   Reply: SpotifyTrackSearchResult | ErrorResponse;
 }>("/api/spotify/tracks", async (request, reply) => {
-  request.log.info("spotify tracks requested");
-  const accessToken = getBearerToken(request.headers.authorization);
-
-  if (!accessToken) {
-    return reply
-      .code(401)
-      .send({ message: "Spotify authorization is required." });
-  }
-
   if (!isSpotifySearchGenre(request.query.genre)) {
-    return reply.code(400).send({ message: "Invalid Spotify genre." });
+    return reply.code(400).send({ message: "Invalid candidate genre." });
   }
 
   try {
-    const result = await spotifySearchService.searchTracks(
-      accessToken,
-      request.query.genre,
-    );
+    const candidates = await candidateRepository.search(request.query.genre);
+    const result = {
+      tracks: candidates.map(({ spotifyTrackId, ...track }) => ({
+        id: spotifyTrackId,
+        ...track,
+      })),
+    };
     reply.header("Cache-Control", "no-store");
     return reply.send(result);
   } catch (error) {
-    if (error instanceof SpotifyApiError) {
-      if (error.status === 401) {
-        return reply.code(401).send({ message: "Spotify session expired." });
-      }
-
-      if (error.status === 429) {
-        const retryAfterSeconds = getRetryAfterSeconds(error.retryAfter);
-        reply.header("Retry-After", String(retryAfterSeconds));
-        return reply.code(429).send({
-          message: SPOTIFY_RATE_LIMIT_MESSAGE,
-          retryAfterSeconds,
-        });
-      }
-
-      if (error.status === 503) {
-        return reply.code(503).send({ message: error.message });
-      }
-    }
-
-    request.log.error(error, "Spotify track search failed");
-    return reply.code(502).send({ message: "Spotify track search failed." });
+    request.log.error(error, "Candidate database read failed");
+    return reply.code(500).send({ message: "Candidate database read failed." });
   }
 });
 
@@ -131,16 +73,6 @@ server.get<{ Reply: SpotifyUserProfile | ErrorResponse }>(
         .send({ message: "Spotify authorization is required." });
     }
 
-    const activeRetryAfterSeconds =
-      spotifySearchService.getRemainingRateLimitSeconds();
-    if (activeRetryAfterSeconds > 0) {
-      reply.header("Retry-After", String(activeRetryAfterSeconds));
-      return reply.code(429).send({
-        message: SPOTIFY_RATE_LIMIT_MESSAGE,
-        retryAfterSeconds: activeRetryAfterSeconds,
-      });
-    }
-
     try {
       return reply.send(await getCurrentUserProfile(accessToken));
     } catch (error) {
@@ -148,9 +80,7 @@ server.get<{ Reply: SpotifyUserProfile | ErrorResponse }>(
 
       if (error instanceof SpotifyApiError) {
         if (error.status === 429) {
-          const retryAfterSeconds = await spotifySearchService.recordRateLimit(
-            error.retryAfter,
-          );
+          const retryAfterSeconds = getRetryAfterSeconds(error.retryAfter);
           reply.header("Retry-After", String(retryAfterSeconds));
           return reply.code(429).send({
             message: SPOTIFY_RATE_LIMIT_MESSAGE,
@@ -301,16 +231,6 @@ server.post<{
     return reply.code(400).send({ message: "Invalid playlist request." });
   }
 
-  const activeRetryAfterSeconds =
-    spotifySearchService.getRemainingRateLimitSeconds();
-  if (activeRetryAfterSeconds > 0) {
-    reply.header("Retry-After", String(activeRetryAfterSeconds));
-    return reply.code(429).send({
-      message: SPOTIFY_RATE_LIMIT_MESSAGE,
-      retryAfterSeconds: activeRetryAfterSeconds,
-    });
-  }
-
   try {
     const playlist = await createSpotifyPlaylist({
       accessToken,
@@ -326,9 +246,7 @@ server.post<{
         return reply.code(401).send({ message: "Spotify session expired." });
       }
       if (error.status === 429) {
-        const retryAfterSeconds = await spotifySearchService.recordRateLimit(
-          error.retryAfter,
-        );
+        const retryAfterSeconds = getRetryAfterSeconds(error.retryAfter);
         reply.header("Retry-After", String(retryAfterSeconds));
         return reply.code(429).send({
           message: SPOTIFY_RATE_LIMIT_MESSAGE,
@@ -344,7 +262,6 @@ server.post<{
 });
 
 try {
-  await spotifySearchService.initialize();
   await server.listen({
     host: "127.0.0.1",
     port: Number(process.env.PORT ?? 3001),

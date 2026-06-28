@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "batch:global": "npm --prefix backend run batch:global",
+    "batch:j-groove": "npm --prefix backend run batch:j-groove",
+    "batch:kpop": "npm --prefix backend run batch:kpop"
+  },
   "dependencies": {
     "react-router-dom": "^7.18.0"
   }

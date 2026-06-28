@@ -7,7 +7,11 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "batch:global": "tsx src/cli/runBatch.ts global",
+    "batch:j-groove": "tsx src/cli/runBatch.ts jgroove",
+    "batch:kpop": "tsx src/cli/runBatch.ts kpop"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

@@ -22,14 +22,20 @@ export type SpotifySearchTrack = {
   };
 };
 
-export type SpotifySearchCacheEntry = {
-  key: string;
-  cachedAt: string;
-  tracks: SpotifySearchTrack[];
-};
-
 export type SpotifySearchGenre = "global" | "kpop" | "jgroove";
 
+export type CandidateTrack = {
+  spotifyTrackId: string;
+  uri: string;
+  name: string;
+  artists: string[];
+  album: string;
+  imageUrl: string | null;
+  embedUrl: string;
+  externalUrl: string | null;
+  isPlayable: boolean;
+};
+
 export type SpotifyTrackSearchResult = {
-  tracks: SpotifySearchTrack[];
+  tracks: Array<Omit<CandidateTrack, "spotifyTrackId"> & { id: string }>;
 };

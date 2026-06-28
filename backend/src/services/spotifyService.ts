@@ -30,6 +30,22 @@ export class SpotifyApiError extends Error {
   }
 }
 
+export function getRetryAfterSeconds(retryAfter: string | undefined): number {
+  const seconds = Number(retryAfter);
+  if (Number.isFinite(seconds) && seconds >= 0) {
+    return Math.max(1, Math.ceil(seconds));
+  }
+
+  if (retryAfter) {
+    const retryDate = Date.parse(retryAfter);
+    if (Number.isFinite(retryDate)) {
+      return Math.max(1, Math.ceil((retryDate - Date.now()) / 1_000));
+    }
+  }
+
+  return 60;
+}
+
 async function requestSpotify(
   path: string,
   accessToken: string,
