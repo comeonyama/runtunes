@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T04:18:55.464Z",
+  "updatedAt": "2026-06-28T09:08:32.526Z",
   "tracks": [
     {
       "spotifyTrackId": "6WzRpISELf3YglGAh7TXcG",
@@ -1861,6 +1861,283 @@
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732fee61bfec596bb6f5447c50",
       "embedUrl": "https://open.spotify.com/embed/track/6RANU8AS5ICU5PEHh8BYtH",
       "externalUrl": "https://open.spotify.com/track/6RANU8AS5ICU5PEHh8BYtH",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "48td6xvpokdYwvbl3JIiXP",
+      "uri": "spotify:track:48td6xvpokdYwvbl3JIiXP",
+      "name": "Love Never Felt So Good",
+      "artists": [
+        "Michael Jackson",
+        "Justin Timberlake"
+      ],
+      "album": "XSCAPE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27335f36cb686b0d5a12ab3a9f0",
+      "embedUrl": "https://open.spotify.com/embed/track/48td6xvpokdYwvbl3JIiXP",
+      "externalUrl": "https://open.spotify.com/track/48td6xvpokdYwvbl3JIiXP",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "4HSAJpNocVNJbwbQvtCMdO",
+      "uri": "spotify:track:4HSAJpNocVNJbwbQvtCMdO",
+      "name": "Signs",
+      "artists": [
+        "Snoop Dogg",
+        "Charlie Wilson",
+        "Justin Timberlake"
+      ],
+      "album": "R&G (Rhythm & Gangsta): The Masterpiece",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e803716268c173c3f9a0c057",
+      "embedUrl": "https://open.spotify.com/embed/track/4HSAJpNocVNJbwbQvtCMdO",
+      "externalUrl": "https://open.spotify.com/track/4HSAJpNocVNJbwbQvtCMdO",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2mHw0KoEyDw8Yaw3yPoke6",
+      "uri": "spotify:track:2mHw0KoEyDw8Yaw3yPoke6",
+      "name": "3D (Justin Timberlake Remix)",
+      "artists": [
+        "Jung Kook",
+        "Justin Timberlake"
+      ],
+      "album": "3D (Justin Timberlake Remix)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27322e565596578ef0adbf5eaf1",
+      "embedUrl": "https://open.spotify.com/embed/track/2mHw0KoEyDw8Yaw3yPoke6",
+      "externalUrl": "https://open.spotify.com/track/2mHw0KoEyDw8Yaw3yPoke6",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3NRql0A1Ef4RCvT473iqgD",
+      "uri": "spotify:track:3NRql0A1Ef4RCvT473iqgD",
+      "name": "Hell N Back",
+      "artists": [
+        "Bakar"
+      ],
+      "album": "Hell N Back",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b6aa65ea45fef5e36dfe1a45",
+      "embedUrl": "https://open.spotify.com/embed/track/3NRql0A1Ef4RCvT473iqgD",
+      "externalUrl": "https://open.spotify.com/track/3NRql0A1Ef4RCvT473iqgD",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0ZDwhNFZnPx9EIPCcwGUHC",
+      "uri": "spotify:track:0ZDwhNFZnPx9EIPCcwGUHC",
+      "name": "Hell N Back (feat. Summer Walker)",
+      "artists": [
+        "Bakar",
+        "Summer Walker"
+      ],
+      "album": "Hell N Back (feat. Summer Walker)",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27333d96209dcc74b79fc3703e9",
+      "embedUrl": "https://open.spotify.com/embed/track/0ZDwhNFZnPx9EIPCcwGUHC",
+      "externalUrl": "https://open.spotify.com/track/0ZDwhNFZnPx9EIPCcwGUHC",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0jcw8cJf3TNMZN0BXlueML",
+      "uri": "spotify:track:0jcw8cJf3TNMZN0BXlueML",
+      "name": "Hell N Back (feat. Summer Walker)",
+      "artists": [
+        "Bakar",
+        "Summer Walker"
+      ],
+      "album": "Halo",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273864f946221840eced94a2243",
+      "embedUrl": "https://open.spotify.com/embed/track/0jcw8cJf3TNMZN0BXlueML",
+      "externalUrl": "https://open.spotify.com/track/0jcw8cJf3TNMZN0BXlueML",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3xKsf9qdS1CyvXSMEid6g8",
+      "uri": "spotify:track:3xKsf9qdS1CyvXSMEid6g8",
+      "name": "Pink + White",
+      "artists": [
+        "Frank Ocean"
+      ],
+      "album": "Blonde",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c5649add07ed3720be9d5526",
+      "embedUrl": "https://open.spotify.com/embed/track/3xKsf9qdS1CyvXSMEid6g8",
+      "externalUrl": "https://open.spotify.com/track/3xKsf9qdS1CyvXSMEid6g8",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "3GZD6HmiNUhxXYf8Gch723",
+      "uri": "spotify:track:3GZD6HmiNUhxXYf8Gch723",
+      "name": "Lost",
+      "artists": [
+        "Frank Ocean"
+      ],
+      "album": "channel ORANGE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737aede4855f6d0d738012e2e5",
+      "embedUrl": "https://open.spotify.com/embed/track/3GZD6HmiNUhxXYf8Gch723",
+      "externalUrl": "https://open.spotify.com/track/3GZD6HmiNUhxXYf8Gch723",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7DfFc7a6Rwfi3YQMRbDMau",
+      "uri": "spotify:track:7DfFc7a6Rwfi3YQMRbDMau",
+      "name": "Thinkin Bout You",
+      "artists": [
+        "Frank Ocean"
+      ],
+      "album": "channel ORANGE",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737aede4855f6d0d738012e2e5",
+      "embedUrl": "https://open.spotify.com/embed/track/7DfFc7a6Rwfi3YQMRbDMau",
+      "externalUrl": "https://open.spotify.com/track/7DfFc7a6Rwfi3YQMRbDMau",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7tr2za8SQg2CI8EDgrdtNl",
+      "uri": "spotify:track:7tr2za8SQg2CI8EDgrdtNl",
+      "name": "Slide (feat. Frank Ocean & Migos)",
+      "artists": [
+        "Calvin Harris",
+        "Frank Ocean",
+        "Migos",
+        "Funk Wav"
+      ],
+      "album": "Funk Wav Bounces Vol.1",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734d3fa5ce7ba599f4fd7803ef",
+      "embedUrl": "https://open.spotify.com/embed/track/7tr2za8SQg2CI8EDgrdtNl",
+      "externalUrl": "https://open.spotify.com/track/7tr2za8SQg2CI8EDgrdtNl",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1JqcZQCnxjDOfZZwQidb1H",
+      "uri": "spotify:track:1JqcZQCnxjDOfZZwQidb1H",
+      "name": "Broke",
+      "artists": [
+        "Samm Henshaw"
+      ],
+      "album": "Broke",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27384501102111aef7bc85a28c5",
+      "embedUrl": "https://open.spotify.com/embed/track/1JqcZQCnxjDOfZZwQidb1H",
+      "externalUrl": "https://open.spotify.com/track/1JqcZQCnxjDOfZZwQidb1H",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "053cVLAvWvv8VIRolBs9nP",
+      "uri": "spotify:track:053cVLAvWvv8VIRolBs9nP",
+      "name": "Float",
+      "artists": [
+        "Samm Henshaw"
+      ],
+      "album": "It Could Be Worse",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736c676ad066b098c785a8751e",
+      "embedUrl": "https://open.spotify.com/embed/track/053cVLAvWvv8VIRolBs9nP",
+      "externalUrl": "https://open.spotify.com/track/053cVLAvWvv8VIRolBs9nP",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "7xPOV2FPzi7zaYBZnQytOW",
+      "uri": "spotify:track:7xPOV2FPzi7zaYBZnQytOW",
+      "name": "Breakup Season",
+      "artists": [
+        "Maya Delilah",
+        "Samm Henshaw"
+      ],
+      "album": "Breakup Season",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27316deb52adea369b2d8b08c40",
+      "embedUrl": "https://open.spotify.com/embed/track/7xPOV2FPzi7zaYBZnQytOW",
+      "externalUrl": "https://open.spotify.com/track/7xPOV2FPzi7zaYBZnQytOW",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "5OgeCVeIpbhGGfRtkjaXxt",
+      "uri": "spotify:track:5OgeCVeIpbhGGfRtkjaXxt",
+      "name": "Runnin'",
+      "artists": [
+        "Pockets",
+        "Scary Pockets",
+        "Judith Hill"
+      ],
+      "album": "Runnin'",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c196acfd8abc26986d5cbbd8",
+      "embedUrl": "https://open.spotify.com/embed/track/5OgeCVeIpbhGGfRtkjaXxt",
+      "externalUrl": "https://open.spotify.com/track/5OgeCVeIpbhGGfRtkjaXxt",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "35gCa2ssD4cAsGv5ilfU1H",
+      "uri": "spotify:track:35gCa2ssD4cAsGv5ilfU1H",
+      "name": "Catch Me",
+      "artists": [
+        "Pockets "
+      ],
+      "album": "So Delicious",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ce0e27f6cf833dbd70636ad2",
+      "embedUrl": "https://open.spotify.com/embed/track/35gCa2ssD4cAsGv5ilfU1H",
+      "externalUrl": "https://open.spotify.com/track/35gCa2ssD4cAsGv5ilfU1H",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2gR2zWHWq1mGEraOgZvEuW",
+      "uri": "spotify:track:2gR2zWHWq1mGEraOgZvEuW",
+      "name": "my love my life",
+      "artists": [
+        "Kenichiro Nishihara",
+        "Steph Pockets"
+      ],
+      "album": "Jazzy Folklore",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cdb6ffdc6a5b90fd12ae557a",
+      "embedUrl": "https://open.spotify.com/embed/track/2gR2zWHWq1mGEraOgZvEuW",
+      "externalUrl": "https://open.spotify.com/track/2gR2zWHWq1mGEraOgZvEuW",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "2pIVtQtYOsSptesL6eTMms",
+      "uri": "spotify:track:2pIVtQtYOsSptesL6eTMms",
+      "name": "If I Ain’t Got You",
+      "artists": [
+        "Scary Pockets",
+        "KENTON"
+      ],
+      "album": "Nu Funk",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27361960a03dec06479a8c9a8c3",
+      "embedUrl": "https://open.spotify.com/embed/track/2pIVtQtYOsSptesL6eTMms",
+      "externalUrl": "https://open.spotify.com/track/2pIVtQtYOsSptesL6eTMms",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1nuK1tfVQPuMMfi12Q81kT",
+      "uri": "spotify:track:1nuK1tfVQPuMMfi12Q81kT",
+      "name": "Let Me Love You",
+      "artists": [
+        "Scary Pockets",
+        "Antwaun Stanley"
+      ],
+      "album": "Cycles",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b27377103c7a4b9d33ed8342ecb1",
+      "embedUrl": "https://open.spotify.com/embed/track/1nuK1tfVQPuMMfi12Q81kT",
+      "externalUrl": "https://open.spotify.com/track/1nuK1tfVQPuMMfi12Q81kT",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "1SveOKrBFiyneSj3Pd5Sup",
+      "uri": "spotify:track:1SveOKrBFiyneSj3Pd5Sup",
+      "name": "Stayin' Alive",
+      "artists": [
+        "Scary Pockets",
+        "Lizzy McAlpine"
+      ],
+      "album": "Stank Face",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c320dd4de15ba1907a7e6c94",
+      "embedUrl": "https://open.spotify.com/embed/track/1SveOKrBFiyneSj3Pd5Sup",
+      "externalUrl": "https://open.spotify.com/track/1SveOKrBFiyneSj3Pd5Sup",
+      "isPlayable": true
+    },
+    {
+      "spotifyTrackId": "0LzwLyzKsViB56qZOJ7xKg",
+      "uri": "spotify:track:0LzwLyzKsViB56qZOJ7xKg",
+      "name": "I Will Survive",
+      "artists": [
+        "Scary Pockets",
+        "Mario Jose"
+      ],
+      "album": "Off Center",
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c6811972a43e44562994abad",
+      "embedUrl": "https://open.spotify.com/embed/track/0LzwLyzKsViB56qZOJ7xKg",
+      "externalUrl": "https://open.spotify.com/track/0LzwLyzKsViB56qZOJ7xKg",
       "isPlayable": true
     }
   ]

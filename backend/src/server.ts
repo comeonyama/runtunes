@@ -128,14 +128,13 @@ function isTrackSelectionRequest(
   if (typeof value !== "object" || value === null) return false;
 
   return (
-    "distance" in value &&
-    typeof value.distance === "number" &&
-    Number.isFinite(value.distance) &&
-    value.distance > 0 &&
+    "durationMinutes" in value &&
+    typeof value.durationMinutes === "number" &&
+    Number.isFinite(value.durationMinutes) &&
+    value.durationMinutes >= 30 &&
+    value.durationMinutes <= 120 &&
     "pace" in value &&
-    typeof value.pace === "number" &&
-    Number.isFinite(value.pace) &&
-    value.pace > 0 &&
+    ["easy", "middle", "hard"].includes(String(value.pace)) &&
     "genre" in value &&
     ["global", "J_GROOVE", "kpop"].includes(String(value.genre)) &&
     "tracks" in value &&

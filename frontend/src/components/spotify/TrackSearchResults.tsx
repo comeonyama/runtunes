@@ -1,5 +1,5 @@
 import { Music2 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import useSpotifyEmbedController from "../../hooks/useSpotifyEmbedController";
 import { getSpotifySearchErrorMessage } from "../../services/spotify/search";
 import type { CandidateTrack } from "../../types/candidateTrack";
@@ -19,7 +19,6 @@ function TrackSearchResults({
     () => tracks?.[0] ?? null,
   );
   const [previousTracks, setPreviousTracks] = useState(tracks);
-  const playerRef = useRef<HTMLDivElement>(null);
   const { embedContainerRef, playTrack } = useSpotifyEmbedController(
     status === "success" ? tracks : undefined,
   );
@@ -32,12 +31,6 @@ function TrackSearchResults({
   const handleSelectTrack = (track: CandidateTrack) => {
     setSelectedTrack(track);
     playTrack(track.uri);
-    requestAnimationFrame(() => {
-      playerRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
   };
 
   if (status === "idle") {
@@ -99,7 +92,7 @@ function TrackSearchResults({
       </div>
 
       {selectedTrack && (
-        <div className="mb-4" ref={playerRef}>
+        <div className="mb-4">
           <div
             className="block border-0"
             ref={embedContainerRef}

@@ -1,27 +1,22 @@
 import {
+  Activity,
   Clock3,
+  Gauge,
   Globe2,
   MicVocal,
   Music2,
-  Ruler,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 import { useState, type CSSProperties } from "react";
 import { GENRE_OPTIONS } from "../../constants/genres";
-import type { Genre, PlaylistFormData } from "../../types/form";
+import type { Genre, Pace, PlaylistFormData } from "../../types/form";
 
-const DISTANCE_RANGE = {
-  min: 1,
-  max: 50,
-  step: 0.5,
-  defaultValue: 10,
-} as const;
-
-const PACE_RANGE = {
-  min: 3 * 60,
-  max: 8 * 60,
+const DURATION_RANGE = {
+  min: 30,
+  max: 2 * 60,
   step: 5,
-  defaultValue: 5 * 60 + 30,
+  defaultValue: 60,
 } as const;
 
 type ChoiceOption<T extends string> = {
@@ -39,6 +34,12 @@ const genreIcons: Record<Genre, LucideIcon> = {
 const genreChoices: readonly ChoiceOption<Genre>[] = GENRE_OPTIONS.map(
   (option) => ({ ...option, icon: genreIcons[option.value] }),
 );
+
+const paceChoices: readonly ChoiceOption<Pace>[] = [
+  { icon: Activity, label: "Easy", value: "easy" },
+  { icon: Gauge, label: "Middle", value: "middle" },
+  { icon: Zap, label: "Hard", value: "hard" },
+];
 
 const choiceGridClassName = {
   2: "grid-cols-2",
@@ -199,11 +200,14 @@ function ChoiceGroup<T extends string>({
   );
 }
 
-function formatPace(totalSeconds: number) {
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
+function formatDuration(totalMinutes: number) {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
 
-  return `${minutes}:${seconds.toString().padStart(2, "0")} /km`;
+  if (!hours) return `${minutes} min`;
+  if (!minutes) return `${hours} hr`;
+
+  return `${hours} hr ${minutes} min`;
 }
 
 function LoadingSpinner() {
@@ -240,8 +244,8 @@ function PlaylistForm({
   onSubmit,
 }: PlaylistFormProps) {
   const [formData, setFormData] = useState<PlaylistFormData>({
-    distanceKm: DISTANCE_RANGE.defaultValue,
-    paceSeconds: PACE_RANGE.defaultValue,
+    durationMinutes: DURATION_RANGE.defaultValue,
+    pace: "middle",
     genre: GENRE_OPTIONS[0].value,
   });
 
@@ -265,46 +269,38 @@ function PlaylistForm({
           Set your run. Find your rhythm.
         </h2>
         <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-400">
-          Tune the distance, pace, and genre for a playlist made to move with
-          you.
+          Tune the running time, pace, and genre for a playlist made to move
+          with you.
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 md:gap-5">
         <RangeControl
           disabled={isLoading}
-          endLabel="50 km"
-          formatValue={(value) => `${value.toFixed(1)} km`}
-          icon={Ruler}
-          id="distance"
-          label="Distance"
-          max={DISTANCE_RANGE.max}
-          min={DISTANCE_RANGE.min}
-          name="distance"
-          onChange={(distanceKm) =>
-            setFormData((current) => ({ ...current, distanceKm }))
+          endLabel="2 hr"
+          formatValue={formatDuration}
+          icon={Clock3}
+          id="duration"
+          label="Running time"
+          max={DURATION_RANGE.max}
+          min={DURATION_RANGE.min}
+          name="duration"
+          onChange={(durationMinutes) =>
+            setFormData((current) => ({ ...current, durationMinutes }))
           }
-          startLabel="1 km"
-          step={DISTANCE_RANGE.step}
-          value={formData.distanceKm}
+          startLabel="30 min"
+          step={DURATION_RANGE.step}
+          value={formData.durationMinutes}
         />
 
-        <RangeControl
+        <ChoiceGroup
           disabled={isLoading}
-          endLabel="8:00 · Easy"
-          formatValue={formatPace}
-          icon={Clock3}
-          id="pace"
+          icon={Gauge}
           label="Pace"
-          max={PACE_RANGE.max}
-          min={PACE_RANGE.min}
           name="pace"
-          onChange={(paceSeconds) =>
-            setFormData((current) => ({ ...current, paceSeconds }))
-          }
-          startLabel="Fast · 3:00"
-          step={PACE_RANGE.step}
-          value={formData.paceSeconds}
+          onChange={(pace) => setFormData((current) => ({ ...current, pace }))}
+          options={paceChoices}
+          value={formData.pace}
         />
 
         <div className="md:col-span-2">

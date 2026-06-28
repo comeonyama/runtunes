@@ -73,8 +73,8 @@ export async function requestAITrackSelection({
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      distance: criteria.distanceKm,
-      pace: criteria.paceSeconds,
+      durationMinutes: criteria.durationMinutes,
+      pace: criteria.pace,
       genre: criteria.genre,
       tracks: tracks.map(({ id, name, artists, album }) => ({
         id,

@@ -1,5 +1,5 @@
 import { Music2, Sparkles } from "lucide-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import useSpotifyEmbedController from "../../hooks/useSpotifyEmbedController";
 import type { AITrackSelectionResponse } from "../../services/openaiService";
 import type {
@@ -27,7 +27,6 @@ function AISelectionResults({
   const [selectedAiTrack, setSelectedAiTrack] =
     useState<CandidateTrack | null>(() => tracks[0] ?? null);
   const [previousTracks, setPreviousTracks] = useState(tracks);
-  const playerRef = useRef<HTMLDivElement>(null);
   const { embedContainerRef, playTrack } = useSpotifyEmbedController(
     status === "success" ? tracks : undefined,
   );
@@ -40,12 +39,6 @@ function AISelectionResults({
   const handleSelectTrack = (track: CandidateTrack) => {
     setSelectedAiTrack(track);
     playTrack(track.uri);
-    requestAnimationFrame(() => {
-      playerRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
   };
 
   if (status === "idle") return null;
@@ -99,7 +92,7 @@ function AISelectionResults({
       {tracks.length ? (
         <>
           {selectedAiTrack && (
-            <div className="mb-4" ref={playerRef}>
+            <div className="mb-4">
               <div
                 className="block border-0"
                 ref={embedContainerRef}
