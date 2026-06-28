@@ -10,14 +10,11 @@ Generate a durable K-Pop seed set for RunTunes, a running-playlist application.
 Requirements:
 - Return current, recognizable K-Pop artists with strong running-playlist potential.
 - Include a balanced mix of groups and solo artists, established acts and newer acts, and varied energetic styles.
-- Return Spotify Search keywords that can discover energetic Korean pop and dance tracks beyond exact artist searches.
-- Keep keywords concise and directly usable as Spotify Search queries.
 - Do not include J-Pop artists, non-Korean pop artists, song names, explanations, or duplicate entries.
 `.trim();
 
 type KpopSeedCandidates = {
   artists: string[];
-  keywords: string[];
 };
 
 type KpopSeedFile = KpopSeedCandidates & {
@@ -41,16 +38,13 @@ function parseCandidates(outputText: string): KpopSeedCandidates {
     typeof value !== "object" ||
     value === null ||
     !("artists" in value) ||
-    !isNonEmptyStringArray(value.artists) ||
-    !("keywords" in value) ||
-    !isNonEmptyStringArray(value.keywords)
+    !isNonEmptyStringArray(value.artists)
   ) {
     throw new Error("OpenAI returned invalid K-Pop seeds.");
   }
 
   return {
     artists: [...new Set(value.artists.map((item) => item.trim()))],
-    keywords: [...new Set(value.keywords.map((item) => item.trim()))],
   };
 }
 
@@ -102,14 +96,8 @@ export async function generateKpopSeedFile(): Promise<KpopSeedFile> {
               minItems: 15,
               maxItems: 30,
             },
-            keywords: {
-              type: "array",
-              items: { type: "string" },
-              minItems: 5,
-              maxItems: 12,
-            },
           },
-          required: ["artists", "keywords"],
+          required: ["artists"],
           additionalProperties: false,
         },
       },

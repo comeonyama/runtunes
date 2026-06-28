@@ -66,7 +66,7 @@ function useSpotifyEmbedController(tracks?: CandidateTrack[]) {
 
         api.createController(
           container,
-          { height: 80, uri: initialTrack.uri },
+          { height: 80, uri: initialTrack.uri, width: "100%" },
           (controller) => {
             if (cancelled) {
               controller.destroy();

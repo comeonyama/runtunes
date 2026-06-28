@@ -79,9 +79,6 @@ function AISelectionResults({
           <Sparkles aria-hidden="true" className="size-5 text-run-green" />
           Your Playlist
         </h2>
-        <p className="mt-1 text-xs font-semibold tracking-wide text-neutral-500">
-          Curated by OpenAI
-        </p>
         {selection?.summary && (
           <p className="mt-3 text-sm leading-6 text-neutral-400">
             {selection.summary}

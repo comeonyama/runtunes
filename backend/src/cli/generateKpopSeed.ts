@@ -8,7 +8,7 @@ try {
   const seed = await generateKpopSeedFile();
   await saveKpopSeedFile(seed);
   console.log(
-    `[seed:kpop] 保存完了 artists=${seed.artists.length} keywords=${seed.keywords.length} generatedAt=${seed.generatedAt}`,
+    `[seed:kpop] 保存完了 artists=${seed.artists.length} generatedAt=${seed.generatedAt}`,
   );
 } catch (error) {
   console.error(

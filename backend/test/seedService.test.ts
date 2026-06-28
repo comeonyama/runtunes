@@ -16,9 +16,9 @@ test("loads seeds for every candidate genre", async () => {
   }
 });
 
-test("loads both artist and keyword seeds for K-Pop", async () => {
+test("loads only artist seeds for K-Pop", async () => {
   const seeds = await loadSeeds("kpop");
 
   assert.ok(seeds.some((seed) => seed.type === "artist"));
-  assert.ok(seeds.some((seed) => seed.type === "keyword"));
+  assert.ok(seeds.every((seed) => seed.type === "artist"));
 });

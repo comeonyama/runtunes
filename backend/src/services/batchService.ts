@@ -163,14 +163,17 @@ export class BatchService {
   }
 
   private async loadSeeds(genre: SpotifySearchGenre): Promise<BatchSeed[]> {
-    return (await this.dependencies.loadSeeds(genre)).map((seed) => ({
-      label: `${seed.type}: ${seed.value}`,
-      query:
-        seed.type === "artist"
-          ? `artist:"${seed.value.replaceAll('"', '\\"')}"`
-          : seed.value,
-      limit: seed.type === "artist" ? ARTIST_QUERY_LIMIT : KEYWORD_QUERY_LIMIT,
-    }));
+    return (await this.dependencies.loadSeeds(genre))
+      .filter((seed) => genre !== "kpop" || seed.type === "artist")
+      .map((seed) => ({
+        label: `${seed.type}: ${seed.value}`,
+        query:
+          seed.type === "artist"
+            ? `artist:"${seed.value.replaceAll('"', '\\"')}"`
+            : seed.value,
+        limit:
+          seed.type === "artist" ? ARTIST_QUERY_LIMIT : KEYWORD_QUERY_LIMIT,
+      }));
   }
 }
 

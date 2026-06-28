@@ -63,7 +63,9 @@ export async function loadSeeds(genre: SpotifySearchGenre): Promise<Seed[]> {
   }
 
   const keywords =
-    "keywords" in data && Array.isArray(data.keywords) ? data.keywords : [];
+    genre !== "kpop" && "keywords" in data && Array.isArray(data.keywords)
+      ? data.keywords
+      : [];
 
   return [
     ...data.artists.flatMap((artist) => {

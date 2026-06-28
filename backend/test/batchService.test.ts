@@ -106,6 +106,35 @@ test("adds candidates once and resets progress after completion", async () => {
   }
 });
 
+test("ignores keyword seeds for K-Pop", async () => {
+  const repositories = await createRepositories();
+
+  try {
+    const searchService = new FakeSpotifySearchService(async () => [
+      createTrack(),
+    ]);
+    const batch = new BatchService({
+      ...repositories,
+      spotifySearchService: searchService,
+      requestIntervalMs: 0,
+      getAccessToken: async () => "token",
+      loadSeeds: loadTestSeeds,
+      log: () => undefined,
+      sleep: async () => undefined,
+    });
+
+    const result = await batch.run("kpop");
+    assert.deepEqual(result, { status: "completed", processedSeeds: 2 });
+    assert.deepEqual(searchService.queries, [
+      'artist:"Artist One"',
+      'artist:"Artist \\"Two\\""',
+    ]);
+    assert.deepEqual(searchService.limits, [5, 5]);
+  } finally {
+    await repositories.cleanup();
+  }
+});
+
 test("persists Retry-After and the current seed when Spotify returns 429", async () => {
   const repositories = await createRepositories();
 

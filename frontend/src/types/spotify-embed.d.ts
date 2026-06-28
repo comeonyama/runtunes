@@ -9,7 +9,7 @@ declare global {
   interface SpotifyIFrameAPI {
     createController(
       element: HTMLElement,
-      options: { uri: string; height?: number },
+      options: { uri: string; height?: number; width?: number | string },
       callback: (controller: SpotifyEmbedController) => void,
     ): void;
   }
