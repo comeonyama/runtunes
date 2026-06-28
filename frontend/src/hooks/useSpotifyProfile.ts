@@ -9,6 +9,8 @@ export function useSpotifyProfile(isSpotifyConnected: boolean) {
     queryFn: fetchCurrentUserProfile,
     enabled: isSpotifyConnected,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
+    retry: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 }

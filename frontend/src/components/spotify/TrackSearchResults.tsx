@@ -1,6 +1,6 @@
 import { Music2 } from "lucide-react";
 import { useRef, useState } from "react";
-import { isSpotifyUnauthorizedError } from "../../services/spotify/search";
+import { getSpotifySearchErrorMessage } from "../../services/spotify/search";
 import type { CandidateTrack } from "../../types/candidateTrack";
 
 type TrackSearchResultsProps = {
@@ -55,16 +55,12 @@ function TrackSearchResults({
   }
 
   if (status === "error") {
-    const message = isSpotifyUnauthorizedError(error)
-      ? "Your Spotify session has expired. Disconnect and connect Spotify again."
-      : "Couldn’t search Spotify. Please try again.";
-
     return (
       <section
         className="mt-5 w-full rounded-2xl border border-red-400/20 bg-red-400/5 p-5 text-sm text-red-300"
         role="alert"
       >
-        {message}
+        {getSpotifySearchErrorMessage(error)}
       </section>
     );
   }

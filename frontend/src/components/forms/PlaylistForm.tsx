@@ -62,6 +62,7 @@ const choiceGridClassName = {
 
 export type PlaylistFormProps = {
   isLoading?: boolean;
+  isRateLimited?: boolean;
   isSpotifyConnected?: boolean;
   onSubmit: (formData: PlaylistFormData) => void;
 };
@@ -249,6 +250,7 @@ function LoadingSpinner() {
 
 function PlaylistForm({
   isLoading = false,
+  isRateLimited = false,
   isSpotifyConnected = false,
   onSubmit,
 }: PlaylistFormProps) {
@@ -346,8 +348,14 @@ function PlaylistForm({
 
       <button
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-run-green px-6 py-4 text-sm font-bold text-black transition duration-200 enabled:hover:scale-[1.01] enabled:hover:bg-run-green-hover enabled:hover:shadow-lg enabled:hover:shadow-run-green/10 enabled:active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green focus-visible:ring-offset-2 focus-visible:ring-offset-run-surface disabled:cursor-not-allowed disabled:bg-neutral-600 disabled:text-neutral-300 sm:mt-8"
-        disabled={isLoading || !isSpotifyConnected}
-        title={isSpotifyConnected ? undefined : "Connect Spotify to continue"}
+        disabled={isLoading || isRateLimited || !isSpotifyConnected}
+        title={
+          !isSpotifyConnected
+            ? "Connect Spotify to continue"
+            : isRateLimited
+              ? "Spotify search is temporarily rate limited"
+              : undefined
+        }
         type="submit"
       >
         {isLoading && <LoadingSpinner />}

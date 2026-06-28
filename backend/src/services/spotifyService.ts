@@ -12,6 +12,13 @@ export type CreateSpotifyPlaylistResult = {
   playlistUrl: string;
 };
 
+export type SpotifyUserProfile = {
+  display_name?: string;
+  id: string;
+  images?: Array<{ url: string }>;
+  product?: string;
+};
+
 export class SpotifyApiError extends Error {
   constructor(
     message: string,
@@ -47,7 +54,9 @@ async function requestSpotify(
   return response;
 }
 
-async function getCurrentUserId(accessToken: string): Promise<string> {
+export async function getCurrentUserProfile(
+  accessToken: string,
+): Promise<SpotifyUserProfile> {
   const response = await requestSpotify("/me", accessToken);
   const data: unknown = await response.json();
 
@@ -56,12 +65,34 @@ async function getCurrentUserId(accessToken: string): Promise<string> {
     data === null ||
     !("id" in data) ||
     typeof data.id !== "string" ||
-    !data.id
+    !data.id ||
+    ("display_name" in data && typeof data.display_name !== "string") ||
+    ("product" in data && typeof data.product !== "string") ||
+    ("images" in data && !Array.isArray(data.images))
   ) {
     throw new Error("Spotify returned an invalid user profile.");
   }
 
-  return data.id;
+  const displayName = "display_name" in data ? data.display_name : undefined;
+  const product = "product" in data ? data.product : undefined;
+  const images = "images" in data ? data.images : undefined;
+
+  return {
+    id: data.id,
+    ...(typeof displayName === "string" ? { display_name: displayName } : {}),
+    ...(typeof product === "string" ? { product } : {}),
+    ...(Array.isArray(images)
+      ? {
+          images: images.filter(
+            (image): image is { url: string } =>
+              typeof image === "object" &&
+              image !== null &&
+              "url" in image &&
+              typeof image.url === "string",
+          ),
+        }
+      : {}),
+  };
 }
 
 async function createPrivatePlaylist(
@@ -113,7 +144,7 @@ export async function createSpotifyPlaylist({
   playlistTitle,
   playlistDescription,
 }: CreateSpotifyPlaylistRequest): Promise<CreateSpotifyPlaylistResult> {
-  await getCurrentUserId(accessToken);
+  await getCurrentUserProfile(accessToken);
 
   const playlistId = await createPrivatePlaylist(
     accessToken,

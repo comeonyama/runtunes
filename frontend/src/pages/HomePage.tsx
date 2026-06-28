@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import PlaylistForm from "../components/forms/PlaylistForm";
 import AISelectionResults from "../components/spotify/AISelectionResults";
@@ -17,6 +17,7 @@ import {
   loginWithSpotify,
   logout,
 } from "../services/spotify/auth";
+import { getSpotifyRetryAfterSeconds } from "../services/spotify/search";
 
 const SHOW_DEBUG = false;
 
@@ -34,13 +35,32 @@ function getProductLabel(product?: string) {
 
 function HomePage() {
   const queryClient = useQueryClient();
+  const isTrackSearchSubmittingRef = useRef(false);
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(isAuthenticated);
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
+  const [rateLimitedUntil, setRateLimitedUntil] = useState(0);
+  const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const spotifyProfile = useSpotifyProfile(isSpotifyConnected);
   const trackSearch = useSpotifyTrackSearch();
   const aiSelection = useAITrackSelection();
   const playlistCreation = useCreateSpotifyPlaylist();
+
+  useEffect(() => {
+    if (rateLimitedUntil <= Date.now()) return;
+
+    const updateRetryAfter = () => {
+      const remainingSeconds = Math.max(
+        0,
+        Math.ceil((rateLimitedUntil - Date.now()) / 1_000),
+      );
+      setRetryAfterSeconds(remainingSeconds);
+      if (remainingSeconds === 0) setRateLimitedUntil(0);
+    };
+    updateRetryAfter();
+    const intervalId = window.setInterval(updateRetryAfter, 1_000);
+    return () => window.clearInterval(intervalId);
+  }, [rateLimitedUntil]);
 
   const connectedName =
     spotifyProfile.data?.display_name?.trim() || "Spotify user";
@@ -48,6 +68,8 @@ function HomePage() {
 
   async function handleConnect() {
     setConnectionError(null);
+    setRateLimitedUntil(0);
+    setRetryAfterSeconds(0);
     setIsConnecting(true);
 
     try {
@@ -63,6 +85,7 @@ function HomePage() {
   }
 
   function handleDisconnect() {
+    isTrackSearchSubmittingRef.current = false;
     logout();
     queryClient.removeQueries({ queryKey: spotifyProfileQueryKey });
     trackSearch.reset();
@@ -70,6 +93,8 @@ function HomePage() {
     playlistCreation.reset();
     setIsSpotifyConnected(false);
     setConnectionError(null);
+    setRateLimitedUntil(0);
+    setRetryAfterSeconds(0);
   }
 
   return (
@@ -153,8 +178,12 @@ function HomePage() {
 
         <PlaylistForm
           isLoading={trackSearch.isPending || aiSelection.isPending}
+          isRateLimited={retryAfterSeconds > 0}
           isSpotifyConnected={isSpotifyConnected}
           onSubmit={(criteria) => {
+            if (isTrackSearchSubmittingRef.current) return;
+
+            isTrackSearchSubmittingRef.current = true;
             aiSelection.reset();
             playlistCreation.reset();
             trackSearch.mutate(
@@ -163,9 +192,21 @@ function HomePage() {
               },
               {
                 onSuccess: (tracks) => {
+                  setRateLimitedUntil(0);
+                  setRetryAfterSeconds(0);
                   if (tracks.length) {
                     aiSelection.mutate({ criteria, tracks });
                   }
+                },
+                onError: (error) => {
+                  const seconds = getSpotifyRetryAfterSeconds(error);
+                  if (seconds === null) return;
+
+                  setRetryAfterSeconds(seconds);
+                  setRateLimitedUntil(Date.now() + seconds * 1_000);
+                },
+                onSettled: () => {
+                  isTrackSearchSubmittingRef.current = false;
                 },
               },
             );
