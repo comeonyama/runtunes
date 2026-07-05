@@ -10,6 +10,9 @@ Parameters:
     Type: String
     NoEcho: true
     Description: OpenAI API key used by the Lambda function
+  BudgetNotificationEmail:
+    Type: String
+    Description: Email address that receives monthly AWS cost alerts
 
 Resources:
   RunTunesHttpApi:
@@ -36,6 +39,10 @@ Resources:
       DefaultRouteSettings:
         ThrottlingBurstLimit: 20
         ThrottlingRateLimit: 10
+      RouteSettings:
+        "POST /api/openai/select-tracks":
+          ThrottlingBurstLimit: 1
+          ThrottlingRateLimit: 0.2
 
   RunTunesApiFunction:
     Type: AWS::Serverless::Function
@@ -46,6 +53,7 @@ Resources:
       Runtime: nodejs22.x
       MemorySize: 512
       Timeout: 28
+      ReservedConcurrentExecutions: 2
       Environment:
         Variables:
           OPENAI_API_KEY: !Ref OpenAIApiKey
@@ -84,6 +92,42 @@ Resources:
     Properties:
       LogGroupName: !Sub /aws/lambda/${AWS::StackName}-api
       RetentionInDays: 14
+
+  MonthlyCostBudget:
+    Type: AWS::Budgets::Budget
+    Properties:
+      Budget:
+        BudgetName: !Sub ${AWS::StackName}-monthly-cost
+        BudgetLimit:
+          Amount: 5
+          Unit: USD
+        BudgetType: COST
+        TimeUnit: MONTHLY
+      NotificationsWithSubscribers:
+        - Notification:
+            ComparisonOperator: GREATER_THAN
+            NotificationType: ACTUAL
+            Threshold: 80
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - Address: !Ref BudgetNotificationEmail
+              SubscriptionType: EMAIL
+        - Notification:
+            ComparisonOperator: GREATER_THAN
+            NotificationType: ACTUAL
+            Threshold: 100
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - Address: !Ref BudgetNotificationEmail
+              SubscriptionType: EMAIL
+        - Notification:
+            ComparisonOperator: GREATER_THAN
+            NotificationType: FORECASTED
+            Threshold: 100
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - Address: !Ref BudgetNotificationEmail
+              SubscriptionType: EMAIL
 
 Outputs:
   ApiBaseUrl:

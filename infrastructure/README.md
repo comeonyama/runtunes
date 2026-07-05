@@ -27,7 +27,8 @@ Run the guided deployment once:
 sam deploy --guided \
   --parameter-overrides \
   FrontendOrigin=https://your-production-origin.example \
-  OpenAIApiKey=your-openai-api-key
+  OpenAIApiKey=your-openai-api-key \
+  BudgetNotificationEmail=your-email@example.com
 ```
 
 Keep the generated `samconfig.toml` local if it contains environment-specific
@@ -37,6 +38,14 @@ values. After deployment, set the `ApiBaseUrl` stack output as
 API Gateway only exposes the four production API routes. CORS is restricted to
 the supplied frontend origin. The Lambda has no S3 or database permissions;
 Candidate DB files are read from its deployment package.
+
+## Cost safeguards
+
+The stack limits Lambda reserved concurrency to two. The OpenAI selection route
+allows a burst of one request and an average of one request every five seconds.
+An account-wide monthly AWS cost budget of USD 5 sends email notifications at
+80 percent actual spend, 100 percent actual spend, and 100 percent forecasted
+spend. AWS Budgets sends alerts; it does not automatically stop resources.
 
 SAM warns that the function has no API Gateway authorizer. This is expected:
 the candidate GET route is public, while the profile, AI selection, and
