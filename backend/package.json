@@ -1,0 +1,30 @@
+{
+  "name": "runtunes-backend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/local.ts",
+    "build": "tsc",
+    "package:lambda": "npm run build && node scripts/package-lambda.mjs",
+    "start": "node dist/local.js",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "seed:global": "tsx src/cli/generateGlobalSeed.ts",
+    "seed:kpop": "tsx src/cli/generateKpopSeed.ts",
+    "batch:global": "tsx src/cli/runBatch.ts global",
+    "batch:j-groove": "tsx src/cli/runBatch.ts jgroove",
+    "batch:kpop": "tsx src/cli/runBatch.ts kpop"
+  },
+  "dependencies": {
+    "@fastify/aws-lambda": "^6.4.0",
+    "dotenv": "^16.6.1",
+    "fastify": "^5.6.2",
+    "openai": "^6.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.21.0",
+    "typescript": "~6.0.2"
+  }
+}

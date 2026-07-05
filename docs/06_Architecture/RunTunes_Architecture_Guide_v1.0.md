@@ -1,188 +1,75 @@
-# RunTunes アーキテクチャガイド v1.0
+# RunTunes アーキテクチャガイド
 
-## 1. 目的
+## 1. 設計原則
 
-本書は RunTunes の設計思想をまとめたドキュメントである。
-「どのように実装するか」ではなく、「なぜその設計を採用したか」を記録することを目的とする。
+### AIは候補から選ぶ
 
-------------------------------------------------------------------------
+OpenAIに曲を発明させず、Candidate DBから取得したSpotify Track IDだけを選択させる。OpenAI応答はJSON Schemaとサービス側検証を通し、候補外IDと重複IDを除外する。
 
-# 2. 基本理念
+### ユーザー操作とSpotify Searchを分離する
 
-RunTunes は **AIでプレイリストを自動生成するサービス**ではない。
+Spotify Searchは管理者バッチだけが実行する。ユーザー向けAPIはCandidate DBを読むため、画面操作による検索バーストやSearch APIの429がプレイリスト生成へ直接波及しない。
 
-RunTunes が提供する価値は次の3点である。
+### 秘密情報を適切な境界に置く
 
--   ランニングシーンに最適な候補曲を提案する
--   ユーザーが自由に編集できる
--   Spotifyプレイリストを短時間で作成できる
+- OpenAI API keyとバッチ用Spotifyトークン: バックエンド環境
+- Spotify Client ID: 公開可能なフロントエンド設定
+- Spotifyユーザートークン: ブラウザで保持し、必要なAPIリクエストで送信
+- Spotify Client Secret: 使用しない
 
-AIは意思決定を支援する存在であり、最終決定はユーザーが行う。
+## 2. Candidate collection
 
-------------------------------------------------------------------------
+```text
+Saved seed JSON
+  → BatchService
+  → Spotify Search API (sequential, interval controlled)
+  → normalize / filter / deduplicate
+  → Candidate DB JSON
+```
 
-# 3. React SPA を採用する理由
+CLIから直接検索ロジックを持たず、必ずBatchServiceを経由する。429時は `Retry-After` を `nextAllowedAt` として保存し、seed indexとともに次回実行へ引き継ぐ。
 
-## 採用理由
+Candidate DBは現状append型で、既存Track IDは更新せず重複として扱う。データ更新後は新しいCandidate DBをLambda packageへ含めて再デプロイする。
 
--   デスクトップ・モバイル双方で快適な操作性
--   編集画面のリアルタイム更新
--   WordPressとの共存が容易
--   将来的なPWA化にも対応可能
+## 3. Playlist generation
 
-WordPressはCMS、RunTunesはSPAという役割分担とする。
+```text
+Candidate DB
+  → random candidates (max 50)
+  → surprise selection + OpenAI selection
+  → validate and merge IDs
+  → preview
+  → Spotify playlist creation
+```
 
-------------------------------------------------------------------------
+ランニング時間、ペース、ジャンルは選曲のヒントであり、Spotify Search queryには使用しない。genre別Candidate DBがジャンル境界を担当し、OpenAIはその内部で曲順と構成を決める。
 
-# 4. Fastify を採用する理由
+## 4. 認証
 
--   軽量
--   TypeScriptとの親和性
--   Expressより高速
--   小規模サービスに適する
+SPAはSpotify Authorization Code with PKCEを使用する。code verifierとstateは認証中だけ `sessionStorage`、取得したaccess token・refresh token・有効期限は `localStorage` に保存する。API側はBearer tokenをSpotify `/me` で検証する。
 
-------------------------------------------------------------------------
+バックエンドはOAuth callbackやtoken refreshを担当しない。ブラウザに有効なaccess tokenがない場合は再接続する。
 
-# 5. Prisma を採用する理由
+## 5. 実行環境
 
--   型安全
--   マイグレーション管理
--   保守性
--   AIによるコード生成との相性
+### Local
 
-------------------------------------------------------------------------
+- Vite development server: `localhost:5173`
+- Fastify: `127.0.0.1:3001`
+- Vite `/api` proxyで接続
 
-# 6. MySQL を採用する理由
+### Production
 
-WordPressと同一データベースサーバを利用する。
+- XServer: `/runtunes/` 配下の静的SPA
+- API Gateway HTTP API: 公開する4ルートとCORS
+- Lambda: Fastify API、Candidate DB読み取り
+- CloudWatch Logs: 14日保持
+- Cost controls: Lambda同時実行2、API throttling、月額Budget通知
 
-メリット
+## 6. 変更時のルール
 
--   運用の一本化
--   バックアップ共通化
--   追加コスト削減
-
-------------------------------------------------------------------------
-
-# 7. キャッシュ戦略
-
-## AIキャッシュ
-
-同一条件の問い合わせでは OpenAI API を呼ばない。
-
-キー
-
--   scene
--   genre
--   decade
--   popularity
--   count
-
-目的
-
--   APIコスト削減
--   応答速度向上
-
-## Spotifyキャッシュ
-
-Spotify Search API の結果を永続保存する。
-
-検索順序
-
-1.  DB検索
-2.  未登録ならSpotify Search
-3.  DB保存
-
-将来的には songs テーブルが RunTunes 独自の楽曲マスタとなる。
-
-------------------------------------------------------------------------
-
-# 8. OpenAI の役割
-
-OpenAI は以下のみ担当する。
-
--   候補曲生成
--   テーマの統一
--   バランス調整
-
-Spotify Track ID は OpenAI に生成させない。
-
-------------------------------------------------------------------------
-
-# 9. Spotify の役割
-
-Spotify は
-
--   OAuth
--   Track検索
--   Playlist生成
-
-のみ利用する。
-
-楽曲推薦ロジックは RunTunes 側が持つ。
-
-------------------------------------------------------------------------
-
-# 10. WordPressとの共存
-
-WordPress
-
--   SEO
--   ブログ
--   コース紹介
--   CMS
-
-RunTunes
-
--   React SPA
--   API
--   AI
--   Spotify
-
-役割を明確に分離する。
-
-------------------------------------------------------------------------
-
-# 11. 将来像
-
-サービス開始時は OpenAI と Spotify API に依存する。
-
-長期的には以下を自前資産として蓄積する。
-
--   楽曲マスタ
--   ランニングシーンタグ
--   BPM
--   Spotify Audio Features
--   独自ランキング
-
-これにより API依存を減らし、推薦精度を継続的に向上させる。
-
-------------------------------------------------------------------------
-
-# 12. 開発方針
-
--   設計を先行する
--   AIを開発パートナーとして利用する
--   小さくリリースし継続改善する
--   キャッシュを積極的に活用する
--   保守性を優先する
-
-------------------------------------------------------------------------
-
-# 13. ポートフォリオとしての価値
-
-RunTunes は以下の技術要素を統合した実践的なWebサービスである。
-
--   React
--   TypeScript
--   Fastify
--   Prisma
--   MySQL
--   OpenAI API
--   Spotify Web API
--   OAuth
--   REST API
--   キャッシュ設計
--   WordPress連携
-
-単なるAPI連携ではなく、設計・実装・運用まで一貫して考慮したプロダクトを目指す。
+- APIを変更したらAPI設計書とfrontend serviceを同時に確認する。
+- Candidate schemaを変更したらrepository、batch、同梱JSON、API型を確認する。
+- Spotify scopeは必要最小限にし、追加時は理由を記録する。
+- Candidate DB更新とアプリコード変更を区別し、デプロイ対象を明確にする。
+- frontend、backend、seed-managerは各subprojectで検証する。

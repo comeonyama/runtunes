@@ -1,49 +1,61 @@
-# RunTunes UI設計書 v1.0
+# RunTunes UI設計書
 
-## 画面一覧
+## 1. 方針
 
-1.  ホーム
-2.  候補曲編集
-3.  完了
+- AIによるプレイリスト生成を主役にする。
+- Spotify Search候補は内部データとして扱い、通常は表示しない。
+- Spotify接続、条件入力、結果確認、保存を1本の縦方向フローにする。
+- モバイルからデスクトップまで同じ操作順を保つ。
 
-## ホーム
+## 2. ホーム画面
 
-``` text
-RunTunes
-[Scene]
-[Decade]
-[Genre]
-[Count]
-[Popularity]
-[Generate Playlist]
+```text
+RunTunes header
+Spotify connection panel
+Playlist condition form
+AI selection result
+Save result / Spotify link
 ```
 
-### 入力項目
+### Spotify connection panel
 
--   Scene
--   Decade
--   Genre
--   Count
--   Popularity
+- 未接続: 接続が必要な説明と `Connect Spotify`
+- 接続中: ローディング状態
+- 接続済み: 表示名、Free/Premium、`Disconnect`
+- プロフィール取得失敗時も接続状態は維持し、状態文で通知する
 
-## 候補曲編集
+### Playlist condition form
 
--   曲削除
--   ドラッグ&ドロップ並び替え
--   Spotifyへ保存
+- Running time: 30〜120分のrange slider
+- Pace: Easy / Middle / Hard のradio card
+- Genre: J-Groove / K-Pop / Global のradio card
+- `Generate Playlist`: 未接続時と実行中はdisabled
 
-## コンポーネント
+### AI selection result
 
--   Header
--   ChipGroup
--   PopularitySlider
--   SongList
--   SongItem
--   GenerateButton
--   SavePlaylistButton
+- AI生成のsummary
+- プレイリスト名と説明
+- 選択曲ごとの曲名、artist、Spotify Embed
+- AI選曲成功後だけ `Save to Spotify` を表示
+- 保存成功後は作成したプレイリスト情報を表示
 
-## バリデーション
+## 3. OAuthコールバック画面
 
--   必須項目未選択時はGenerate不可
--   APIエラーはトースト表示
--   Spotify未ログイン時はログイン画面へ誘導
+- 処理中、成功、失敗を明確に表示する。
+- `state` 不一致やPKCE session消失を認証エラーとして扱う。
+- 成功後はホームへ遷移する。
+
+## 4. フィードバック
+
+- 非同期処理中はボタンをdisabledにしてspinnerを表示する。
+- エラーは関連する操作の近くにテキストで表示し、`role="alert"` を用いる。
+- Spotify 429では再試行までの目安を表示する。
+- 保存失敗時も生成結果は消さない。
+
+## 5. アクセシビリティ
+
+- フォーム入力にはlabelまたはlegendを関連付ける。
+- iconだけに意味を依存しない。
+- keyboard focusを視覚的に表示する。
+- radio cardの見た目とネイティブinputの状態を同期する。
+- loading、error、disabledを色だけで伝えない。

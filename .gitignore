@@ -1,0 +1,9 @@
+frontend/.env.local
+frontend/runtunes-frontend.zip
+backend/.env
+node_modules/
+dist/
+backend/.lambda-package/
+backend/runtunes-lambda.zip
+.aws-sam/
+infrastructure/samconfig.toml
