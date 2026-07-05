@@ -1,0 +1,93 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: RunTunes API on AWS Lambda and API Gateway HTTP API
+
+Parameters:
+  FrontendOrigin:
+    Type: String
+    Description: Production frontend origin, without a trailing slash
+  OpenAIApiKey:
+    Type: String
+    NoEcho: true
+    Description: OpenAI API key used by the Lambda function
+
+Resources:
+  RunTunesHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: $default
+      DefinitionBody:
+        openapi: 3.0.1
+        info:
+          title: RunTunes API
+          version: "1.0"
+        paths: {}
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref FrontendOrigin
+        AllowHeaders:
+          - Authorization
+          - Content-Type
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        MaxAge: 600
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 20
+        ThrottlingRateLimit: 10
+
+  RunTunesApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${AWS::StackName}-api
+      CodeUri: ../backend/.lambda-package/
+      Handler: dist/lambda.handler
+      Runtime: nodejs22.x
+      MemorySize: 512
+      Timeout: 28
+      Environment:
+        Variables:
+          OPENAI_API_KEY: !Ref OpenAIApiKey
+      Events:
+        GetTracks:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RunTunesHttpApi
+            Path: /api/spotify/tracks
+            Method: GET
+            PayloadFormatVersion: "2.0"
+        GetProfile:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RunTunesHttpApi
+            Path: /api/spotify/profile
+            Method: GET
+            PayloadFormatVersion: "2.0"
+        SelectTracks:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RunTunesHttpApi
+            Path: /api/openai/select-tracks
+            Method: POST
+            PayloadFormatVersion: "2.0"
+        CreatePlaylist:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RunTunesHttpApi
+            Path: /api/spotify/playlists
+            Method: POST
+            PayloadFormatVersion: "2.0"
+
+  RunTunesApiLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${AWS::StackName}-api
+      RetentionInDays: 14
+
+Outputs:
+  ApiBaseUrl:
+    Description: Set this value as frontend VITE_API_BASE_URL
+    Value: !Sub https://${RunTunesHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}
+  LambdaFunctionName:
+    Value: !Ref RunTunesApiFunction
