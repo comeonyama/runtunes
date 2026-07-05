@@ -1,278 +1,55 @@
-# RunTunes 設計書 v1.0
+# RunTunes 機能設計書
 
-**（要件定義・機能設計・技術設計）**
+## 1. 画面
 
-------------------------------------------------------------------------
+### ホーム
 
-# 第1章 要件定義
+単一画面でSpotify接続、条件入力、AI選曲結果の確認、プレイリスト保存までを行う。
 
-## 1.1 プロジェクト概要
+1. Spotify未接続時は接続案内と `Connect Spotify` を表示する。
+2. 接続後は表示名とアカウント種別、`Disconnect` を表示する。
+3. ランニング時間、ペース、ジャンルを入力する。
+4. `Generate Playlist` で候補取得とAI選曲を連続実行する。
+5. AI選曲結果をSpotify Embedで試聴する。
+6. `Save to Spotify` でユーザーのSpotifyへ保存する。
 
-### システム名
+候補曲収集は内部処理であり、通常は候補一覧を表示しない。開発時の明示的なデバッグ設定、エラー、候補0件の場合のみ候補取得領域を表示する。
 
-RunTunes
+### OAuthコールバック
 
-### 目的
+Spotifyから受け取った `code` と `state` を検証する。PKCE verifierを使ってトークンを取得し、成功後はホームへ戻る。失敗時は再接続可能なエラーを表示する。
 
-ランニングシーンに応じたSpotifyプレイリストをAIで提案・生成するWebサービスを提供する。
+## 2. 入力
 
-### 対象ユーザー
+| 項目 | 値 | 初期値 |
+| --- | --- | --- |
+| Running time | 30〜120分、5分刻み | 60分 |
+| Pace | Easy / Middle / Hard | Middle |
+| Genre | J-Groove / K-Pop / Global | J-Groove |
 
--   ランナー
--   Spotify利用者
--   DiscoverRoutes.jp利用者
+Spotify未接続時または処理中は生成ボタンを無効にする。連打による候補取得の重複実行も抑止する。
 
-## 1.2 システム範囲
+## 3. 生成フロー
 
-### 対象機能
-
--   ランニングシーン選択
--   年代選択
--   ジャンル選択
--   曲数選択
--   人気度指定
--   AI選曲
--   候補曲編集
--   Spotifyプレイリスト生成
-
-### 対象外
-
--   音楽再生
--   SNS
--   独自音楽配信
-
-## 1.3 機能要件
-
-  ID      内容
-  ------- -----------------------
-  FR-01   条件指定
-  FR-02   AIによる候補曲生成
-  FR-03   候補曲編集
-  FR-04   Spotify保存
-  FR-05   AI・Spotifyキャッシュ
-
-## 1.4 非機能要件
-
--   React SPA
--   HTTPS
--   OAuth認証
--   レスポンシブ対応
--   APIキーはサーバー側管理
--   初回表示3秒以内
-
-## 1.5 制約
-
--   OpenAI API
--   Spotify Web API
--   WordPress固定ページ配下
--   MySQL利用
-
-------------------------------------------------------------------------
-
-# 第2章 機能設計
-
-## 2.1 画面一覧
-
-1.  ホーム
-2.  Spotifyログイン
-3.  候補曲編集
-4.  完了画面
-
-## 2.2 ホーム画面
-
-入力項目
-
--   ランニングシーン
--   年代
--   ジャンル
--   曲数
--   人気度
-
-操作
-
--   Generate Playlist
-
-## 2.3 候補曲編集
-
--   削除
--   並び替え
--   Spotify保存
-
-## 2.4 機能一覧
-
-  ID     機能
-  ------ -------------------
-  F-01   条件入力
-  F-02   AI生成
-  F-03   AIキャッシュ
-  F-04   Spotify検索
-  F-05   Spotifyキャッシュ
-  F-06   候補曲編集
-  F-07   Playlist生成
-
-## 2.5 処理フロー
-
-1.  条件入力
-2.  AIキャッシュ検索
-3.  OpenAI生成
-4.  Spotifyキャッシュ検索
-5.  Spotify検索
-6.  候補表示
-7.  編集
-8.  Playlist生成
-
-------------------------------------------------------------------------
-
-# 第3章 技術設計
-
-## 3.1 システム構成
-
-``` text
-Browser
-   │
-React SPA
-   │
-REST API (Fastify)
-   │
-├─ OpenAI API
-├─ Spotify API
-└─ MySQL (Prisma)
+```text
+入力
+  → Candidate DBからジャンル別候補を最大50曲取得
+  → OpenAIへ条件と候補メタデータを送信
+  → 選択IDを候補データへ解決
+  → プレイリスト名、説明、概要、試聴UIを表示
+  → ユーザー操作でSpotifyへ保存
 ```
 
-## 3.2 技術スタック
+選曲数の目安は `ランニング時間 ÷ 4分`。約20%をartist単位で分散した surprise track としてランダム選択し、残りをOpenAIが選択する。最終曲順には両者を均等に混ぜる。
 
-  分類       技術
-  ---------- ---------------------------
-  Frontend   React + TypeScript + Vite
-  Backend    Node.js + Fastify
-  ORM        Prisma
-  Database   MySQL
-  Auth       Spotify OAuth
+## 4. 状態とエラー
 
-## 3.3 ディレクトリ
+- Spotifyセッション切れ: ローカル認証情報を破棄し、再接続を促す。
+- Candidate DB 0件: プレイリスト生成を停止し、候補がないことを表示する。
+- OpenAI失敗: 選曲結果を表示せず、再実行可能なエラーを表示する。
+- Spotify 429: `Retry-After` に基づく待機時間を表示する。
+- 保存失敗: AI選曲結果を保持したまま、保存のみ再試行可能にする。
 
-``` text
-frontend/
-  src/
-    components/
-    pages/
-    hooks/
-    api/
-    types/
-    utils/
+## 5. Seed Manager
 
-backend/
-  src/
-    routes/
-    controllers/
-    services/
-    repositories/
-    middleware/
-    prisma/
-```
-
-## 3.4 データフロー
-
-``` text
-Generate
-   │
-AI Cache
-   │
-OpenAI
-   │
-Spotify Cache
-   │
-Spotify Search
-   │
-DB保存
-   │
-Playlist生成
-```
-
-## 3.5 データベース
-
-### songs
-
--   title
--   artist
--   album
--   spotify_track_id
--   spotify_uri
--   popularity
--   duration_ms
-
-### playlist_cache
-
--   cache_key
--   response_json
-
-### spotify_search_cache
-
--   title
--   artist
--   song_id
-
-## 3.6 API
-
-### POST /api/generate
-
-AIによる候補曲生成
-
-### POST /api/playlist
-
-Spotifyプレイリスト生成
-
-### GET /api/auth/login
-
-Spotifyログイン
-
-### GET /api/auth/callback
-
-OAuthコールバック
-
-## 3.7 キャッシュ戦略
-
-### AIキャッシュ
-
-キー - scene - genre - decade - popularity - count
-
-### Spotifyキャッシュ
-
-キー - title - artist
-
-## 3.8 セキュリティ
-
--   HTTPS
--   OAuth Authorization Code Flow
--   APIキー非公開
--   CORS
--   Rate Limit
--   入力値バリデーション
-
-## 3.9 テスト
-
--   Unit Test
--   Integration Test
--   Playwright E2E
-
-## 3.10 開発ロードマップ
-
-1.  要件定義
-2.  設計
-3.  React SPA
-4.  API
-5.  OAuth
-6.  OpenAI
-7.  Spotify
-8.  キャッシュ
-9.  WordPress統合
-10. 公開
-
-## 3.11 将来構想
-
--   BPM検索
--   Audio Features
--   Apple Music対応
--   YouTube Music対応
--   独自楽曲マスタ育成
--   管理画面
+`seed-manager/` は本体から分離した管理ツールである。Spotify PKCEで接続し、ユーザーがアクセス可能なプレイリストからartistを抽出・選択し、seed JSONとして出力する。本体の一般ユーザーには公開しない。
