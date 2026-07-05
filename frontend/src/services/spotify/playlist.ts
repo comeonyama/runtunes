@@ -1,4 +1,3 @@
-import { getStoredAccessToken } from "./auth";
 import { getApiUrl } from "../api";
 
 export type CreateSpotifyPlaylistRequest = {
@@ -30,20 +29,14 @@ function isCreateSpotifyPlaylistResponse(
 export async function createSpotifyPlaylist(
   request: CreateSpotifyPlaylistRequest,
 ): Promise<CreateSpotifyPlaylistResponse> {
-  const accessToken = getStoredAccessToken();
-
-  if (!accessToken) {
-    throw new Error("Spotify access token is not available.");
-  }
-
   if (!request.selectedTrackIds.length) {
     throw new Error("No tracks were selected.");
   }
 
   const response = await fetch(getApiUrl("/api/spotify/playlists"), {
     method: "POST",
+    credentials: "include",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(request),

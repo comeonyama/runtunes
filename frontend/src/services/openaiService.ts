@@ -1,11 +1,6 @@
 import type { CandidateTrack } from "../types/candidateTrack";
 import type { PlaylistFormData } from "../types/form";
 import { getApiUrl } from "./api";
-import { getStoredAccessToken } from "./spotify/auth";
-
-export type OpenAIConnectionResponse = {
-  text: string;
-};
 
 export type AITrackSelectionResponse = {
   selectedTrackIds: string[];
@@ -18,36 +13,6 @@ export type AITrackSelectionRequest = {
   criteria: PlaylistFormData;
   tracks: CandidateTrack[];
 };
-
-function isOpenAIConnectionResponse(
-  value: unknown,
-): value is OpenAIConnectionResponse {
-  if (typeof value !== "object" || value === null) return false;
-
-  return (
-    "text" in value &&
-    typeof value.text === "string" &&
-    value.text.trim().length > 0
-  );
-}
-
-export async function requestOpenAIConnectionTest(): Promise<OpenAIConnectionResponse> {
-  const response = await fetch(getApiUrl("/api/openai/test"), {
-    method: "POST",
-  });
-
-  if (!response.ok) {
-    throw new Error("Could not connect to OpenAI. Please try again.");
-  }
-
-  const data: unknown = await response.json();
-
-  if (!isOpenAIConnectionResponse(data)) {
-    throw new Error("OpenAI returned an unexpected response.");
-  }
-
-  return data;
-}
 
 function isAITrackSelectionResponse(
   value: unknown,
@@ -73,16 +38,10 @@ export async function requestAITrackSelection({
   criteria,
   tracks,
 }: AITrackSelectionRequest): Promise<AITrackSelectionResponse> {
-  const accessToken = getStoredAccessToken();
-
-  if (!accessToken) {
-    throw new Error("Spotify access token is not available.");
-  }
-
   const response = await fetch(getApiUrl("/api/openai/select-tracks"), {
     method: "POST",
+    credentials: "include",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({

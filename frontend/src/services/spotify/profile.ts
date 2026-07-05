@@ -1,17 +1,10 @@
 import type { SpotifyUserProfile } from "./types";
-import { getStoredAccessToken } from "./auth";
 import { getApiUrl } from "../api";
 
 export async function fetchCurrentUserProfile() {
-  const accessToken = getStoredAccessToken();
-
-  if (!accessToken) {
-    throw new Error("Spotify access token is not available.");
-  }
-
   const response = await fetch(getApiUrl("/api/spotify/profile"), {
     cache: "no-store",
-    headers: { Authorization: `Bearer ${accessToken}` },
+    credentials: "include",
   });
 
   if (!response.ok) {

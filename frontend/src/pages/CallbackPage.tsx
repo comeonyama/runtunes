@@ -5,6 +5,17 @@ import {
   validateSpotifyAuthState,
 } from "../services/spotify/auth";
 
+function getAuthorizationErrorMessage(errorCode: string) {
+  switch (errorCode) {
+    case "access_denied":
+      return "Spotify connection was cancelled.";
+    case "temporarily_unavailable":
+      return "Spotify is temporarily unavailable. Please try again later.";
+    default:
+      return "Spotify authorization failed. Please try again.";
+  }
+}
+
 function CallbackPage() {
   const navigate = useNavigate();
   const hasStarted = useRef(false);
@@ -29,11 +40,7 @@ function CallbackPage() {
         }
 
         if (authorizationError) {
-          throw new Error(
-            authorizationError === "access_denied"
-              ? "Spotify connection was cancelled."
-              : `Spotify authorization failed: ${authorizationError}`,
-          );
+          throw new Error(getAuthorizationErrorMessage(authorizationError));
         }
 
         if (!code) {
