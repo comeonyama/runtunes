@@ -1,5 +1,7 @@
 import type { CandidateTrack } from "../types/candidateTrack";
 import type { PlaylistFormData } from "../types/form";
+import { getApiUrl } from "./api";
+import { getStoredAccessToken } from "./spotify/auth";
 
 export type OpenAIConnectionResponse = {
   text: string;
@@ -30,7 +32,9 @@ function isOpenAIConnectionResponse(
 }
 
 export async function requestOpenAIConnectionTest(): Promise<OpenAIConnectionResponse> {
-  const response = await fetch("/api/openai/test", { method: "POST" });
+  const response = await fetch(getApiUrl("/api/openai/test"), {
+    method: "POST",
+  });
 
   if (!response.ok) {
     throw new Error("Could not connect to OpenAI. Please try again.");
@@ -69,9 +73,18 @@ export async function requestAITrackSelection({
   criteria,
   tracks,
 }: AITrackSelectionRequest): Promise<AITrackSelectionResponse> {
-  const response = await fetch("/api/openai/select-tracks", {
+  const accessToken = getStoredAccessToken();
+
+  if (!accessToken) {
+    throw new Error("Spotify access token is not available.");
+  }
+
+  const response = await fetch(getApiUrl("/api/openai/select-tracks"), {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       durationMinutes: criteria.durationMinutes,
       pace: criteria.pace,

@@ -1,5 +1,6 @@
 import type { CandidateTrack } from "../../types/candidateTrack";
 import type { PlaylistFormData } from "../../types/form";
+import { getApiUrl } from "../api";
 
 export type TrackSearchCriteria = Pick<PlaylistFormData, "genre">;
 
@@ -71,9 +72,10 @@ export async function searchTracks({
   genre,
 }: TrackSearchCriteria): Promise<CandidateTrack[]> {
   const params = new URLSearchParams({ genre: toApiGenre(genre) });
-  const response = await fetch(`/api/spotify/tracks?${params.toString()}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    getApiUrl(`/api/spotify/tracks?${params.toString()}`),
+    { cache: "no-store" },
+  );
 
   if (!response.ok) {
     const errorData: unknown = await response.json().catch(() => null);

@@ -29,7 +29,7 @@ type ErrorResponse = {
   retryAfterSeconds?: number;
 };
 
-const server = Fastify({ logger: true });
+export const server = Fastify({ logger: true });
 const candidateRepository = new CandidateRepository();
 
 const SPOTIFY_RATE_LIMIT_MESSAGE = "Spotify rate limit exceeded.";
@@ -195,6 +195,14 @@ server.post<{
   Body: unknown;
   Reply: TrackSelectionResult | ErrorResponse;
 }>("/api/openai/select-tracks", async (request, reply) => {
+  const accessToken = getBearerToken(request.headers.authorization);
+
+  if (!accessToken) {
+    return reply
+      .code(401)
+      .send({ message: "Spotify authorization is required." });
+  }
+
   if (!isTrackSelectionRequest(request.body)) {
     return reply
       .code(400)
@@ -202,10 +210,28 @@ server.post<{
   }
 
   try {
+    await getCurrentUserProfile(accessToken);
     const selection = await selectTracksWithAI(request.body);
     return reply.send(selection);
-  } catch {
-    request.log.error("OpenAI track selection failed");
+  } catch (error) {
+    if (error instanceof SpotifyApiError) {
+      request.log.error(error, "Spotify authorization check failed");
+
+      if (error.status === 429) {
+        const retryAfterSeconds = getRetryAfterSeconds(error.retryAfter);
+        reply.header("Retry-After", String(retryAfterSeconds));
+        return reply.code(429).send({
+          message: SPOTIFY_RATE_LIMIT_MESSAGE,
+          retryAfterSeconds,
+        });
+      }
+
+      return reply
+        .code(error.status === 401 ? 401 : 502)
+        .send({ message: "Spotify authorization check failed." });
+    }
+
+    request.log.error(error, "OpenAI track selection failed");
     return reply
       .code(502)
       .send({ message: "Could not select tracks with AI." });
@@ -257,13 +283,3 @@ server.post<{
       .send({ message: "Spotify playlist creation failed." });
   }
 });
-
-try {
-  await server.listen({
-    host: "127.0.0.1",
-    port: Number(process.env.PORT ?? 3001),
-  });
-} catch (error) {
-  server.log.error(error);
-  process.exit(1);
-}

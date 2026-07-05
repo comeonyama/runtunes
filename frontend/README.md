@@ -1,5 +1,29 @@
 # React + TypeScript + Vite
 
+## API configuration
+
+Copy `.env.example` to `.env.local`. In local development, leave
+`VITE_API_BASE_URL` empty so requests continue through the Vite `/api` proxy.
+For a production build, set it to the API Gateway origin without a trailing
+slash:
+
+```dotenv
+VITE_API_BASE_URL=https://example.execute-api.ap-northeast-1.amazonaws.com
+```
+
+## Production build for XServer
+
+Make sure `.env.local` contains `VITE_SPOTIFY_CLIENT_ID`, then run:
+
+```bash
+npm run build:production
+```
+
+This builds RunTunes for `https://discoverroutes.jp/runtunes/`, uses
+`https://discoverroutes.jp/runtunes/callback` as the Spotify redirect URI, and
+connects to the deployed API Gateway. Upload the contents of `dist/`, including
+the hidden `.htaccess` file, into the XServer `runtunes` directory.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

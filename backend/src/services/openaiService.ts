@@ -57,11 +57,14 @@ export type TrackSelectionResult = {
 };
 
 function loadApiKey(): string {
+  const environmentKey = process.env.OPENAI_API_KEY?.trim();
+  if (environmentKey) return environmentKey;
+
   const envPath = new URL("../../.env", import.meta.url);
   const apiKey = parse(readFileSync(envPath)).OPENAI_API_KEY?.trim();
 
   if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is not set in backend/.env.");
+    throw new Error("OPENAI_API_KEY is not set in the environment or backend/.env.");
   }
 
   return apiKey;
