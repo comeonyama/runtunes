@@ -63,9 +63,9 @@ function HomePage() {
     }
   }
 
-  function handleDisconnect() {
+  async function handleDisconnect() {
     isTrackSearchSubmittingRef.current = false;
-    logout();
+    await logout();
     queryClient.removeQueries({ queryKey: spotifyProfileQueryKey });
     trackSearch.reset();
     aiSelection.reset();
@@ -120,7 +120,7 @@ function HomePage() {
               </div>
               <button
                 className="self-start rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold text-neutral-200 shadow-sm transition duration-200 hover:border-white/25 hover:bg-white/10 hover:text-white active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-run-green focus-visible:ring-offset-2 focus-visible:ring-offset-run-surface sm:self-auto"
-                onClick={handleDisconnect}
+                onClick={() => void handleDisconnect()}
                 type="button"
               >
                 Disconnect

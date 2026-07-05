@@ -28,6 +28,8 @@ sam deploy --guided \
   --parameter-overrides \
   FrontendOrigin=https://your-production-origin.example \
   OpenAIApiKey=your-openai-api-key \
+  SpotifyClientId=your-spotify-client-id \
+  SpotifyRedirectUri=https://your-production-origin.example/runtunes/callback \
   BudgetNotificationEmail=your-email@example.com
 ```
 
@@ -35,8 +37,13 @@ Keep the generated `samconfig.toml` local if it contains environment-specific
 values. After deployment, set the `ApiBaseUrl` stack output as
 `VITE_API_BASE_URL` when building the frontend for XServer.
 
-API Gateway only exposes the four production API routes. CORS is restricted to
-the supplied frontend origin. The Lambda has no S3 or database permissions;
+The default API Gateway hostname is cross-site from the production frontend,
+so its `SameSite=None; Secure` Cookie can be subject to browser third-party
+Cookie restrictions. Prefer an API custom domain under the same registrable
+domain as the frontend for reliable production authentication.
+
+API Gateway only exposes the required production API routes. Credentialed CORS
+is restricted to the supplied frontend origin. The Lambda has no S3 or database permissions;
 Candidate DB files are read from its deployment package.
 
 ## Cost safeguards
@@ -49,6 +56,6 @@ spend. AWS Budgets sends alerts; it does not automatically stop resources.
 
 SAM warns that the function has no API Gateway authorizer. This is expected:
 the candidate GET route is public, while the profile, AI selection, and
-playlist routes enforce Spotify bearer-token authentication in Fastify. The AI
+playlist routes enforce Spotify HttpOnly Cookie authentication in Fastify. The AI
 selection route validates the token against Spotify before calling OpenAI. You
 can answer `Y` to that SAM prompt after building this version.

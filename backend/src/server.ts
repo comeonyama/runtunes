@@ -1,7 +1,6 @@
 import Fastify from "fastify";
 import { CandidateRepository } from "./repositories/candidateRepository.js";
 import {
-  requestOpenAIConnectionTest,
   selectTracksWithAI,
   type TrackSelectionCandidate,
   type TrackSelectionRequest,
@@ -15,14 +14,11 @@ import {
   type CreateSpotifyPlaylistResult,
   type SpotifyUserProfile,
 } from "./services/spotifyService.js";
+import { exchangeSpotifyAuthorizationCode } from "./services/spotifyAuthService.js";
 import type {
   SpotifySearchGenre,
   SpotifyTrackSearchResult,
 } from "./services/spotifySearchTypes.js";
-
-type OpenAIConnectionResponse = {
-  text: string;
-};
 
 type ErrorResponse = {
   message: string;
@@ -33,6 +29,105 @@ export const server = Fastify({ logger: true });
 const candidateRepository = new CandidateRepository();
 
 const SPOTIFY_RATE_LIMIT_MESSAGE = "Spotify rate limit exceeded.";
+const SPOTIFY_ACCESS_TOKEN_COOKIE = "runtunes_spotify_access";
+
+function getCookie(requestCookieHeader: string | undefined, name: string) {
+  if (!requestCookieHeader) return null;
+
+  for (const part of requestCookieHeader.split(";")) {
+    const [cookieName, ...cookieValue] = part.trim().split("=");
+    if (cookieName === name) {
+      try {
+        return decodeURIComponent(cookieValue.join("="));
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+function getAccessToken(cookieHeader: string | undefined) {
+  return getCookie(cookieHeader, SPOTIFY_ACCESS_TOKEN_COOKIE);
+}
+
+function serializeAccessTokenCookie(accessToken: string, maxAge: number) {
+  const secure = process.env.AWS_LAMBDA_FUNCTION_NAME ? "; Secure" : "";
+  const sameSite = secure ? "None" : "Lax";
+  return `${SPOTIFY_ACCESS_TOKEN_COOKIE}=${encodeURIComponent(accessToken)}; HttpOnly; Path=/; Max-Age=${Math.floor(maxAge)}; SameSite=${sameSite}${secure}`;
+}
+
+function clearAccessTokenCookie() {
+  return serializeAccessTokenCookie("", 0);
+}
+
+function isAllowedRequestOrigin(origin: string | undefined) {
+  const configuredOrigin = process.env.FRONTEND_ORIGIN?.trim();
+  if (configuredOrigin) return origin === configuredOrigin;
+  return origin === "http://localhost:5173" || origin === "http://127.0.0.1:5173";
+}
+
+function isSpotifyTokenRequestBody(
+  value: unknown,
+): value is { code: string; codeVerifier: string; redirectUri: string } {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "code" in value &&
+    isNonEmptyString(value.code) &&
+    value.code.length <= 2048 &&
+    "codeVerifier" in value &&
+    isNonEmptyString(value.codeVerifier) &&
+    value.codeVerifier.length >= 43 &&
+    value.codeVerifier.length <= 128 &&
+    "redirectUri" in value &&
+    isNonEmptyString(value.redirectUri) &&
+    value.redirectUri.length <= 2048
+  );
+}
+
+server.post<{
+  Body: unknown;
+  Reply: { expiresIn: number } | ErrorResponse;
+}>(
+  "/api/spotify/token",
+  async (request, reply) => {
+    if (!isAllowedRequestOrigin(request.headers.origin)) {
+      return reply.code(403).send({ message: "Request origin is not allowed." });
+    }
+    if (!isSpotifyTokenRequestBody(request.body)) {
+      return reply.code(400).send({ message: "Invalid Spotify token request." });
+    }
+
+    try {
+      const token = await exchangeSpotifyAuthorizationCode(
+        request.body.code,
+        request.body.codeVerifier,
+        request.body.redirectUri,
+      );
+      reply.header(
+        "Set-Cookie",
+        serializeAccessTokenCookie(token.accessToken, token.expiresIn),
+      );
+      reply.header("Cache-Control", "no-store");
+      return reply.send({ expiresIn: token.expiresIn });
+    } catch (error) {
+      request.log.error(error, "Spotify token exchange failed");
+      return reply.code(502).send({ message: "Spotify token exchange failed." });
+    }
+  },
+);
+
+server.post<{ Reply: { ok: true } | ErrorResponse }>(
+  "/api/spotify/logout",
+  async (request, reply) => {
+    if (!isAllowedRequestOrigin(request.headers.origin)) {
+      return reply.code(403).send({ message: "Request origin is not allowed." });
+    }
+    reply.header("Set-Cookie", clearAccessTokenCookie());
+    return reply.send({ ok: true });
+  },
+);
 
 server.get<{
   Querystring: { genre?: string };
@@ -65,7 +160,7 @@ function isSpotifySearchGenre(value: unknown): value is SpotifySearchGenre {
 server.get<{ Reply: SpotifyUserProfile | ErrorResponse }>(
   "/api/spotify/profile",
   async (request, reply) => {
-    const accessToken = getBearerToken(request.headers.authorization);
+    const accessToken = getAccessToken(request.headers.cookie);
 
     if (!accessToken) {
       return reply
@@ -151,13 +246,6 @@ type SpotifyPlaylistRequestBody = {
   playlistDescription: string;
 };
 
-function getBearerToken(authorization: string | undefined): string | null {
-  if (!authorization?.startsWith("Bearer ")) return null;
-
-  const token = authorization.slice("Bearer ".length).trim();
-  return token || null;
-}
-
 function isSpotifyPlaylistRequestBody(
   value: unknown,
 ): value is SpotifyPlaylistRequestBody {
@@ -173,29 +261,21 @@ function isSpotifyPlaylistRequestBody(
     ) &&
     "playlistTitle" in value &&
     isNonEmptyString(value.playlistTitle) &&
+    value.playlistTitle.length <= 100 &&
     "playlistDescription" in value &&
-    isNonEmptyString(value.playlistDescription)
+    isNonEmptyString(value.playlistDescription) &&
+    value.playlistDescription.length <= 300
   );
 }
-
-server.post<{ Reply: OpenAIConnectionResponse | ErrorResponse }>(
-  "/api/openai/test",
-  async (request, reply) => {
-    try {
-      const text = await requestOpenAIConnectionTest();
-      return reply.send({ text });
-    } catch {
-      request.log.error("OpenAI connection test failed");
-      return reply.code(502).send({ message: "Could not connect to OpenAI." });
-    }
-  },
-);
 
 server.post<{
   Body: unknown;
   Reply: TrackSelectionResult | ErrorResponse;
 }>("/api/openai/select-tracks", async (request, reply) => {
-  const accessToken = getBearerToken(request.headers.authorization);
+  if (!isAllowedRequestOrigin(request.headers.origin)) {
+    return reply.code(403).send({ message: "Request origin is not allowed." });
+  }
+  const accessToken = getAccessToken(request.headers.cookie);
 
   if (!accessToken) {
     return reply
@@ -242,7 +322,10 @@ server.post<{
   Body: unknown;
   Reply: CreateSpotifyPlaylistResult | ErrorResponse;
 }>("/api/spotify/playlists", async (request, reply) => {
-  const accessToken = getBearerToken(request.headers.authorization);
+  if (!isAllowedRequestOrigin(request.headers.origin)) {
+    return reply.code(403).send({ message: "Request origin is not allowed." });
+  }
+  const accessToken = getAccessToken(request.headers.cookie);
 
   if (!accessToken) {
     return reply

@@ -29,13 +29,17 @@ updates a candidate file, build and deploy a new Lambda package. Batch commands
 remain local administration tasks and are not invoked by Lambda.
 
 Connect the function to an API Gateway HTTP API using a `$default` route and
-payload format version `2.0`. Configure API Gateway CORS for the production
-frontend origin, methods `GET`, `POST`, and `OPTIONS`, and headers
-`Authorization` and `Content-Type`.
+payload format version `2.0`. Configure credentialed CORS for the production
+frontend origin, methods `GET`, `POST`, and `OPTIONS`, and the `Content-Type`
+header.
 
-Set `OPENAI_API_KEY` as a Lambda environment variable. Spotify user access
-tokens continue to arrive in the request `Authorization` header and are not
-stored in Lambda.
+Set `OPENAI_API_KEY`, `SPOTIFY_CLIENT_ID`, `SPOTIFY_REDIRECT_URI`, and
+`FRONTEND_ORIGIN` as Lambda environment variables. The backend exchanges the
+PKCE authorization code and stores the Spotify access token in an HttpOnly
+Cookie. A Spotify Client Secret is not used.
+
+For local development, add `SPOTIFY_CLIENT_ID` and `SPOTIFY_REDIRECT_URI` to
+`backend/.env`. `FRONTEND_ORIGIN` defaults to the Vite origins on port 5173.
 
 ## Candidate DB batch
 

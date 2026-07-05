@@ -10,6 +10,12 @@ Parameters:
     Type: String
     NoEcho: true
     Description: OpenAI API key used by the Lambda function
+  SpotifyClientId:
+    Type: String
+    Description: Spotify application client ID
+  SpotifyRedirectUri:
+    Type: String
+    Description: Spotify OAuth redirect URI
   BudgetNotificationEmail:
     Type: String
     Description: Email address that receives monthly AWS cost alerts
@@ -26,10 +32,10 @@ Resources:
           version: "1.0"
         paths: {}
       CorsConfiguration:
+        AllowCredentials: true
         AllowOrigins:
           - !Ref FrontendOrigin
         AllowHeaders:
-          - Authorization
           - Content-Type
         AllowMethods:
           - GET
@@ -56,8 +62,25 @@ Resources:
       ReservedConcurrentExecutions: 2
       Environment:
         Variables:
+          FRONTEND_ORIGIN: !Ref FrontendOrigin
           OPENAI_API_KEY: !Ref OpenAIApiKey
+          SPOTIFY_CLIENT_ID: !Ref SpotifyClientId
+          SPOTIFY_REDIRECT_URI: !Ref SpotifyRedirectUri
       Events:
+        ExchangeSpotifyToken:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RunTunesHttpApi
+            Path: /api/spotify/token
+            Method: POST
+            PayloadFormatVersion: "2.0"
+        LogoutSpotify:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RunTunesHttpApi
+            Path: /api/spotify/logout
+            Method: POST
+            PayloadFormatVersion: "2.0"
         GetTracks:
           Type: HttpApi
           Properties:

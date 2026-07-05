@@ -1,19 +1,13 @@
-import axios from "axios";
-import type { SpotifyTokenResponse } from "./types";
+import { getApiUrl } from "../api";
 
 const AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
-
 const STORAGE_KEYS = {
-  accessToken: "access_token",
-  refreshToken: "refresh_token",
-  expiresAt: "expires_at",
+  authenticatedUntil: "spotify_authenticated_until",
   codeVerifier: "code_verifier",
   state: "spotify_auth_state",
 } as const;
 
 export const SPOTIFY_SCOPES = [
-  "playlist-modify-public",
   "playlist-modify-private",
   "user-read-private",
 ] as const;
@@ -90,66 +84,74 @@ export function validateSpotifyAuthState(receivedState: string | null) {
 }
 
 export async function exchangeCodeForToken(code: string) {
-  const { clientId, redirectUri } = getSpotifyConfig();
+  const { redirectUri } = getSpotifyConfig();
   const codeVerifier = sessionStorage.getItem(STORAGE_KEYS.codeVerifier);
 
   if (!codeVerifier) {
     throw new Error("Spotify login session expired. Please connect again.");
   }
 
-  const body = new URLSearchParams({
-    client_id: clientId,
-    code,
-    code_verifier: codeVerifier,
-    grant_type: "authorization_code",
-    redirect_uri: redirectUri,
+  const response = await fetch(getApiUrl("/api/spotify/token"), {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code, codeVerifier, redirectUri }),
   });
+  if (!response.ok) {
+    throw new Error("Spotify token exchange failed. Please connect again.");
+  }
+  const data: unknown = await response.json();
+  if (
+    typeof data !== "object" ||
+    data === null ||
+    !("expiresIn" in data) ||
+    typeof data.expiresIn !== "number" ||
+    !Number.isFinite(data.expiresIn) ||
+    data.expiresIn <= 0
+  ) {
+    throw new Error("Spotify token exchange returned an invalid response.");
+  }
 
-  const { data } = await axios.post<SpotifyTokenResponse>(
-    TOKEN_ENDPOINT,
-    body,
-    {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    },
-  );
-
-  localStorage.setItem(STORAGE_KEYS.accessToken, data.access_token);
   localStorage.setItem(
-    STORAGE_KEYS.expiresAt,
-    String(Date.now() + data.expires_in * 1000),
+    STORAGE_KEYS.authenticatedUntil,
+    String(Date.now() + data.expiresIn * 1000),
   );
-
-  localStorage.setItem(STORAGE_KEYS.refreshToken, data.refresh_token);
 
   sessionStorage.removeItem(STORAGE_KEYS.codeVerifier);
   sessionStorage.removeItem(STORAGE_KEYS.state);
 
-  return data;
 }
 
-export function getStoredAccessToken() {
-  const accessToken = localStorage.getItem(STORAGE_KEYS.accessToken);
-  const expiresAt = Number(localStorage.getItem(STORAGE_KEYS.expiresAt));
-
-  if (!accessToken || !Number.isFinite(expiresAt) || Date.now() >= expiresAt) {
-    localStorage.removeItem(STORAGE_KEYS.accessToken);
-    localStorage.removeItem(STORAGE_KEYS.expiresAt);
-    return null;
-  }
-
-  return accessToken;
+function clearLegacyLocalStorageAuth() {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
+  localStorage.removeItem("expires_at");
 }
 
 export function isAuthenticated() {
-  return getStoredAccessToken() !== null;
+  clearLegacyLocalStorageAuth();
+  const authenticatedUntil = Number(
+    localStorage.getItem(STORAGE_KEYS.authenticatedUntil),
+  );
+  if (!Number.isFinite(authenticatedUntil) || Date.now() >= authenticatedUntil) {
+    localStorage.removeItem(STORAGE_KEYS.authenticatedUntil);
+    return false;
+  }
+  return true;
 }
 
-export function logout() {
-  localStorage.removeItem(STORAGE_KEYS.accessToken);
-  localStorage.removeItem(STORAGE_KEYS.refreshToken);
-  localStorage.removeItem(STORAGE_KEYS.expiresAt);
-  sessionStorage.removeItem(STORAGE_KEYS.codeVerifier);
-  sessionStorage.removeItem(STORAGE_KEYS.state);
+export async function logout() {
+  try {
+    await fetch(getApiUrl("/api/spotify/logout"), {
+      method: "POST",
+      credentials: "include",
+    });
+  } finally {
+    localStorage.removeItem(STORAGE_KEYS.authenticatedUntil);
+    sessionStorage.removeItem(STORAGE_KEYS.codeVerifier);
+    sessionStorage.removeItem(STORAGE_KEYS.state);
+    clearLegacyLocalStorageAuth();
+  }
 }
 
 export const clearSpotifyAuth = logout;

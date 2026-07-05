@@ -3,9 +3,6 @@ import { parse } from "dotenv";
 import OpenAI from "openai";
 
 const MODEL = "gpt-5.5";
-const CONNECTION_TEST_PROMPT =
-  "Reply with one short sentence confirming that RunTunes connected to OpenAI successfully.";
-
 const GENRES = ["global", "J_GROOVE", "kpop"] as const;
 
 const COMMON_SELECTION_RULES = `
@@ -75,23 +72,6 @@ let client: OpenAI | undefined;
 function getClient(): OpenAI {
   client ??= new OpenAI({ apiKey: loadApiKey() });
   return client;
-}
-
-export async function requestOpenAIConnectionTest(): Promise<string> {
-  const response = await getClient().responses.create({
-    model: MODEL,
-    input: CONNECTION_TEST_PROMPT,
-    max_output_tokens: 100,
-    reasoning: { effort: "none" },
-    text: { verbosity: "low" },
-  });
-  const text = response.output_text.trim();
-
-  if (!text) {
-    throw new Error("OpenAI returned an empty response.");
-  }
-
-  return text;
 }
 
 function isStringArray(value: unknown): value is string[] {
