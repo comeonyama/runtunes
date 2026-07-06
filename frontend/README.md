@@ -4,11 +4,11 @@
 
 Copy `.env.example` to `.env.local`. In local development, leave
 `VITE_API_BASE_URL` empty so requests continue through the Vite `/api` proxy.
-For a production build, set it to the API Gateway origin without a trailing
+For a production build, set it to the API custom domain without a trailing
 slash:
 
 ```dotenv
-VITE_API_BASE_URL=https://example.execute-api.ap-northeast-1.amazonaws.com
+VITE_API_BASE_URL=https://api.discoverroutes.jp
 ```
 
 ## Production build for XServer

@@ -53,8 +53,7 @@ function getAccessToken(cookieHeader: string | undefined) {
 
 function serializeAccessTokenCookie(accessToken: string, maxAge: number) {
   const secure = process.env.AWS_LAMBDA_FUNCTION_NAME ? "; Secure" : "";
-  const sameSite = secure ? "None" : "Lax";
-  return `${SPOTIFY_ACCESS_TOKEN_COOKIE}=${encodeURIComponent(accessToken)}; HttpOnly; Path=/; Max-Age=${Math.floor(maxAge)}; SameSite=${sameSite}${secure}`;
+  return `${SPOTIFY_ACCESS_TOKEN_COOKIE}=${encodeURIComponent(accessToken)}; HttpOnly; Path=/; Max-Age=${Math.floor(maxAge)}; SameSite=Lax${secure}`;
 }
 
 function clearAccessTokenCookie() {

@@ -21,6 +21,11 @@ in `backend/.lambda-package/`, copies `data/candidates/`, and also creates
 
 ## Deploy
 
+Before the first custom-domain deployment, request an ACM public certificate
+for `api.discoverroutes.jp` in `ap-northeast-1`. Add the ACM validation CNAME
+to Cloudflare as DNS-only, wait for the certificate status to become `Issued`,
+and copy its ARN.
+
 Run the guided deployment once:
 
 ```bash
@@ -30,17 +35,19 @@ sam deploy --guided \
   OpenAIApiKey=your-openai-api-key \
   SpotifyClientId=your-spotify-client-id \
   SpotifyRedirectUri=https://your-production-origin.example/runtunes/callback \
+  ApiDomainName=api.discoverroutes.jp \
+  ApiCertificateArn=your-acm-certificate-arn \
   BudgetNotificationEmail=your-email@example.com
 ```
 
 Keep the generated `samconfig.toml` local if it contains environment-specific
-values. After deployment, set the `ApiBaseUrl` stack output as
-`VITE_API_BASE_URL` when building the frontend for XServer.
+values. After deployment, create a DNS-only Cloudflare CNAME named `api` whose
+target is the `ApiCustomDomainTarget` stack output. The `ApiBaseUrl` output is
+the value to use as frontend `VITE_API_BASE_URL`.
 
-The default API Gateway hostname is cross-site from the production frontend,
-so its `SameSite=None; Secure` Cookie can be subject to browser third-party
-Cookie restrictions. Prefer an API custom domain under the same registrable
-domain as the frontend for reliable production authentication.
+The custom API domain and frontend share the `discoverroutes.jp` site, so the
+Spotify HttpOnly Cookie uses `SameSite=Lax` and works without third-party
+Cookie access.
 
 API Gateway only exposes the required production API routes. Credentialed CORS
 is restricted to the supplied frontend origin. The Lambda has no S3 or database permissions;
