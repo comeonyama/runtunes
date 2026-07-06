@@ -16,6 +16,13 @@ Parameters:
   SpotifyRedirectUri:
     Type: String
     Description: Spotify OAuth redirect URI
+  ApiDomainName:
+    Type: String
+    Default: api.discoverroutes.jp
+    Description: Custom domain name for the HTTP API
+  ApiCertificateArn:
+    Type: String
+    Description: ACM certificate ARN for the API custom domain in this region
   BudgetNotificationEmail:
     Type: String
     Description: Email address that receives monthly AWS cost alerts
@@ -110,6 +117,22 @@ Resources:
             Method: POST
             PayloadFormatVersion: "2.0"
 
+  RunTunesApiDomainName:
+    Type: AWS::ApiGatewayV2::DomainName
+    Properties:
+      DomainName: !Ref ApiDomainName
+      DomainNameConfigurations:
+        - CertificateArn: !Ref ApiCertificateArn
+          EndpointType: REGIONAL
+          SecurityPolicy: TLS_1_2
+
+  RunTunesApiMapping:
+    Type: AWS::ApiGatewayV2::ApiMapping
+    Properties:
+      ApiId: !Ref RunTunesHttpApi
+      DomainName: !Ref RunTunesApiDomainName
+      Stage: $default
+
   RunTunesApiLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
@@ -155,6 +178,12 @@ Resources:
 Outputs:
   ApiBaseUrl:
     Description: Set this value as frontend VITE_API_BASE_URL
+    Value: !Sub https://${ApiDomainName}
+  ExecuteApiBaseUrl:
+    Description: Default API Gateway URL for diagnostics
     Value: !Sub https://${RunTunesHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}
+  ApiCustomDomainTarget:
+    Description: Set this as the DNS CNAME target for ApiDomainName
+    Value: !GetAtt RunTunesApiDomainName.RegionalDomainName
   LambdaFunctionName:
     Value: !Ref RunTunesApiFunction

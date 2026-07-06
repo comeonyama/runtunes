@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:production": "VITE_APP_BASE_PATH=/runtunes/ VITE_SPOTIFY_REDIRECT_URI=https://discoverroutes.jp/runtunes/callback VITE_API_BASE_URL=https://5ff5tlirpb.execute-api.ap-northeast-1.amazonaws.com npm run build",
+    "build:production": "VITE_APP_BASE_PATH=/runtunes/ VITE_SPOTIFY_REDIRECT_URI=https://discoverroutes.jp/runtunes/callback VITE_API_BASE_URL=https://api.discoverroutes.jp npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
